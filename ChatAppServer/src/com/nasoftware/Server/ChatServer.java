@@ -47,7 +47,7 @@ public class ChatServer extends Thread {
         try {
             DataOutputStream out = new DataOutputStream(server.getOutputStream());
             out.writeUTF(messageSendingList.removeFirst());
-            System.err.println("send message to " + userID);
+           // System.err.println("send message to " + userID);
         } catch (IOException e) {
             //e.printStackTrace();
         } finally {
@@ -116,37 +116,39 @@ public class ChatServer extends Thread {
         }
 
         private void SETParser(String packet) {
-            String splitter = ProtocolInfo.requestSplitter;
-            String[] parts = packet.split(splitter);
-            if(parts.length != 2) {
-                addPacketToSend(setHeader + splitter + "FAILED");
-                return;
+            if (!requestChecker(packet, setHeader, requestSplitter)) {
+                addPacketToSend(setHeader + requestSplitter + failedText);
             }
-            if(!parts[0].equals(setHeader)) {
-                addPacketToSend(setHeader + splitter + "FAILED");
-                return;
-            }
-            String name = parts[1];
+            String name = packet.split(requestSplitter)[1];
             userName = name;
-            addPacketToSend(setHeader + splitter + "SUCCESS");
+            addPacketToSend(setHeader + requestSplitter + successText);
         }
 
         private void SENDParser(String packet) {
-            String splitter = ProtocolInfo.requestSplitter;
+            if (!requestChecker(packet, sendHeader, requestSplitter)) {
+                addPacketToSend(sendHeader + requestSplitter + failedText);
+            }
+            String rest = packet.split(requestSplitter)[1];
+            if(!roomDistributor.sendMessagePacket(rest, userID, userName)){
+                addPacketToSend(sendHeader + requestSplitter + failedText);
+                return;
+            }
+            addPacketToSend(sendHeader + requestSplitter + successText);
+        }
+
+        private void GOParser(String packet) {
+
+        }
+
+        private boolean requestChecker(String packet, String header, String splitter) {
             String[] parts = packet.split(splitter);
             if(parts.length != 2) {
-                addPacketToSend(sendHeader + splitter + "FAILED");
-                return;
+                return false;
             }
-            if(!parts[0].equals(sendHeader)) {
-                addPacketToSend(sendHeader + splitter + "FAILED");
-                return;
+            if(!parts[0].equals(header)) {
+                return false;
             }
-            if(!roomDistributor.sendMessagePacket(parts[1], userID, userName)){
-                addPacketToSend(sendHeader + splitter + "FAILED");
-                return;
-            }
-            addPacketToSend(sendHeader + splitter + "SUCCESS");
+            return true;
         }
     }
 
