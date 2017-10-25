@@ -2,6 +2,7 @@ package com.nasoftware.Server.NetworkLayer;
 
 import com.nasoftware.Common.ProtocolInfo;
 import com.nasoftware.Server.LogicalLayer.Courier;
+import sun.awt.image.ImageWatched;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -21,6 +22,7 @@ import static com.nasoftware.Server.DataLayer.Database.roomDistributor;
 public class ChatServer extends Thread {
 
     private LinkedList<String> messageSendingList = new LinkedList<String>();
+    private LinkedList<Integer> roomKeyList = new LinkedList<Integer>();
     private Lock lock = new ReentrantLock();
     private Socket server;
     private String userName;
@@ -60,6 +62,7 @@ public class ChatServer extends Thread {
 
 
     public void run() {
+        roomKeyList.add(0);
         NewMessageChecker checker = new NewMessageChecker(server, userID);
         checker.start();
         while(true) {
@@ -76,6 +79,8 @@ public class ChatServer extends Thread {
         if (!chatServerDistributor.removeFormDistributor(userID)) {
             System.err.println("failed remove from hashTable");
         }
+        Courier courier = new Courier();
+        courier.removeFromDatabase(userID, roomKeyList);
         System.out.println(userID + " finished");
     }
 
@@ -116,6 +121,7 @@ public class ChatServer extends Thread {
                     break;
                 }
             }
+            System.out.print(userID + " checker finished!");
         }
 
         private void SETParser(String packet) {

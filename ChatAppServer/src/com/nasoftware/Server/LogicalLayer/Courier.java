@@ -2,7 +2,6 @@ package com.nasoftware.Server.LogicalLayer;
 
 import com.nasoftware.Common.Message;
 import com.nasoftware.Common.ProtocolInfo;
-import com.nasoftware.Server.DataLayer.ChatServerDistributor;
 import com.nasoftware.Server.DataLayer.Database;
 import com.nasoftware.Server.DataLayer.RoomDistributor;
 import com.nasoftware.Server.NetworkLayer.ChatServer;
@@ -10,6 +9,7 @@ import com.nasoftware.Server.DataLayer.Room;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 import static com.nasoftware.Common.ProtocolInfo.contentSplitter;
 import static com.nasoftware.Common.ProtocolInfo.roomHeader;
@@ -39,6 +39,9 @@ public class Courier{
                 Message message = Message.createFromClientPacket(parts[1], senderID, senderName);
                 if(message == null)
                     return false;
+                HashMap<Integer, Integer> keyMap = room.getReadOnlyRoomMembersIDMap();
+                if(!keyMap.containsKey(senderID))
+                    return false;
                 addMessageToRoom(message, room);
                 return true;
             }
@@ -55,8 +58,8 @@ public class Courier{
         Integer roomID = room.roomID;
         String packet = header + headerSplitter + roomID + roomSplitter + message.generateMessagePacket();
         ArrayList<Integer> roomMembers = room.getReadOnlyMemberList();
+        HashMap<Integer, ChatServer> map = Database.chatServerDistributor.getReadOnlyMap();
         for (Integer memberID : roomMembers) {
-            HashMap<Integer, ChatServer> map = Database.chatServerDistributor.getReadOnlyMap();
             ChatServer member = map.get(memberID);
             member.addPacketToSend(packet);
         }
@@ -95,5 +98,19 @@ public class Courier{
         Room room = roomDistributor.assignANewRoomID();
         room.addMember(member);
         return room.roomID;
+    }
+
+    public void removeFromDatabase(int memberID, LinkedList<Integer> roomList) {
+        HashMap<Integer, Room> roomHashMap = Database.roomDistributor.getReadOnlyRoomHashMap();
+        ChatServer member = Database.chatServerDistributor.getReadOnlyMap().get(memberID);
+        if(roomHashMap == null || member == null)
+            return;
+        for(Integer x: roomList) {
+            Room room = roomHashMap.get(x);
+            if(room == null)
+                continue;
+            room.deleteMember(member);
+        }
+        Database.chatServerDistributor.removeFormDistributor(memberID);
     }
 }
