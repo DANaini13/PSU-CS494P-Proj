@@ -1,7 +1,4 @@
-package com.nasoftware.Server;
-
-import com.nasoftware.Common.Message;
-import static com.nasoftware.Common.ProtocolInfo.*;
+package com.nasoftware.Server.DataLayer;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -42,34 +39,6 @@ public class RoomDistributor {
         }
         lock.unlock();
         return returnValue;
-    }
-
-    public boolean sendMessagePacket(String packet, int senderID, String senderName) {
-        //packet example: ROOM-roomNumber-ROOM-MessageContent
-        String splitter = roomSplitter;
-        String header = roomHeader;
-        String parts[] = packet.split(splitter);
-        if (parts.length != 2)
-            return false;
-        String[] headerParts = parts[0].split(contentSplitter);
-        if (headerParts.length != 2)
-            return false;
-        if (!headerParts[0].equals(header))
-            return false;
-        try {
-            int roomNumber = Integer.parseInt(headerParts[1]);
-            if (roomHashMap.containsKey(roomNumber)) {
-                Room room = roomHashMap.get(roomNumber);
-                Message message = Message.createFromClientPacket(parts[1], senderID, senderName);
-                if(message == null)
-                    return false;
-                room.addMessageToRoom(message);
-                return true;
-            }
-            return false;
-        } catch (NumberFormatException _) {
-            return false;
-        }
     }
 
 

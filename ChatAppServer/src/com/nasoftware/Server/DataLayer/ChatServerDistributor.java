@@ -1,5 +1,7 @@
-package com.nasoftware.Server;
+package com.nasoftware.Server.DataLayer;
 
+
+import com.nasoftware.Server.NetworkLayer.ChatServer;
 
 import java.net.Socket;
 import java.util.HashMap;
@@ -11,9 +13,9 @@ import java.util.concurrent.locks.ReentrantLock;
  * Created by zeyongshan on 10/23/17.
  */
 public class ChatServerDistributor {
-    HashMap<Integer, ChatServer> map = new HashMap();
-    LinkedList<Integer> removedList = new LinkedList<>();
-    Lock lock = new ReentrantLock();
+    private HashMap<Integer, ChatServer> map = new HashMap();
+    private LinkedList<Integer> removedList = new LinkedList<>();
+    private Lock lock = new ReentrantLock();
 
 
     public ChatServer assignANewChatServerID(Socket server) {

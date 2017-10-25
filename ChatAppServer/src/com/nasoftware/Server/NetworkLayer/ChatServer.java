@@ -1,6 +1,7 @@
-package com.nasoftware.Server;
+package com.nasoftware.Server.NetworkLayer;
 
 import com.nasoftware.Common.ProtocolInfo;
+import com.nasoftware.Server.LogicalLayer.Courier;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -10,8 +11,8 @@ import java.util.LinkedList;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import static com.nasoftware.Common.ProtocolInfo.*;
-import static com.nasoftware.Server.Database.chatServerDistributor;
-import static com.nasoftware.Server.Database.roomDistributor;
+import static com.nasoftware.Server.DataLayer.Database.chatServerDistributor;
+import static com.nasoftware.Server.DataLayer.Database.roomDistributor;
 
 
 /**
@@ -129,7 +130,8 @@ public class ChatServer extends Thread {
                 addPacketToSend(sendHeader + requestSplitter + failedText);
             }
             String rest = packet.split(requestSplitter)[1];
-            if(!roomDistributor.sendMessagePacket(rest, userID, userName)){
+            Courier courier = new Courier();
+            if(!courier.sendMessagePacket(roomDistributor, rest, userID, userName)){
                 addPacketToSend(sendHeader + requestSplitter + failedText);
                 return;
             }
@@ -137,7 +139,13 @@ public class ChatServer extends Thread {
         }
 
         private void GOParser(String packet) {
+            if (!requestChecker(packet, goHeader, requestSplitter)) {
+                addPacketToSend(goHeader + requestSplitter + failedText);
+                return;
+            }
+            String rest = packet.split(requestSplitter)[1];
 
+            addPacketToSend(goHeader + requestSplitter + successText);
         }
 
         private boolean requestChecker(String packet, String header, String splitter) {

@@ -11,16 +11,16 @@ import java.util.HashMap;
 /*
 SET USERNAME:
 
-SET-SETHEADER-nameContent  //To server
-SET-SETHEADER-SUCCESS | FAILED // To client
+SET-COMMANDSPL-nameContent  //To server
+SET-COMMANDSPL-SUCCESS | FAILED // To client
 */
 
 
 /*
 SEND MESSAGE:
 
-SEND-SENDHEADER-ROOM-roomNumber-ROOMHEADER-MESS-MessageContent  //Both side
-SEND-SENDHEADER-PERSON-userID~MESS-MessageContent  //Both side
+SEND-COMMANDSPL-ROOM-roomNumber-ROOMHEADER-MESS-MessageContent  //Both side
+SEND-COMMANDSPL-PERSON-userID~MESS-MessageContent  //Both side
 */
 
 
@@ -28,21 +28,21 @@ SEND-SENDHEADER-PERSON-userID~MESS-MessageContent  //Both side
 /*
 GO INTO ROOM:
 
-GO-GOSENDHEADER-RROOM-roomNumber  //To server
-GO-GOSENDHEADER-SUCCESS | FAILED //To client
+GO-COMMANDSPL-ROOM-roomNumber  //To server
+GO-COMMANDSPL-SUCCESS | FAILED //To client
 */
 
 
 /*
 CREATE NEW ROOM:
 
-CREATE-CREATEHEADER-Password  //To server
-CREATE-CREATEHEADER-ROOM-roomNumber  //To client
+CREATE-COMMANDSPL-Password  //To server
+CREATE-COMMANDSPL-ROOM-roomNumber  //To client
 */
 
 // Message Packet Example:
-    // MESS-MESSSPLITTER-content: To server
-    // MESS-MESSSPLITTER-senderID-senderName-date-content: To client
+    // MESS-MESSAGESPL-content: To server
+    // MESS-MESSAGESPL-senderID-senderName-date-content: To client
 
 
 /**

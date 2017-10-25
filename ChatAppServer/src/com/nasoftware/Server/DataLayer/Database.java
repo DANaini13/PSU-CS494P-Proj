@@ -1,4 +1,4 @@
-package com.nasoftware.Server;
+package com.nasoftware.Server.DataLayer;
 
 /**
  * Created by zeyongshan on 10/24/17.
