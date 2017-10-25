@@ -42,7 +42,7 @@ public class RoomDistributor {
     }
 
 
-    public HashMap<Integer, Room> getReadonlyRoomHashMap() {
+    public HashMap<Integer, Room> getReadOnlyRoomHashMap() {
         lock.lock();
         final HashMap<Integer, Room> map = roomHashMap;
         lock.unlock();

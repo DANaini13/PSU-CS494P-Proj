@@ -18,10 +18,13 @@ public class Room {
         this.roomID = roomID;
     }
 
-    public void addMember(ChatServer newMember) {
+    public boolean addMember(ChatServer newMember) {
         lock.lock();
+        if(roomMembers.contains(newMember))
+            return false;
         roomMembers.add(newMember.userID);
         lock.unlock();
+        return true;
     }
 
     public void deleteMember(ChatServer memberToDelete) {

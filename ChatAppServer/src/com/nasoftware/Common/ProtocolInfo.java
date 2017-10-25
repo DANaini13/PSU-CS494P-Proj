@@ -82,7 +82,7 @@ public class ProtocolInfo {
     public static final String createHeader = "CREATE";
     public static final String roomHeader = "ROOM";
     public static final String messageHeader = "MESS";
-    public static final String failedText = "FALIED";
+    public static final String failedText = "FAILED";
     public static final String successText = "SUCCESS";
 }
 

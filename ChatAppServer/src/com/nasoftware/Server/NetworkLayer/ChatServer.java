@@ -104,8 +104,10 @@ public class ChatServer extends Thread {
                             SENDParser(packet);
                             break;
                         case goHeader:
+                            GOParser(packet);
                             break;
                         case createHeader:
+                            CREATEParser(packet);
                             break;
                         default:
                             //return;
@@ -144,8 +146,27 @@ public class ChatServer extends Thread {
                 return;
             }
             String rest = packet.split(requestSplitter)[1];
-
+            Courier courier = new Courier();
+            if(!courier.addMemberToRoom(userID, roomDistributor, rest)) {
+                addPacketToSend(goHeader + requestSplitter + failedText);
+                return;
+            }
             addPacketToSend(goHeader + requestSplitter + successText);
+        }
+
+        private void CREATEParser(String packet) {
+            if (!requestChecker(packet, createHeader, requestSplitter)) {
+                addPacketToSend(createHeader + requestSplitter + failedText);
+                return;
+            }
+            String rest = packet.split(requestSplitter)[1];
+            Courier courier = new Courier();
+            Integer result = courier.createNewRoom(userID, roomDistributor, rest);
+            if(result == null) {
+                addPacketToSend(createHeader + requestSplitter + failedText);
+                return;
+            }
+            addPacketToSend(createHeader + requestSplitter + roomHeader + contentSplitter + result);
         }
 
         private boolean requestChecker(String packet, String header, String splitter) {
