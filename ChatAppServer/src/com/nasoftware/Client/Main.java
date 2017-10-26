@@ -46,7 +46,7 @@ class MessageChecker extends Thread {
                 while (dis.read(bytes) != -1) {
                     ret += BytesHexString(bytes);
                     if (dis.available() == 0) { //一个请求
-                        System.out.print(hexStr2Str(ret));
+                        System.out.println(hexStr2Str(ret));
                         ret = "";
                     }
                 }

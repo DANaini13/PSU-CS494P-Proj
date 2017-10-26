@@ -3,7 +3,6 @@ package com.nasoftware.Server.NetworkLayer;
 import com.nasoftware.Common.ProtocolInfo;
 import com.nasoftware.Server.LogicalLayer.Courier;
 
-import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -12,7 +11,6 @@ import java.util.LinkedList;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import static com.nasoftware.Common.ProtocolInfo.*;
-import static com.nasoftware.Server.DataLayer.Database.chatServerDistributor;
 import static com.nasoftware.Server.DataLayer.Database.roomDistributor;
 
 
@@ -82,9 +80,6 @@ public class ChatServer extends Thread {
                 e.printStackTrace();
             }
         }
-        if (!chatServerDistributor.removeFormDistributor(userID)) {
-            System.err.println("failed remove from hashTable");
-        }
         Courier courier = new Courier();
         courier.removeFromDatabase(userID, roomKeyList);
         System.out.println(userID + " finished");
@@ -134,37 +129,37 @@ public class ChatServer extends Thread {
 
         public void run() {
             // Packet parser:
-                try {
-                    DataInputStream dis = new DataInputStream(server.getInputStream());
-                    String packet = "";
-                    byte[] bytes = new byte[1];
-                    String ret = "";
-                    while (dis.read(bytes) != -1) {
-                        ret += BytesHexString(bytes);
-                        if (dis.available() == 0) {
-                            packet = hexStr2Str(ret);
-                            String header = packet.split(ProtocolInfo.requestSplitter)[0];
-                            switch (header) {
-                                case setHeader:
-                                    SETParser(packet);
-                                    break;
-                                case sendHeader:
-                                    SENDParser(packet);
-                                    break;
-                                case goHeader:
-                                    GOParser(packet);
-                                    break;
-                                case createHeader:
-                                    CREATEParser(packet);
-                                    break;
-                                default:
-                                    //return;
-                            }
-                            ret = "";
+            try {
+                DataInputStream dis = new DataInputStream(server.getInputStream());
+                String packet = "";
+                byte[] bytes = new byte[1];
+                String ret = "";
+                while (dis.read(bytes) != -1) {
+                    ret += BytesHexString(bytes);
+                    if (dis.available() == 0) {
+                        packet = hexStr2Str(ret);
+                        String header = packet.split(ProtocolInfo.requestSplitter)[0];
+                        switch (header) {
+                            case setHeader:
+                                SETParser(packet);
+                                break;
+                            case sendHeader:
+                                SENDParser(packet);
+                                break;
+                            case goHeader:
+                                GOParser(packet);
+                                break;
+                            case createHeader:
+                                CREATEParser(packet);
+                                break;
+                            default:
+                                //return;
                         }
+                        ret = "";
                     }
-                } catch (IOException e) {
                 }
+            } catch (IOException e) {
+                return;
             }
         }
 
@@ -216,6 +211,7 @@ public class ChatServer extends Thread {
                 addPacketToSend(createHeader + requestSplitter + failedText);
                 return;
             }
+            roomKeyList.add(result);
             addPacketToSend(createHeader + requestSplitter + roomHeader + contentSplitter + result);
         }
 
@@ -230,7 +226,7 @@ public class ChatServer extends Thread {
             return true;
         }
     }
-
+}
 
 
 
