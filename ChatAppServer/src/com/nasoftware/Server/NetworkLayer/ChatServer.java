@@ -2,8 +2,8 @@ package com.nasoftware.Server.NetworkLayer;
 
 import com.nasoftware.Common.ProtocolInfo;
 import com.nasoftware.Server.LogicalLayer.Courier;
-import sun.awt.image.ImageWatched;
 
+import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -26,6 +26,7 @@ public class ChatServer extends Thread {
     private Lock lock = new ReentrantLock();
     private Socket server;
     private String userName;
+    private DataOutputStream out;
 
     public final int userID;
 
@@ -33,6 +34,11 @@ public class ChatServer extends Thread {
     public ChatServer(Socket server, int userID) {
         this.server = server;
         this.userID = userID;
+        try {
+            out = new DataOutputStream(server.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void addPacketToSend(String message) {
@@ -48,9 +54,9 @@ public class ChatServer extends Thread {
             return;
         }
         try {
-            DataOutputStream out = new DataOutputStream(server.getOutputStream());
-            out.writeUTF(messageSendingList.removeFirst());
-           // System.err.println("send message to " + userID);
+            byte[] str = messageSendingList.removeFirst().getBytes();
+            out.write(str, 0, str.length);
+            out.flush();
         } catch (IOException e) {
             //e.printStackTrace();
         } finally {
@@ -63,7 +69,7 @@ public class ChatServer extends Thread {
 
     public void run() {
         roomKeyList.add(0);
-        NewMessageChecker checker = new NewMessageChecker(server, userID);
+        NewMessageChecker checker = new NewMessageChecker(server);
         checker.start();
         while(true) {
             try {
@@ -86,42 +92,80 @@ public class ChatServer extends Thread {
 
     class NewMessageChecker extends Thread {
         private Socket server;
-        private int userID;
 
-        public NewMessageChecker(Socket server, int userID) {
+        public NewMessageChecker(Socket server) {
             this.server = server;
-            this.userID = userID;
+        }
+
+        private String hexStr2Str(String hexStr)
+        {
+            String str = "0123456789ABCDEF";
+            char[] hexs = hexStr.toCharArray();
+            byte[] bytes = new byte[hexStr.length() / 2];
+            int n;
+            int count = 0;
+            for (int i = 0; i < bytes.length; i++)
+            {
+                n = str.indexOf(hexs[2 * i]) * 16;
+                n += str.indexOf(hexs[2 * i + 1]);
+                bytes[i] = (byte) (n & 0xff);
+                if(bytes[i] == 0)
+                    break;
+                ++count;
+            }
+            byte[] tempBytes = new byte[count];
+            for (int i =0; i < tempBytes.length; ++i) {
+                tempBytes[i] = bytes[i];
+            }
+            return new String(tempBytes);
+        }
+
+        private String BytesHexString(byte[] b) {
+            String ret = "";
+            for (int i = 0; i < b.length; i++) {
+                String hex = Integer.toHexString(b[i] & 0xFF);
+                if (hex.length() == 1) {
+                    hex = '0' + hex;
+                }
+                ret += hex.toUpperCase();
+            }
+            return ret;
         }
 
         public void run() {
             // Packet parser:
-            while(true) {
                 try {
-                    DataInputStream in = new DataInputStream(server.getInputStream());
-                    String packet = in.readUTF();
-                    // header parser:
-                    String header = packet.split(ProtocolInfo.requestSplitter)[0];
-                    switch (header) {
-                        case setHeader:
-                            SETParser(packet);
-                            break;
-                        case sendHeader:
-                            SENDParser(packet);
-                            break;
-                        case goHeader:
-                            GOParser(packet);
-                            break;
-                        case createHeader:
-                            CREATEParser(packet);
-                            break;
-                        default:
-                            //return;
+                    DataInputStream dis = new DataInputStream(server.getInputStream());
+                    String packet = "";
+                    byte[] bytes = new byte[1];
+                    String ret = "";
+                    while (dis.read(bytes) != -1) {
+                        ret += BytesHexString(bytes);
+                        if (dis.available() == 0) {
+                            packet = hexStr2Str(ret);
+                            String header = packet.split(ProtocolInfo.requestSplitter)[0];
+                            switch (header) {
+                                case setHeader:
+                                    SETParser(packet);
+                                    break;
+                                case sendHeader:
+                                    SENDParser(packet);
+                                    break;
+                                case goHeader:
+                                    GOParser(packet);
+                                    break;
+                                case createHeader:
+                                    CREATEParser(packet);
+                                    break;
+                                default:
+                                    //return;
+                            }
+                            ret = "";
+                        }
                     }
                 } catch (IOException e) {
-                    break;
                 }
             }
-            System.out.print(userID + " checker finished!");
         }
 
         private void SETParser(String packet) {
@@ -187,7 +231,6 @@ public class ChatServer extends Thread {
         }
     }
 
-}
 
 
 

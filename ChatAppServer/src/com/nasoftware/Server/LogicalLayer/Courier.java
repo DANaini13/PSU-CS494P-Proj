@@ -51,7 +51,7 @@ public class Courier{
         }
     }
 
-    public void addMessageToRoom(Message message, Room room) {
+    private void addMessageToRoom(Message message, Room room) {
         String header = ProtocolInfo.roomHeader;
         String headerSplitter = ProtocolInfo.contentSplitter;
         String roomSplitter = ProtocolInfo.roomSplitter;
