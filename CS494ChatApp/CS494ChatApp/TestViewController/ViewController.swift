@@ -14,13 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        PacketsCheckerAndSender.start()
-        PacketsCheckerAndSender.setNewPacketHandler() { [weak self]
-            (message: Message) in
-            DispatchQueue.main.async {
-                self!.screen.text = message.sender + ":" + message.message
-            }
-        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,16 +23,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func touchSend(_ sender: UIButton) {
-        if let message = text.text {
-            let packetGenerator = PacketsGenerator()
-            let packet = packetGenerator.generateSendPacket(message: message, to: 0) {
-                (result: Bool) in
-                if !result {
-                    print("send message failed!")
-                }
-            }
-            PacketsCheckerAndSender.sendPacket(packet: packet)
-        }
     }
     
     @IBOutlet weak var screen: UILabel!

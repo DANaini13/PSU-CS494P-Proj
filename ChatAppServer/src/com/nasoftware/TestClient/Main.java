@@ -1,4 +1,4 @@
-package com.nasoftware.Client;
+package com.nasoftware.TestClient;
 
 import com.nasoftware.Common.HostInfo;
 

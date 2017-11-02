@@ -19,6 +19,10 @@ static int sock = -1;
 static char* readBuffer1 = NULL;
 static char* readBuffer2 = NULL;
 
+/**
+ This function will initialize the buffer and connect with server.
+ it returns -1 for the case that connection failed.
+ */
 int socketInit() {
     readBuffer1 = malloc(sizeof(char)*350);
     readBuffer2 = malloc(sizeof(char)*350);
@@ -40,6 +44,13 @@ int socketInit() {
     return 0;
 }
 
+/**
+ This function will only work after the socketInit() was
+ called successfully.
+ It would read from the server if there is a packet sent from
+ server.
+ It returns NULL if no unread packet.
+ */
 char* socketRead() {
     if(sock < 0)
         return NULL;
@@ -52,6 +63,12 @@ char* socketRead() {
     return readBuffer2;
 }
 
+/**
+ This function will only work after the socketInit() was
+ called successfully.
+ It would send a packet to server.
+ return -1 if sending failed.
+ */
 long socketWrite(const char* content) {
     if(sock < 0)
         return -1;
@@ -59,6 +76,11 @@ long socketWrite(const char* content) {
     return writingResult;
 }
 
+/**
+ This function will only work after the socketInit() was
+ called successfully.
+ It would colse the connection from the server.
+ */
 void closeConnection() {
     close(sock);
     sock = -1;

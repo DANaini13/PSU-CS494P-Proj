@@ -76,7 +76,7 @@ class PacketsCheckerAndSender {
         }
     }
     
-    static func setNewPacketHandler(handler: @escaping (Message) -> Void) {
+    static func setNewMessageHandler(handler: @escaping (Message) -> Void) {
         self.newMessageHandler = handler
     }
     

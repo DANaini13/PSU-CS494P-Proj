@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F30E01F1FABAEDE001C633F /* PacketGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F30E01E1FABAEDE001C633F /* PacketGenerator.swift */; };
 		3F6694C11FABABCD007B14AA /* ProtocolInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6694C01FABABCD007B14AA /* ProtocolInformation.swift */; };
 		3F93B7541FA19449003C2FE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F93B7531FA19449003C2FE8 /* AppDelegate.swift */; };
 		3F93B7561FA19449003C2FE8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F93B7551FA19449003C2FE8 /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F30E01E1FABAEDE001C633F /* PacketGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketGenerator.swift; sourceTree = "<group>"; };
 		3F6694C01FABABCD007B14AA /* ProtocolInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolInformation.swift; sourceTree = "<group>"; };
 		3F93B7501FA19449003C2FE8 /* CS494ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CS494ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F93B7531FA19449003C2FE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,9 +97,9 @@
 			isa = PBXGroup;
 			children = (
 				3F93B7681FA19471003C2FE8 /* HostInfo.h */,
-				3F6694C01FABABCD007B14AA /* ProtocolInformation.swift */,
 				3F93B76B1FA194A5003C2FE8 /* Socket.c */,
 				3F93B7661FA19468003C2FE8 /* SwiftSocket.swift */,
+				3F6694C01FABABCD007B14AA /* ProtocolInformation.swift */,
 			);
 			path = SwiftSocket;
 			sourceTree = "<group>";
@@ -114,9 +116,10 @@
 		3FD08A971FA6F90A00030A1D /* WebModel */ = {
 			isa = PBXGroup;
 			children = (
-				3FE1F1021FAAD467000BED42 /* PacketsCheckerAndSender.swift */,
-				3FE1F1041FAAE105000BED42 /* Packet.swift */,
 				3FE1F1061FAB0193000BED42 /* HandlerBuffer.swift */,
+				3FE1F1041FAAE105000BED42 /* Packet.swift */,
+				3F30E01E1FABAEDE001C633F /* PacketGenerator.swift */,
+				3FE1F1021FAAD467000BED42 /* PacketsCheckerAndSender.swift */,
 			);
 			path = WebModel;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				3FE1F1031FAAD467000BED42 /* PacketsCheckerAndSender.swift in Sources */,
 				3F6694C11FABABCD007B14AA /* ProtocolInformation.swift in Sources */,
 				3FE1F1071FAB0193000BED42 /* HandlerBuffer.swift in Sources */,
+				3F30E01F1FABAEDE001C633F /* PacketGenerator.swift in Sources */,
 				3F93B7561FA19449003C2FE8 /* ViewController.swift in Sources */,
 				3F93B7541FA19449003C2FE8 /* AppDelegate.swift in Sources */,
 				3FE1F1051FAAE105000BED42 /* Packet.swift in Sources */,
