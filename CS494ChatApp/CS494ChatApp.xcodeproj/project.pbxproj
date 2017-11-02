@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F6694C11FABABCD007B14AA /* ProtocolInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6694C01FABABCD007B14AA /* ProtocolInformation.swift */; };
 		3F93B7541FA19449003C2FE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F93B7531FA19449003C2FE8 /* AppDelegate.swift */; };
 		3F93B7561FA19449003C2FE8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F93B7551FA19449003C2FE8 /* ViewController.swift */; };
 		3F93B7591FA19449003C2FE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F93B7571FA19449003C2FE8 /* Main.storyboard */; };
@@ -14,9 +15,14 @@
 		3F93B75E1FA19449003C2FE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F93B75C1FA19449003C2FE8 /* LaunchScreen.storyboard */; };
 		3F93B7671FA19468003C2FE8 /* SwiftSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F93B7661FA19468003C2FE8 /* SwiftSocket.swift */; };
 		3F93B76C1FA194A5003C2FE8 /* Socket.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F93B76B1FA194A5003C2FE8 /* Socket.c */; };
+		3FE1F1031FAAD467000BED42 /* PacketsCheckerAndSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE1F1021FAAD467000BED42 /* PacketsCheckerAndSender.swift */; };
+		3FE1F1051FAAE105000BED42 /* Packet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE1F1041FAAE105000BED42 /* Packet.swift */; };
+		3FE1F1071FAB0193000BED42 /* HandlerBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE1F1061FAB0193000BED42 /* HandlerBuffer.swift */; };
+		3FE1F10A1FAB04CB000BED42 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE1F1091FAB04CB000BED42 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F6694C01FABABCD007B14AA /* ProtocolInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolInformation.swift; sourceTree = "<group>"; };
 		3F93B7501FA19449003C2FE8 /* CS494ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CS494ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F93B7531FA19449003C2FE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F93B7551FA19449003C2FE8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,6 +34,10 @@
 		3F93B7681FA19471003C2FE8 /* HostInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HostInfo.h; sourceTree = "<group>"; };
 		3F93B7691FA19497003C2FE8 /* CS494ChatApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CS494ChatApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		3F93B76B1FA194A5003C2FE8 /* Socket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Socket.c; sourceTree = "<group>"; };
+		3FE1F1021FAAD467000BED42 /* PacketsCheckerAndSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketsCheckerAndSender.swift; sourceTree = "<group>"; };
+		3FE1F1041FAAE105000BED42 /* Packet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Packet.swift; sourceTree = "<group>"; };
+		3FE1F1061FAB0193000BED42 /* HandlerBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlerBuffer.swift; sourceTree = "<group>"; };
+		3FE1F1091FAB04CB000BED42 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +71,10 @@
 			isa = PBXGroup;
 			children = (
 				3F93B7651FA19459003C2FE8 /* HelpFiles */,
-				3F93B76E1FA19509003C2FE8 /* TestViewController */,
 				3F93B76D1FA194C5003C2FE8 /* SwiftSocket */,
+				3FD08A971FA6F90A00030A1D /* WebModel */,
+				3FE1F1081FAB04BB000BED42 /* Message */,
+				3F93B76E1FA19509003C2FE8 /* TestViewController */,
 				3F93B75F1FA19449003C2FE8 /* Info.plist */,
 				3F93B7691FA19497003C2FE8 /* CS494ChatApp-Bridging-Header.h */,
 			);
@@ -83,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				3F93B7681FA19471003C2FE8 /* HostInfo.h */,
+				3F6694C01FABABCD007B14AA /* ProtocolInformation.swift */,
 				3F93B76B1FA194A5003C2FE8 /* Socket.c */,
 				3F93B7661FA19468003C2FE8 /* SwiftSocket.swift */,
 			);
@@ -96,6 +109,24 @@
 				3F93B7571FA19449003C2FE8 /* Main.storyboard */,
 			);
 			path = TestViewController;
+			sourceTree = "<group>";
+		};
+		3FD08A971FA6F90A00030A1D /* WebModel */ = {
+			isa = PBXGroup;
+			children = (
+				3FE1F1021FAAD467000BED42 /* PacketsCheckerAndSender.swift */,
+				3FE1F1041FAAE105000BED42 /* Packet.swift */,
+				3FE1F1061FAB0193000BED42 /* HandlerBuffer.swift */,
+			);
+			path = WebModel;
+			sourceTree = "<group>";
+		};
+		3FE1F1081FAB04BB000BED42 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				3FE1F1091FAB04CB000BED42 /* Message.swift */,
+			);
+			path = Message;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,8 +202,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FE1F1031FAAD467000BED42 /* PacketsCheckerAndSender.swift in Sources */,
+				3F6694C11FABABCD007B14AA /* ProtocolInformation.swift in Sources */,
+				3FE1F1071FAB0193000BED42 /* HandlerBuffer.swift in Sources */,
 				3F93B7561FA19449003C2FE8 /* ViewController.swift in Sources */,
 				3F93B7541FA19449003C2FE8 /* AppDelegate.swift in Sources */,
+				3FE1F1051FAAE105000BED42 /* Packet.swift in Sources */,
+				3FE1F10A1FAB04CB000BED42 /* Message.swift in Sources */,
 				3F93B76C1FA194A5003C2FE8 /* Socket.c in Sources */,
 				3F93B7671FA19468003C2FE8 /* SwiftSocket.swift in Sources */,
 			);

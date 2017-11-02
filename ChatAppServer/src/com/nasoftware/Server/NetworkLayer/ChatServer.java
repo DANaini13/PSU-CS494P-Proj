@@ -25,6 +25,7 @@ public class ChatServer extends Thread {
     private Socket server;
     private String userName;
     private DataOutputStream out;
+    private boolean logInStatus = false;
 
     public final int userID;
 
@@ -139,6 +140,9 @@ public class ChatServer extends Thread {
                     if (dis.available() == 0) {
                         packet = hexStr2Str(ret);
                         String header = packet.split(ProtocolInfo.requestSplitter)[0];
+                        if(!header.equals(addHeader)&&!header.equals(logInHeader) && logInStatus == false) {
+                            break;
+                        }
                         switch (header) {
                             case setHeader:
                                 SETParser(packet);
@@ -152,8 +156,14 @@ public class ChatServer extends Thread {
                             case createHeader:
                                 CREATEParser(packet);
                                 break;
+                            case addHeader:
+                                ADDParser(packet);
+                                break;
+                            case logInHeader:
+                                LOGINParser(packet);
+                                break;
                             default:
-                                //return;
+                                break;
                         }
                         ret = "";
                     }
@@ -213,6 +223,45 @@ public class ChatServer extends Thread {
             }
             roomKeyList.add(result);
             addPacketToSend(createHeader + requestSplitter + roomHeader + contentSplitter + result);
+        }
+
+        private void ADDParser(String packet) {
+            if (!requestChecker(packet, addHeader, requestSplitter)) {
+                addPacketToSend(addHeader + requestSplitter + failedText);
+                return;
+            }
+            String rest = packet.split(requestSplitter)[1];
+            String parts[] = rest.split(contentSplitter);
+            if (parts.length != 2) {
+                addPacketToSend(logInHeader + requestSplitter + failedText);
+                return;
+            }
+            Courier courier = new Courier();
+            if (courier.addAccount(parts[0], parts[1])) {
+                addPacketToSend(addHeader + requestSplitter + successText);
+                return;
+            }
+            addPacketToSend(addHeader + requestSplitter + failedText);
+        }
+
+        private void LOGINParser(String packet) {
+            if (!requestChecker(packet, logInHeader, requestSplitter)) {
+                addPacketToSend(logInHeader + requestSplitter + failedText);
+                return;
+            }
+            String rest = packet.split(requestSplitter)[1];
+            String parts[] = rest.split(contentSplitter);
+            if (parts.length != 2) {
+                addPacketToSend(logInHeader + requestSplitter + failedText);
+                return;
+            }
+            Courier courier = new Courier();
+            if (courier.checkAccountPassword(parts[0], parts[1])) {
+                addPacketToSend(logInHeader + requestSplitter + successText);
+                logInStatus = true;
+                return;
+            }
+            addPacketToSend(logInHeader + requestSplitter + failedText);
         }
 
         private boolean requestChecker(String packet, String header, String splitter) {

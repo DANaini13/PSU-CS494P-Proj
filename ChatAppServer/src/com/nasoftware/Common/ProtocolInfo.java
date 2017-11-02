@@ -44,6 +44,19 @@ CREATE-COMMANDSPL-ROOM-roomNumber  //To client
     // MESS-MESSAGESPL-content: To server
     // MESS-MESSAGESPL-senderID-senderName-date-content: To client
 
+/*
+
+ADD NEW ACCOUNT:
+ADD-COMMANDSPL-accountName-password //To server
+ADD-COMMANDSPL-SUCCESS|FAILED //To Client
+ */
+
+
+/*
+LOG IN:
+LOGIN-COMMANDSPL-accountName-password //To server
+LOGIN-COMMANDSPL-SUCCESS|FAILED //To Client
+ */
 
 /**
  * Explanation:
@@ -82,6 +95,8 @@ public class ProtocolInfo {
     public static final String createHeader = "CREATE";
     public static final String roomHeader = "ROOM";
     public static final String messageHeader = "MESS";
+    public static final String addHeader = "ADD";
+    public static final String logInHeader = "LOGIN";
     public static final String failedText = "FAILED";
     public static final String successText = "SUCCESS";
 }

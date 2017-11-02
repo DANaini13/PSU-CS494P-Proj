@@ -43,14 +43,12 @@ int socketInit() {
 char* socketRead() {
     if(sock < 0)
         return NULL;
-    if(readBuffer1 != NULL) {
-        
-    }
     ssize_t result = read(sock, readBuffer1, sizeof(char)*MAX_POCKET_LEN);
     if (result < 0)
         return NULL;
     strcpy(readBuffer2, readBuffer1);
     readBuffer1[0] = '\0';
+    readBuffer2[result] = '\0';
     return readBuffer2;
 }
 

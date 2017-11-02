@@ -6,4 +6,5 @@ package com.nasoftware.Server.DataLayer;
 public class Database {
     static public ChatServerDistributor chatServerDistributor = new ChatServerDistributor();
     static public RoomDistributor roomDistributor = new RoomDistributor();
+    static public AccountMap accountMap = new AccountMap();
 }

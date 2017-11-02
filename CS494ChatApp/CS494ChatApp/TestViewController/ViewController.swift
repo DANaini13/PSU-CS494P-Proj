@@ -9,17 +9,18 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let swiftSocket = SwiftSocket()
-        if !swiftSocket.writeToServer(context: "SET-COMMANDSPL-SHAN") {
-            return
-        }
-        if let result = swiftSocket.readFromServer() {
-            print(result)
-        }
         // Do any additional setup after loading the view, typically from a nib.
+        PacketsCheckerAndSender.start()
+        PacketsCheckerAndSender.setNewPacketHandler() { [weak self]
+            (message: Message) in
+            DispatchQueue.main.async {
+                self!.screen.text = message.sender + ":" + message.message
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,6 +28,20 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func touchSend(_ sender: UIButton) {
+        if let message = text.text {
+            let packetGenerator = PacketsGenerator()
+            let packet = packetGenerator.generateSendPacket(message: message, to: 0) {
+                (result: Bool) in
+                if !result {
+                    print("send message failed!")
+                }
+            }
+            PacketsCheckerAndSender.sendPacket(packet: packet)
+        }
+    }
+    
+    @IBOutlet weak var screen: UILabel!
+    @IBOutlet weak var text: UITextField!
 }
 

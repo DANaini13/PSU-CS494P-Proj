@@ -7,6 +7,7 @@ import com.nasoftware.Server.DataLayer.RoomDistributor;
 import com.nasoftware.Server.NetworkLayer.ChatServer;
 import com.nasoftware.Server.DataLayer.Room;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -56,7 +57,10 @@ public class Courier{
         String headerSplitter = ProtocolInfo.contentSplitter;
         String roomSplitter = ProtocolInfo.roomSplitter;
         Integer roomID = room.roomID;
-        String packet = header + headerSplitter + roomID + roomSplitter + message.generateMessagePacket();
+        String packet = ProtocolInfo.sendHeader + ProtocolInfo.requestSplitter
+                + header + headerSplitter
+                + roomID + roomSplitter
+                + message.generateMessagePacket();
         ArrayList<Integer> roomMembers = room.getReadOnlyMemberList();
         HashMap<Integer, ChatServer> map = Database.chatServerDistributor.getReadOnlyMap();
         for (Integer memberID : roomMembers) {
@@ -112,5 +116,18 @@ public class Courier{
             room.deleteMember(member);
         }
         Database.chatServerDistributor.removeFormDistributor(memberID);
+    }
+
+    public boolean addAccount(String account, String password) {
+        return Database.accountMap.addAccount(account, password);
+    }
+
+    public boolean checkAccountPassword(String account, String password) {
+        HashMap<String, String> map = Database.accountMap.getReadOnlyHashMap();
+        if(map.containsKey(account)) {
+            String correctPassword = map.get(account);
+            return correctPassword.equals(password);
+        }
+        return false;
     }
 }
