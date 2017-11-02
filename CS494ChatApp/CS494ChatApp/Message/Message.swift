@@ -8,6 +8,14 @@
 
 import Foundation
 
+/**
+ The abstract Message data type that
+ - contains:
+     - message context
+     - room number
+     - time that message generated (server standard)
+     - the sender name of this message
+ */
 struct Message{
     private var messageContent: String
     var message: String {
@@ -29,6 +37,9 @@ struct Message{
         return senderName
     }
     
+    /**
+     init the message by seperare components.
+     */
     init(messageContent: String, roomNo: Int, timeString: String, senderName: String) {
         self.messageContent = messageContent
         self.roomNo         = roomNo
@@ -36,6 +47,9 @@ struct Message{
         self.senderName     = senderName
     }
     
+    /**
+     init the message from the packet that received from the server.
+     */
     init(serverPacket: String) {
         let firstLevelParts = serverPacket.components(separatedBy: ProtocolInfo.roomSplitter)
         assert(firstLevelParts.count == 2)

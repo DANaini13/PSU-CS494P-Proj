@@ -8,15 +8,44 @@
 
 import Foundation
 
+/**
+ This class will automaticly check the new packet arrived.
+ it will catagratory the packets then pick the right handler form
+ the buffer pool
+ It can also send message to the sever.
+ The server information was sotred in the HostInfo.h.
+ 
+ - public vars:
+     1. checking
+ - public functions:
+     1. func start()
+     2. func setNewMessageHandler(handler: @escaping (Message) -> Void)
+     3. func sendPacket(packet: Packet)
+ - Important: set the newMessageHandler before you call the start() function.
+ */
 class PacketsCheckerAndSender {
-    
-    static private var onChecking = true
+    /**
+     This variable is the turn on/off switch of the checker
+     */
+    static var checking = false{
+        didSet {
+            if checking {
+                start()
+            }
+        }
+    }
     static private var newMessageHandler: ((Message) -> Void)?
     static let swiftSocket = SwiftSocket();
     
+    /**
+     This function will keep checking the new packets.
+     - Important: this function will create a new thread and keep running until the switch turn off
+     The server information was sotred in the HostInfo.h.
+     - Version: 1.0
+     */
     static func start() {
         DispatchQueue.global(qos: .utility).async {
-            while(onChecking) {
+            while(checking) {
                 guard let result = swiftSocket.readFromServer() else {
                     continue;
                 }
@@ -76,11 +105,23 @@ class PacketsCheckerAndSender {
         }
     }
     
+    /**
+     This function will put the handler into the struct then run it when recieve
+     the new message.
+     The server information was sotred in the HostInfo.h.
+     - parameter handler: the handler that will be run wen new message arrived.
+     - Version: 1.0
+     */
     static func setNewMessageHandler(handler: @escaping (Message) -> Void) {
         self.newMessageHandler = handler
     }
     
-    
+    /**
+     This function will send packet to the server. The server information was sotred
+     in the HostInfo.h.
+     - parameter packet: the packet that will be sent, it should contains the handler that will be run later.
+     - Version: 1.0
+     */
     static func sendPacket(packet: Packet) {
         let content = packet.packetContent
         let handler = packet.handler
