@@ -10,16 +10,23 @@
 		3F30E01F1FABAEDE001C633F /* PacketGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F30E01E1FABAEDE001C633F /* PacketGenerator.swift */; };
 		3F6694C11FABABCD007B14AA /* ProtocolInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6694C01FABABCD007B14AA /* ProtocolInformation.swift */; };
 		3F93B7541FA19449003C2FE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F93B7531FA19449003C2FE8 /* AppDelegate.swift */; };
-		3F93B7561FA19449003C2FE8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F93B7551FA19449003C2FE8 /* ViewController.swift */; };
 		3F93B7591FA19449003C2FE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F93B7571FA19449003C2FE8 /* Main.storyboard */; };
 		3F93B75B1FA19449003C2FE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F93B75A1FA19449003C2FE8 /* Assets.xcassets */; };
 		3F93B75E1FA19449003C2FE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F93B75C1FA19449003C2FE8 /* LaunchScreen.storyboard */; };
 		3F93B7671FA19468003C2FE8 /* SwiftSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F93B7661FA19468003C2FE8 /* SwiftSocket.swift */; };
 		3F93B76C1FA194A5003C2FE8 /* Socket.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F93B76B1FA194A5003C2FE8 /* Socket.c */; };
+		3FC776ED1FABDE13002D6F55 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC776EC1FABDE13002D6F55 /* LogInViewController.swift */; };
+		3FC776F11FAC1102002D6F55 /* grey_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC776F01FAC1102002D6F55 /* grey_line.png */; };
+		3FC776F31FAC111A002D6F55 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC776F21FAC111A002D6F55 /* button.png */; };
 		3FE1F1031FAAD467000BED42 /* PacketsCheckerAndSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE1F1021FAAD467000BED42 /* PacketsCheckerAndSender.swift */; };
 		3FE1F1051FAAE105000BED42 /* Packet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE1F1041FAAE105000BED42 /* Packet.swift */; };
 		3FE1F1071FAB0193000BED42 /* HandlerBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE1F1061FAB0193000BED42 /* HandlerBuffer.swift */; };
 		3FE1F10A1FAB04CB000BED42 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE1F1091FAB04CB000BED42 /* Message.swift */; };
+		3FE58A551FABDCE800397A5E /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE58A521FABDCE800397A5E /* bg.png */; };
+		3FE58A561FABDCE800397A5E /* eye.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE58A531FABDCE800397A5E /* eye.png */; };
+		3FF9F0AE1FAC32D00067F8D8 /* white_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FF9F0AD1FAC32D00067F8D8 /* white_bg.png */; };
+		3FF9F0B01FAC39060067F8D8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9F0AF1FAC39060067F8D8 /* SignUpViewController.swift */; };
+		3FF9F0B21FAC45130067F8D8 /* LoginAndSignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF9F0B11FAC45130067F8D8 /* LoginAndSignUpModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +34,6 @@
 		3F6694C01FABABCD007B14AA /* ProtocolInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolInformation.swift; sourceTree = "<group>"; };
 		3F93B7501FA19449003C2FE8 /* CS494ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CS494ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F93B7531FA19449003C2FE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3F93B7551FA19449003C2FE8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3F93B7581FA19449003C2FE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F93B75A1FA19449003C2FE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F93B75D1FA19449003C2FE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,10 +42,18 @@
 		3F93B7681FA19471003C2FE8 /* HostInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HostInfo.h; sourceTree = "<group>"; };
 		3F93B7691FA19497003C2FE8 /* CS494ChatApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CS494ChatApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		3F93B76B1FA194A5003C2FE8 /* Socket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Socket.c; sourceTree = "<group>"; };
+		3FC776EC1FABDE13002D6F55 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		3FC776F01FAC1102002D6F55 /* grey_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grey_line.png; sourceTree = "<group>"; };
+		3FC776F21FAC111A002D6F55 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		3FE1F1021FAAD467000BED42 /* PacketsCheckerAndSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketsCheckerAndSender.swift; sourceTree = "<group>"; };
 		3FE1F1041FAAE105000BED42 /* Packet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Packet.swift; sourceTree = "<group>"; };
 		3FE1F1061FAB0193000BED42 /* HandlerBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlerBuffer.swift; sourceTree = "<group>"; };
 		3FE1F1091FAB04CB000BED42 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		3FE58A521FABDCE800397A5E /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		3FE58A531FABDCE800397A5E /* eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye.png; sourceTree = "<group>"; };
+		3FF9F0AD1FAC32D00067F8D8 /* white_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_bg.png; sourceTree = "<group>"; };
+		3FF9F0AF1FAC39060067F8D8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		3FF9F0B11FAC45130067F8D8 /* LoginAndSignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAndSignUpModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,11 +86,13 @@
 		3F93B7521FA19449003C2FE8 /* CS494ChatApp */ = {
 			isa = PBXGroup;
 			children = (
+				3FE58A4E1FABDC8A00397A5E /* Resourses */,
 				3F93B7651FA19459003C2FE8 /* HelpFiles */,
 				3F93B76D1FA194C5003C2FE8 /* SwiftSocket */,
 				3FD08A971FA6F90A00030A1D /* WebModel */,
 				3FE1F1081FAB04BB000BED42 /* Message */,
-				3F93B76E1FA19509003C2FE8 /* TestViewController */,
+				3FC776EB1FABDDDA002D6F55 /* Account */,
+				3F93B7571FA19449003C2FE8 /* Main.storyboard */,
 				3F93B75F1FA19449003C2FE8 /* Info.plist */,
 				3F93B7691FA19497003C2FE8 /* CS494ChatApp-Bridging-Header.h */,
 			);
@@ -104,13 +120,14 @@
 			path = SwiftSocket;
 			sourceTree = "<group>";
 		};
-		3F93B76E1FA19509003C2FE8 /* TestViewController */ = {
+		3FC776EB1FABDDDA002D6F55 /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				3F93B7551FA19449003C2FE8 /* ViewController.swift */,
-				3F93B7571FA19449003C2FE8 /* Main.storyboard */,
+				3FF9F0B11FAC45130067F8D8 /* LoginAndSignUpModel.swift */,
+				3FC776EC1FABDE13002D6F55 /* LogInViewController.swift */,
+				3FF9F0AF1FAC39060067F8D8 /* SignUpViewController.swift */,
 			);
-			path = TestViewController;
+			path = Account;
 			sourceTree = "<group>";
 		};
 		3FD08A971FA6F90A00030A1D /* WebModel */ = {
@@ -130,6 +147,26 @@
 				3FE1F1091FAB04CB000BED42 /* Message.swift */,
 			);
 			path = Message;
+			sourceTree = "<group>";
+		};
+		3FE58A4E1FABDC8A00397A5E /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				3FE58A571FABDCEE00397A5E /* logInPage */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		3FE58A571FABDCEE00397A5E /* logInPage */ = {
+			isa = PBXGroup;
+			children = (
+				3FE58A521FABDCE800397A5E /* bg.png */,
+				3FE58A531FABDCE800397A5E /* eye.png */,
+				3FC776F01FAC1102002D6F55 /* grey_line.png */,
+				3FC776F21FAC111A002D6F55 /* button.png */,
+				3FF9F0AD1FAC32D00067F8D8 /* white_bg.png */,
+			);
+			path = logInPage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,8 +229,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FF9F0AE1FAC32D00067F8D8 /* white_bg.png in Resources */,
+				3FE58A551FABDCE800397A5E /* bg.png in Resources */,
+				3FC776F31FAC111A002D6F55 /* button.png in Resources */,
 				3F93B75E1FA19449003C2FE8 /* LaunchScreen.storyboard in Resources */,
 				3F93B75B1FA19449003C2FE8 /* Assets.xcassets in Resources */,
+				3FC776F11FAC1102002D6F55 /* grey_line.png in Resources */,
+				3FE58A561FABDCE800397A5E /* eye.png in Resources */,
 				3F93B7591FA19449003C2FE8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,15 +247,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FF9F0B01FAC39060067F8D8 /* SignUpViewController.swift in Sources */,
 				3FE1F1031FAAD467000BED42 /* PacketsCheckerAndSender.swift in Sources */,
 				3F6694C11FABABCD007B14AA /* ProtocolInformation.swift in Sources */,
+				3FF9F0B21FAC45130067F8D8 /* LoginAndSignUpModel.swift in Sources */,
 				3FE1F1071FAB0193000BED42 /* HandlerBuffer.swift in Sources */,
 				3F30E01F1FABAEDE001C633F /* PacketGenerator.swift in Sources */,
-				3F93B7561FA19449003C2FE8 /* ViewController.swift in Sources */,
 				3F93B7541FA19449003C2FE8 /* AppDelegate.swift in Sources */,
 				3FE1F1051FAAE105000BED42 /* Packet.swift in Sources */,
 				3FE1F10A1FAB04CB000BED42 /* Message.swift in Sources */,
 				3F93B76C1FA194A5003C2FE8 /* Socket.c in Sources */,
+				3FC776ED1FABDE13002D6F55 /* LogInViewController.swift in Sources */,
 				3F93B7671FA19468003C2FE8 /* SwiftSocket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,13 +399,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H3ZELCLQP9;
 				INFOPLIST_FILE = CS494ChatApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = NAsoftware.CS494ChatApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CS494ChatApp/CS494ChatApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -373,12 +418,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H3ZELCLQP9;
 				INFOPLIST_FILE = CS494ChatApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = NAsoftware.CS494ChatApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "CS494ChatApp/CS494ChatApp-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

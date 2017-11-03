@@ -27,7 +27,7 @@ class PacketsCheckerAndSender {
     /**
      This variable is the turn on/off switch of the checker
      */
-    static var checking = false{
+    static var checking = true{
         didSet {
             if checking {
                 start()
@@ -92,6 +92,14 @@ class PacketsCheckerAndSender {
                     }
                 case ProtocolInfo.goHeader :
                     if let handler = HandlerBuffer.goFirstHandler {
+                        if(components[1] == ProtocolInfo.successText) {
+                            handler(true)
+                        }else {
+                            handler(false)
+                        }
+                    }
+                case ProtocolInfo.logInHeader :
+                    if let handler = HandlerBuffer.logInFirstHandler {
                         if(components[1] == ProtocolInfo.successText) {
                             handler(true)
                         }else {

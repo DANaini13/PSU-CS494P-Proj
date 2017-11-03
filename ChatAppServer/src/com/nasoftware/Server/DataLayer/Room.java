@@ -8,6 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by zeyongshan on 10/23/17.
+ * The abstract that stands for the room in the server
  */
 public class Room {
     public final int roomID;
@@ -20,6 +21,11 @@ public class Room {
         this.roomID = roomID;
     }
 
+    /**
+     * this function will add a new member into the room
+     * @param newMember     the parameter that store all the information of the user.
+     * @return              return a boolean that store the result of the add operation.
+     */
     public boolean addMember(ChatServer newMember) {
         lock.lock();
         if(roomMembersIDMap.containsKey(newMember.userID)) {
@@ -32,6 +38,10 @@ public class Room {
         return true;
     }
 
+    /**
+     * delete the member with the member information.
+     * @param memberToDelete    the parameter that store the information of the member to delete
+     */
     public void deleteMember(ChatServer memberToDelete) {
         lock.lock();
         roomMembers.remove(memberToDelete.userID);
@@ -39,6 +49,10 @@ public class Room {
         lock.unlock();
     }
 
+    /**
+     * get the abstract data type to traverse
+     * @return  return an read only array list to traverse
+     */
     public ArrayList<Integer> getReadOnlyMemberList() {
         lock.lock();
         final ArrayList<Integer> list = roomMembers;
@@ -46,6 +60,10 @@ public class Room {
         return list;
     }
 
+    /**
+     * get the abstract dad type to search
+     * @return  return a read only haspMap to search
+     */
     public HashMap<Integer, Integer> getReadOnlyRoomMembersIDMap() {
         lock.lock();
         final HashMap<Integer, Integer> map = roomMembersIDMap;

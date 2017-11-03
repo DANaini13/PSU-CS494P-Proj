@@ -11,13 +11,18 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by zeyongshan on 10/23/17.
+ * the abstract data type that distribute a dynamic user id and store them into the map.
  */
 public class ChatServerDistributor {
     private HashMap<Integer, ChatServer> map = new HashMap();
     private LinkedList<Integer> removedList = new LinkedList<>();
     private Lock lock = new ReentrantLock();
 
-
+    /**
+     * to assign a new dynamic chat server id
+     * @param server    the socket that contains the user information.
+     * @return          return the packaged chat server.
+     */
     public ChatServer assignANewChatServerID(Socket server) {
         lock.lock();
         int userID;
@@ -34,6 +39,11 @@ public class ChatServerDistributor {
         return chatServer;
     }
 
+    /**
+     * remove a user form the Distributor
+     * @param userID    the id of the user that should be removed.
+     * @return          return a boolean that store the remove result.
+     */
     public boolean removeFormDistributor(int userID) {
         lock.lock();
         boolean returnValue = false;
@@ -47,6 +57,10 @@ public class ChatServerDistributor {
         return returnValue;
     }
 
+    /**
+     * get the read only hash map.
+     * @return  return the read only hash map that contains all the user info.
+     */
     public HashMap<Integer, ChatServer> getReadOnlyMap() {
         lock.lock();
         final HashMap<Integer, ChatServer> returnMap = map;
