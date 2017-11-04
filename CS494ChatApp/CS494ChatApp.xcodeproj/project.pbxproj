@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3F30E01F1FABAEDE001C633F /* PacketGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F30E01E1FABAEDE001C633F /* PacketGenerator.swift */; };
+		3F5AC7791FAD8A8E00053894 /* home_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5AC7781FAD8A8E00053894 /* home_icon.png */; };
+		3F5AC77B1FAD8A9700053894 /* human_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5AC77A1FAD8A9700053894 /* human_icon.png */; };
+		3F5AC77D1FAD8A9D00053894 /* message_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5AC77C1FAD8A9C00053894 /* message_icon.png */; };
 		3F6694C11FABABCD007B14AA /* ProtocolInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6694C01FABABCD007B14AA /* ProtocolInformation.swift */; };
 		3F93B7541FA19449003C2FE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F93B7531FA19449003C2FE8 /* AppDelegate.swift */; };
 		3F93B7591FA19449003C2FE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F93B7571FA19449003C2FE8 /* Main.storyboard */; };
@@ -31,6 +34,9 @@
 
 /* Begin PBXFileReference section */
 		3F30E01E1FABAEDE001C633F /* PacketGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketGenerator.swift; sourceTree = "<group>"; };
+		3F5AC7781FAD8A8E00053894 /* home_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_icon.png; sourceTree = "<group>"; };
+		3F5AC77A1FAD8A9700053894 /* human_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = human_icon.png; sourceTree = "<group>"; };
+		3F5AC77C1FAD8A9C00053894 /* message_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message_icon.png; sourceTree = "<group>"; };
 		3F6694C01FABABCD007B14AA /* ProtocolInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolInformation.swift; sourceTree = "<group>"; };
 		3F93B7501FA19449003C2FE8 /* CS494ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CS494ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F93B7531FA19449003C2FE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +136,30 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		3FCC60041FAD048800C5C564 /* mePage */ = {
+			isa = PBXGroup;
+			children = (
+				3F5AC77A1FAD8A9700053894 /* human_icon.png */,
+			);
+			path = mePage;
+			sourceTree = "<group>";
+		};
+		3FCC60051FAD049A00C5C564 /* messagePacge */ = {
+			isa = PBXGroup;
+			children = (
+				3F5AC77C1FAD8A9C00053894 /* message_icon.png */,
+			);
+			path = messagePacge;
+			sourceTree = "<group>";
+		};
+		3FCC60061FAD04AA00C5C564 /* roomPage */ = {
+			isa = PBXGroup;
+			children = (
+				3F5AC7781FAD8A8E00053894 /* home_icon.png */,
+			);
+			path = roomPage;
+			sourceTree = "<group>";
+		};
 		3FD08A971FA6F90A00030A1D /* WebModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +182,9 @@
 		3FE58A4E1FABDC8A00397A5E /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				3FCC60061FAD04AA00C5C564 /* roomPage */,
+				3FCC60051FAD049A00C5C564 /* messagePacge */,
+				3FCC60041FAD048800C5C564 /* mePage */,
 				3FE58A571FABDCEE00397A5E /* logInPage */,
 			);
 			path = Resourses;
@@ -232,8 +265,11 @@
 				3FF9F0AE1FAC32D00067F8D8 /* white_bg.png in Resources */,
 				3FE58A551FABDCE800397A5E /* bg.png in Resources */,
 				3FC776F31FAC111A002D6F55 /* button.png in Resources */,
+				3F5AC77D1FAD8A9D00053894 /* message_icon.png in Resources */,
 				3F93B75E1FA19449003C2FE8 /* LaunchScreen.storyboard in Resources */,
+				3F5AC77B1FAD8A9700053894 /* human_icon.png in Resources */,
 				3F93B75B1FA19449003C2FE8 /* Assets.xcassets in Resources */,
+				3F5AC7791FAD8A8E00053894 /* home_icon.png in Resources */,
 				3FC776F11FAC1102002D6F55 /* grey_line.png in Resources */,
 				3FE58A561FABDCE800397A5E /* eye.png in Resources */,
 				3F93B7591FA19449003C2FE8 /* Main.storyboard in Resources */,

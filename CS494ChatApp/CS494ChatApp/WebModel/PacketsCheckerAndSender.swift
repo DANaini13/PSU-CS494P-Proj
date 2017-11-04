@@ -49,7 +49,7 @@ class PacketsCheckerAndSender {
                 guard let result = swiftSocket.readFromServer() else {
                     continue;
                 }
-                guard result.characters.count > 5 else {
+                guard result.count > 5 else {
                     print("server is unusual")
                     break;
                 }
@@ -106,6 +106,14 @@ class PacketsCheckerAndSender {
                             handler(false)
                         }
                     }
+                case ProtocolInfo.addHeader:
+                    if let handler = HandlerBuffer.signUpFirstHandler {
+                        if(components[1] == ProtocolInfo.successText) {
+                            handler(true)
+                        }else {
+                            handler(false)
+                        }
+                    }
                 default:
                     print(head)
                 }
@@ -133,22 +141,47 @@ class PacketsCheckerAndSender {
     static func sendPacket(packet: Packet) {
         let content = packet.packetContent
         let handler = packet.handler
+        var serverConnected = true
+        if !swiftSocket.writeToServer(context: content) {
+            serverConnected = false
+        }
         switch handler {
         case .setHandler(let function):
+            if !serverConnected {
+                function(false)
+                break
+            }
             HandlerBuffer.addHandlerToSetBuffer(handler: function)
         case .sendHandler(let function):
+            if !serverConnected {
+                function(false)
+                break
+            }
             HandlerBuffer.addHandlerToSendBuffer(handler: function)
         case .createHandler(let function):
+            if !serverConnected {
+                function(-1)
+                break
+            }
             HandlerBuffer.addHandlerToCreateBuffer(handler: function)
         case .goHandler(let function):
+            if !serverConnected {
+                function(false)
+                break
+            }
             HandlerBuffer.addHandlerToGoBuffer(handler: function)
         case .logInHandler(let function):
+            if !serverConnected {
+                function(false)
+                break
+            }
             HandlerBuffer.addHandlerToLogInBuffer(handler: function)
         case .signUpHandler(let function):
+            if !serverConnected {
+                function(false)
+                break
+            }
             HandlerBuffer.addHandlerToSignUpBuffer(handler: function)
-        }
-        if !swiftSocket.writeToServer(context: content) {
-            print("write to server failed!")
         }
     }
 }

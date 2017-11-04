@@ -30,6 +30,27 @@ public class ChatServer extends Thread {
     public final int userID;
 
 
+    public String toString() {
+        if(!logInStatus) {
+            return "";
+        }
+        String result = "---------------------------------\n";
+        result += "NickedName: " + userName + "\n";
+        result += "dynamic id: " + userID + "\n";
+        result += "room list:  " + "\n";
+        for (Integer x: roomKeyList) {
+            result += "\t" + "room " + x + "\n";
+        }
+        result += "Thread:  " + getName() + "\n";
+        result += "---------------------------------";
+        return result;
+    }
+
+    public boolean isLogIn() {
+        return logInStatus;
+    }
+
+
     public ChatServer(Socket server, int userID) {
         this.server = server;
         this.userID = userID;
@@ -83,7 +104,6 @@ public class ChatServer extends Thread {
         }
         Courier courier = new Courier();
         courier.removeFromDatabase(userID, roomKeyList);
-        System.out.println(userID + " finished");
     }
 
     class NewMessageChecker extends Thread {
@@ -140,7 +160,7 @@ public class ChatServer extends Thread {
                     if (dis.available() == 0) {
                         packet = hexStr2Str(ret);
                         String header = packet.split(ProtocolInfo.requestSplitter)[0];
-                        if(!header.equals(addHeader)&&!header.equals(logInHeader) && logInStatus == false) {
+                        if(!header.equals(addHeader)&&!header.equals(logInHeader) && !logInStatus) {
                             break;
                         }
                         switch (header) {

@@ -16,4 +16,9 @@ struct LoginAndSignUpModel {
         let packet = PacketsGenerator.generateLogInPacket(account: account, password: password, handler: completionHandler)
         PacketsCheckerAndSender.sendPacket(packet: packet)
     }
+    
+    func signUp(account: String, password: String, completionHandler: @escaping (Bool) -> Void) {
+        let packet = PacketsGenerator.generateSignUpPacket(account: account, password: password, handler: completionHandler)
+        PacketsCheckerAndSender.sendPacket(packet: packet)
+    }
 }

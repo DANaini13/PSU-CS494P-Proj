@@ -34,7 +34,6 @@ public class ChatServerSocket extends Thread {
             try {
                 Socket server = serverSocket.accept();
                 ChatServer chatServer = chatServerDistributor.assignANewChatServerID(server);
-                System.out.println(chatServer.userID + "established");
                 HashMap<Integer, Room> map = Database.roomDistributor.getReadOnlyRoomHashMap();
                 Room zero = map.get(0);
                 zero.addMember(chatServer);

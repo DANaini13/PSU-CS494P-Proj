@@ -103,7 +103,7 @@ struct HandlerBuffer {
             return nil
         }
         lock.lock()
-        let result = logInBuffer.removeFirst()
+        let result = signUpBuffer.removeFirst()
         lock.unlock()
         return result
     }

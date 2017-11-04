@@ -9,27 +9,72 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-
+    private let loginAndSignUpModel = LoginAndSignUpModel()
+    
+    @IBOutlet weak var usernameTextField: UITextField!
+    
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBOutlet weak var confirmTextField: UITextField!
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: .UIKeyboardWillHide, object: nil)
+        let tapHandler = #selector(hideKeyBoard(byReactingTo:))
+        let tapGesture = UITapGestureRecognizer(target: self, action: tapHandler)
+        self.view.addGestureRecognizer(tapGesture)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func touchCreateButton(_ sender: UIButton) {
+        guard confirmTextField.text! == passwordTextField.text! && passwordTextField.text!.count >= 6 else {
+            return;
+        }
+        if let account = usernameTextField.text, let password = passwordTextField.text {
+            waitingIndicator.startAnimating()
+            loginAndSignUpModel.signUp(account: account, password: password) {
+                [weak self] (result) in
+                DispatchQueue.main.async {
+                    self?.waitingIndicator.stopAnimating()
+                }
+                if result {
+                    print("sign up successfully!")
+                }else {
+                    print("sign up failed!")
+                }
+            }
+        }
     }
-    */
-
+    
+    @IBOutlet weak var waitingIndicator: UIActivityIndicatorView!
+    
+    private var keyBoardShowed = false
+    
+    @objc private func keyboardWillShow(sender: NSNotification) {
+        if keyBoardShowed {
+            return
+        }
+        self.view.frame.origin.y -= 200
+        keyBoardShowed = true
+    }
+    
+    @objc private func keyboardWillHide(sender: NSNotification) {
+        if !keyBoardShowed {
+            return
+        }
+        self.view.frame.origin.y += 200
+        keyBoardShowed = false
+    }
+    
+    @objc private func hideKeyBoard(byReactingTo tapGestureRecongnizer: UITapGestureRecognizer) {
+        if tapGestureRecongnizer.state == .ended {
+            usernameTextField.resignFirstResponder()
+            passwordTextField.resignFirstResponder()
+            confirmTextField.resignFirstResponder()
+            if !keyBoardShowed {
+                return
+            }
+            self.view.frame.origin.y += 200
+            keyBoardShowed = false
+        }
+    }
 }
