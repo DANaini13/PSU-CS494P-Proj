@@ -14,16 +14,10 @@ struct LoginAndSignUpModel {
 
     func logIn(account: String, password: String, completionHandler: @escaping (Bool) -> Void) {
         let packet = PacketsGenerator.generateLogInPacket(account: account, password: password, handler: completionHandler)
-        if !PacketsCheckerAndSender.checking {
-            PacketsCheckerAndSender.checking = true
-        }
         PacketsCheckerAndSender.sendPacket(packet: packet)
     }
     
     func signUp(account: String, password: String, completionHandler: @escaping (Bool) -> Void) {
-        if !PacketsCheckerAndSender.checking {
-            PacketsCheckerAndSender.checking = true
-        }
         let packet = PacketsGenerator.generateSignUpPacket(account: account, password: password, handler: completionHandler)
         PacketsCheckerAndSender.sendPacket(packet: packet)
     }

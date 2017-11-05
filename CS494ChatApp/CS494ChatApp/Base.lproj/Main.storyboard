@@ -424,6 +424,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptX-3D-ffg">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 <state key="normal" title=" " image="send_button_icon.png"/>
+                                                <connections>
+                                                    <action selector="touchMessaneButton:" destination="ZgV-Qa-yha" eventType="touchUpInside" id="KAz-oA-Nav"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>

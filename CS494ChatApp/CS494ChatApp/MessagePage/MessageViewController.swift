@@ -12,13 +12,11 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     @IBOutlet weak var tableView: UITableView!
-    var messageList:[Message] = [] 
-    
+    var messageList:[Message] = []
     @IBOutlet weak var sendMessageButton: UIButton!
-    
     @IBOutlet weak var messageTextField: UITextField!
-    
     @IBOutlet weak var backgroundLabel: UILabel!
+    let keyboardOffset:CGFloat = 250
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,13 +24,21 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         sendMessageButton.layer.zPosition = 100
         messageTextField.layer.zPosition = 100
         self.tabBarController?.tabBar.isHidden = true
+        DispatchQueue.main.async { [weak self] in
+            let indexPath = IndexPath(row: (self?.messageList.count)!-1, section: 0)
+            self?.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+        }
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let indexPath = IndexPath(row: messageList.count-1, section: 0)
-        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+        if keyBoardShowed {
+            self.view.frame.origin.y -= keyboardOffset
+            keyBoardShowed = true
+        }
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,14 +56,17 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             i += 1
         }
         self.messageList = messageList
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: .UIKeyboardWillHide, object: nil)
+        let tapHandler = #selector(hideKeyBoard(byReactingTo:))
+        let tapGesture = UITapGestureRecognizer(target: self, action: tapHandler)
+        self.view.addGestureRecognizer(tapGesture)
     }
     
-
+    @IBAction func touchMessaneButton(_ sender: UIButton) {
+        messageTextField.resignFirstResponder()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -95,5 +104,40 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Pass the selected object to the new view controller.
     }
     */
+    
+    private var keyBoardShowed = false
+    
+    @objc private func keyboardWillShow(sender: NSNotification) {
+        if keyBoardShowed {
+            return
+        }
+        keyBoardShowed = true
+        if self.view.frame.origin.y == -keyboardOffset {
+            return
+        }
+        self.view.frame.origin.y -= keyboardOffset
+    }
+    
+    @objc private func keyboardWillHide(sender: NSNotification) {
+        if !keyBoardShowed {
+            return
+        }
+        keyBoardShowed = false
+        if self.view.frame.origin.y == 0 {
+            return
+        }
+        self.view.frame.origin.y += keyboardOffset
+    }
+    
+    @objc private func hideKeyBoard(byReactingTo tapGestureRecongnizer: UITapGestureRecognizer) {
+        if tapGestureRecongnizer.state == .ended {
+            messageTextField.resignFirstResponder()
+            if !keyBoardShowed {
+                return
+            }
+            self.view.frame.origin.y += keyboardOffset
+            keyBoardShowed = false
+        }
+    }
 
 }

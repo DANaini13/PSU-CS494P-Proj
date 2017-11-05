@@ -16,6 +16,7 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var waitingIndicator: UIActivityIndicatorView!
     
     let loginAndSignUpModel = LoginAndSignUpModel()
+    let keyboardOffset:CGFloat = 200
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,7 @@ class LogInViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if keyBoardShowed {
             self.view.frame.origin.y -= 200
             keyBoardShowed = true
@@ -73,25 +75,34 @@ class LogInViewController: UIViewController {
         if keyBoardShowed {
             return
         }
-        self.view.frame.origin.y -= 200
         keyBoardShowed = true
+        if self.view.frame.origin.y == -keyboardOffset {
+            return
+        }
+        self.view.frame.origin.y -= keyboardOffset
     }
     
     @objc private func keyboardWillHide(sender: NSNotification) {
         if !keyBoardShowed {
             return
         }
-        self.view.frame.origin.y += 200
         keyBoardShowed = false
+        if self.view.frame.origin.y == 0 {
+            return
+        }
+        self.view.frame.origin.y += keyboardOffset
     }
     
     private func hideKeyBoard() {
-            userNameTextField.resignFirstResponder()
-            passwordTextField.resignFirstResponder()
-            if !keyBoardShowed {
-                return
-            }
-            self.view.frame.origin.y += 200
+        userNameTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        if !keyBoardShowed {
+            return
+        }
+        if self.view.frame.origin.y == 0 {
+            return
+        }
+            self.view.frame.origin.y += keyboardOffset
             keyBoardShowed = false
     }
     

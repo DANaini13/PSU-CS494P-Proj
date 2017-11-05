@@ -44,7 +44,7 @@ public class Message {
             Message message = new Message(content, senderID, senderName);
             message.date = date;
             return message;
-        }catch (NumberFormatException _) {
+        }catch (NumberFormatException e) {
             return null;
         }
     }
@@ -71,7 +71,7 @@ public class Message {
         try {
             Message message = new Message(messParts[0], senderID, senderName);
             return message;
-        }catch (NumberFormatException _) {
+        }catch (NumberFormatException e) {
             return null;
         }
     }

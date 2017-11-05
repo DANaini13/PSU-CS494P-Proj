@@ -27,15 +27,19 @@ class PacketsCheckerAndSender {
     /**
      This variable is the turn on/off switch of the checker
      */
+    static var lock:NSLock = NSLock()
+    
     static var checking:Bool = true {
-        didSet {
-            if checking {
+        willSet {
+            lock.lock()
+            if newValue {
                 start()
             }
+            lock.unlock()
         }
     }
     static private var newMessageHandler: ((Message) -> Void)?
-    static let swiftSocket = SwiftSocket();
+    static private var swiftSocket:SwiftSocket = SwiftSocket();
     
     /**
      This function will keep checking the new packets.
@@ -45,15 +49,14 @@ class PacketsCheckerAndSender {
      */
     static private func start() {
         DispatchQueue.global(qos: .utility).async {
-            while(checking) {
-                print("lol")
+            while(checking && swiftSocket.connectionStatus) {
                 guard let result = swiftSocket.readFromServer() else {
-                    continue;
+                    continue
                 }
-                guard result.count > 5 else {
+                if result.count <= 5 {
                     print("server is unusual")
                     print(result)
-                    break;
+                    continue
                 }
                 let components = result.components(separatedBy: ProtocolInfo.requestSplitter)
                 let head = components[0]

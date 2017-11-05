@@ -67,6 +67,7 @@ class SwiftSocket {
 
     deinit {
         closeConnection()
+        connecting = false
     }
     
     /**

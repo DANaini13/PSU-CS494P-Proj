@@ -47,7 +47,7 @@ public class Courier{
                 return true;
             }
             return false;
-        } catch (NumberFormatException _) {
+        } catch (NumberFormatException e) {
             return false;
         }
     }
@@ -84,7 +84,7 @@ public class Courier{
             if (member == null)
                 return false;
             return room.addMember(member);
-        } catch (NumberFormatException _) {
+        } catch (NumberFormatException e) {
             return false;
         }
     }

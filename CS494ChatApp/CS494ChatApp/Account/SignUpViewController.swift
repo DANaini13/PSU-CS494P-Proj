@@ -17,6 +17,8 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var confirmTextField: UITextField!
     
+    let keyboardOffset:CGFloat = 200
+    
     override func viewDidLoad() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: .UIKeyboardWillHide, object: nil)
@@ -54,16 +56,22 @@ class SignUpViewController: UIViewController {
         if keyBoardShowed {
             return
         }
-        self.view.frame.origin.y -= 200
         keyBoardShowed = true
+        if self.view.frame.origin.y == -keyboardOffset {
+            return
+        }
+        self.view.frame.origin.y -= keyboardOffset
     }
     
     @objc private func keyboardWillHide(sender: NSNotification) {
         if !keyBoardShowed {
             return
         }
-        self.view.frame.origin.y += 200
         keyBoardShowed = false
+        if self.view.frame.origin.y == 0 {
+            return
+        }
+        self.view.frame.origin.y += keyboardOffset
     }
     
     @objc private func hideKeyBoard(byReactingTo tapGestureRecongnizer: UITapGestureRecognizer) {
@@ -74,7 +82,7 @@ class SignUpViewController: UIViewController {
             if !keyBoardShowed {
                 return
             }
-            self.view.frame.origin.y += 200
+            self.view.frame.origin.y += keyboardOffset
             keyBoardShowed = false
         }
     }
