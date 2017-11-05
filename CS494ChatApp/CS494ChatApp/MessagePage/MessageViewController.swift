@@ -12,72 +12,53 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     @IBOutlet weak var tableView: UITableView!
-    var messageList:[Message] = []
     @IBOutlet weak var sendMessageButton: UIButton!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var backgroundLabel: UILabel!
     let keyboardOffset:CGFloat = 250
-    
+    private var messagesContainer = MessagesContainer()
+    private let messageSender = MessageSender()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        sendMessageButton.layer.zPosition = 100
-        messageTextField.layer.zPosition = 100
         self.tabBarController?.tabBar.isHidden = true
-        DispatchQueue.main.async { [weak self] in
-            let indexPath = IndexPath(row: (self?.messageList.count)!-1, section: 0)
-            self?.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
-        }
+        adjustKeyboard()
+        updateUI()
     }
     
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if keyBoardShowed {
-            self.view.frame.origin.y -= keyboardOffset
-            keyBoardShowed = true
-        }
-    }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var i = 0
-        var messageList:[Message] = []
-        while i<30 {
-            var messageContent = ""
-            var j = 0
-            while j < i {
-                messageContent += "Hello World "
-                j += 1
-            }
-            messageContent += "\(i)"
-            messageList.append(Message(messageContent: messageContent, roomNo: 0, timeString: "currentTime", senderName: "Shan"))
-            i += 1
+        sendMessageButton.layer.zPosition = 100
+        messageTextField.layer.zPosition = 100
+        addKeyboardListeners()
+        // temp
+        
+        let packet = PacketsGenerator.generateGoPacket(to: 0) {
+            result in
         }
-        self.messageList = messageList
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: .UIKeyboardWillHide, object: nil)
-        let tapHandler = #selector(hideKeyBoard(byReactingTo:))
-        let tapGesture = UITapGestureRecognizer(target: self, action: tapHandler)
-        self.view.addGestureRecognizer(tapGesture)
+        PacketsCheckerAndSender.sendPacket(packet: packet)
+        addNewMessageListener()
     }
     
-    @IBAction func touchMessaneButton(_ sender: UIButton) {
-        messageTextField.resignFirstResponder()
+    @IBAction func touchSendMessageButton(_ sender: UIButton) {
+        let content = messageTextField.text!
+        let roomNo = 0
+        messageTextField.text = ""
+        messageSender.sendMessage(content: content, roomNo: roomNo) {
+            result in
+            if result {
+                print("send message successful")
+            }else {
+                print("send message failed")
+            }
+        }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messageList.count
+        return messagesContainer.count
     }
-
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell
@@ -87,12 +68,50 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell = tableView.dequeueReusableCell(withIdentifier: "rightCell", for: indexPath)
         }
         
-        let message = messageList[indexPath.row]
+        let message = messagesContainer.messages[indexPath.row]
         if let leftCell = cell as? MessageCellLeft {
             leftCell.message = message
         }
-
+        
         return cell
+    }
+    
+    func addNewMessageListener() {
+        PacketsCheckerAndSender.setNewMessageHandler() {
+            [weak self] (message) in
+            print(message.message)
+            self?.messagesContainer.addMessage(message: message)
+            self?.updateUI()
+        }
+    }
+    
+    
+    func updateUI() {
+        DispatchQueue.main.async { [weak self] in
+            guard (self?.messagesContainer.count)! > 0 else {
+                return
+            }
+            self?.tableView.reloadData()
+            let indexPath = IndexPath(row: (self?.messagesContainer.count)!-2, section: 0)
+            self?.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+            let indexPath1 = IndexPath(row: (self?.messagesContainer.count)!-1, section: 0)
+            self?.tableView.scrollToRow(at: indexPath1, at: .bottom, animated: true)
+        }
+    }
+    
+    func adjustKeyboard() {
+        if keyBoardShowed {
+            self.view.frame.origin.y -= keyboardOffset
+            keyBoardShowed = true
+        }
+    }
+    
+    func addKeyboardListeners() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: .UIKeyboardWillHide, object: nil)
+        let tapHandler = #selector(hideKeyBoard(byReactingTo:))
+        let tapGesture = UITapGestureRecognizer(target: self, action: tapHandler)
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     /*

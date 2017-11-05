@@ -2,6 +2,7 @@ package com.nasoftware.Server.AdminInteraction;
 
 import com.nasoftware.Common.HostInfo;
 import com.nasoftware.Server.DataLayer.Database;
+import com.nasoftware.Server.DataLayer.Room;
 import com.nasoftware.Server.NetworkLayer.ChatServer;
 
 import javax.xml.crypto.Data;
@@ -67,6 +68,11 @@ public class Interactor extends Thread {
                     }
                     break;
                 case "3":
+                    System.out.println("Room List:");
+                    HashMap<Integer, Room> map2 = Database.roomDistributor.getReadOnlyRoomHashMap();
+                    for (HashMap.Entry<Integer, Room> entry: map2.entrySet()) {
+                        System.out.println(entry.getKey());
+                    }
                     break;
                 default:
                     System.err.println("Input wrong!");
