@@ -27,7 +27,7 @@ class PacketsCheckerAndSender {
     /**
      This variable is the turn on/off switch of the checker
      */
-    static var checking = true{
+    static var checking:Bool = true {
         didSet {
             if checking {
                 start()
@@ -43,14 +43,16 @@ class PacketsCheckerAndSender {
      The server information was sotred in the HostInfo.h.
      - Version: 1.0
      */
-    static func start() {
+    static private func start() {
         DispatchQueue.global(qos: .utility).async {
             while(checking) {
+                print("lol")
                 guard let result = swiftSocket.readFromServer() else {
                     continue;
                 }
                 guard result.count > 5 else {
                     print("server is unusual")
+                    print(result)
                     break;
                 }
                 let components = result.components(separatedBy: ProtocolInfo.requestSplitter)
@@ -118,6 +120,7 @@ class PacketsCheckerAndSender {
                     print(head)
                 }
             }
+            checking = false
         }
     }
     

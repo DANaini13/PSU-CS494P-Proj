@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F07C2801FAEBD970001D6A0 /* MessageCellLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F07C27F1FAEBD970001D6A0 /* MessageCellLeft.swift */; };
+		3F07C2831FAEBEF50001D6A0 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F07C2821FAEBEF50001D6A0 /* MessageViewController.swift */; };
+		3F07C2851FAED69B0001D6A0 /* bear_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F07C2841FAED69B0001D6A0 /* bear_pic.png */; };
+		3F07C2871FAED6B40001D6A0 /* bunny_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F07C2861FAED6B40001D6A0 /* bunny_pic.png */; };
+		3F07C2891FAED6D70001D6A0 /* monkey_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F07C2881FAED6D70001D6A0 /* monkey_pic.png */; };
+		3F07C28B1FAED6F20001D6A0 /* doggie_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F07C28A1FAED6F20001D6A0 /* doggie_pic.png */; };
+		3F07C2901FAEEEFA0001D6A0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F07C28F1FAEEEFA0001D6A0 /* ChatViewController.swift */; };
+		3F07C2921FAEFEC80001D6A0 /* send_button_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F07C2911FAEFEC70001D6A0 /* send_button_icon.png */; };
 		3F30E01F1FABAEDE001C633F /* PacketGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F30E01E1FABAEDE001C633F /* PacketGenerator.swift */; };
 		3F5AC7791FAD8A8E00053894 /* home_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5AC7781FAD8A8E00053894 /* home_icon.png */; };
 		3F5AC77B1FAD8A9700053894 /* human_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5AC77A1FAD8A9700053894 /* human_icon.png */; };
@@ -33,6 +41,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F07C27F1FAEBD970001D6A0 /* MessageCellLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellLeft.swift; sourceTree = "<group>"; };
+		3F07C2821FAEBEF50001D6A0 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		3F07C2841FAED69B0001D6A0 /* bear_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear_pic.png; sourceTree = "<group>"; };
+		3F07C2861FAED6B40001D6A0 /* bunny_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bunny_pic.png; sourceTree = "<group>"; };
+		3F07C2881FAED6D70001D6A0 /* monkey_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monkey_pic.png; sourceTree = "<group>"; };
+		3F07C28A1FAED6F20001D6A0 /* doggie_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doggie_pic.png; sourceTree = "<group>"; };
+		3F07C28F1FAEEEFA0001D6A0 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		3F07C2911FAEFEC70001D6A0 /* send_button_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = send_button_icon.png; sourceTree = "<group>"; };
 		3F30E01E1FABAEDE001C633F /* PacketGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketGenerator.swift; sourceTree = "<group>"; };
 		3F5AC7781FAD8A8E00053894 /* home_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_icon.png; sourceTree = "<group>"; };
 		3F5AC77A1FAD8A9700053894 /* human_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = human_icon.png; sourceTree = "<group>"; };
@@ -73,6 +89,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F07C2811FAEBEAD0001D6A0 /* MessagePage */ = {
+			isa = PBXGroup;
+			children = (
+				3F07C27F1FAEBD970001D6A0 /* MessageCellLeft.swift */,
+				3F07C2821FAEBEF50001D6A0 /* MessageViewController.swift */,
+			);
+			path = MessagePage;
+			sourceTree = "<group>";
+		};
+		3F07C28E1FAEEEBF0001D6A0 /* ChatsPage */ = {
+			isa = PBXGroup;
+			children = (
+				3F07C28F1FAEEEFA0001D6A0 /* ChatViewController.swift */,
+			);
+			path = ChatsPage;
+			sourceTree = "<group>";
+		};
 		3F93B7471FA19449003C2FE8 = {
 			isa = PBXGroup;
 			children = (
@@ -97,7 +130,9 @@
 				3F93B76D1FA194C5003C2FE8 /* SwiftSocket */,
 				3FD08A971FA6F90A00030A1D /* WebModel */,
 				3FE1F1081FAB04BB000BED42 /* Message */,
+				3F07C2811FAEBEAD0001D6A0 /* MessagePage */,
 				3FC776EB1FABDDDA002D6F55 /* Account */,
+				3F07C28E1FAEEEBF0001D6A0 /* ChatsPage */,
 				3F93B7571FA19449003C2FE8 /* Main.storyboard */,
 				3F93B75F1FA19449003C2FE8 /* Info.plist */,
 				3F93B7691FA19497003C2FE8 /* CS494ChatApp-Bridging-Header.h */,
@@ -147,7 +182,12 @@
 		3FCC60051FAD049A00C5C564 /* messagePacge */ = {
 			isa = PBXGroup;
 			children = (
+				3F07C2841FAED69B0001D6A0 /* bear_pic.png */,
 				3F5AC77C1FAD8A9C00053894 /* message_icon.png */,
+				3F07C2861FAED6B40001D6A0 /* bunny_pic.png */,
+				3F07C2881FAED6D70001D6A0 /* monkey_pic.png */,
+				3F07C28A1FAED6F20001D6A0 /* doggie_pic.png */,
+				3F07C2911FAEFEC70001D6A0 /* send_button_icon.png */,
 			);
 			path = messagePacge;
 			sourceTree = "<group>";
@@ -265,12 +305,17 @@
 				3FF9F0AE1FAC32D00067F8D8 /* white_bg.png in Resources */,
 				3FE58A551FABDCE800397A5E /* bg.png in Resources */,
 				3FC776F31FAC111A002D6F55 /* button.png in Resources */,
+				3F07C2871FAED6B40001D6A0 /* bunny_pic.png in Resources */,
+				3F07C2921FAEFEC80001D6A0 /* send_button_icon.png in Resources */,
 				3F5AC77D1FAD8A9D00053894 /* message_icon.png in Resources */,
 				3F93B75E1FA19449003C2FE8 /* LaunchScreen.storyboard in Resources */,
 				3F5AC77B1FAD8A9700053894 /* human_icon.png in Resources */,
+				3F07C2891FAED6D70001D6A0 /* monkey_pic.png in Resources */,
 				3F93B75B1FA19449003C2FE8 /* Assets.xcassets in Resources */,
 				3F5AC7791FAD8A8E00053894 /* home_icon.png in Resources */,
+				3F07C2851FAED69B0001D6A0 /* bear_pic.png in Resources */,
 				3FC776F11FAC1102002D6F55 /* grey_line.png in Resources */,
+				3F07C28B1FAED6F20001D6A0 /* doggie_pic.png in Resources */,
 				3FE58A561FABDCE800397A5E /* eye.png in Resources */,
 				3F93B7591FA19449003C2FE8 /* Main.storyboard in Resources */,
 			);
@@ -287,13 +332,16 @@
 				3FE1F1031FAAD467000BED42 /* PacketsCheckerAndSender.swift in Sources */,
 				3F6694C11FABABCD007B14AA /* ProtocolInformation.swift in Sources */,
 				3FF9F0B21FAC45130067F8D8 /* LoginAndSignUpModel.swift in Sources */,
+				3F07C2801FAEBD970001D6A0 /* MessageCellLeft.swift in Sources */,
 				3FE1F1071FAB0193000BED42 /* HandlerBuffer.swift in Sources */,
+				3F07C2831FAEBEF50001D6A0 /* MessageViewController.swift in Sources */,
 				3F30E01F1FABAEDE001C633F /* PacketGenerator.swift in Sources */,
 				3F93B7541FA19449003C2FE8 /* AppDelegate.swift in Sources */,
 				3FE1F1051FAAE105000BED42 /* Packet.swift in Sources */,
 				3FE1F10A1FAB04CB000BED42 /* Message.swift in Sources */,
 				3F93B76C1FA194A5003C2FE8 /* Socket.c in Sources */,
 				3FC776ED1FABDE13002D6F55 /* LogInViewController.swift in Sources */,
+				3F07C2901FAEEEFA0001D6A0 /* ChatViewController.swift in Sources */,
 				3F93B7671FA19468003C2FE8 /* SwiftSocket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,7 +483,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H3ZELCLQP9;
 				INFOPLIST_FILE = CS494ChatApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = NAsoftware.CS494ChatApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -454,7 +502,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H3ZELCLQP9;
 				INFOPLIST_FILE = CS494ChatApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = NAsoftware.CS494ChatApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
