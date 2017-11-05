@@ -47,6 +47,7 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func touchLoginButton(_ sender: UIButton) {
+        print(PacketsCheckerAndSender.checking)
         if let username = userNameTextField.text,
             let password = passwordTextField.text {
             waitingIndicator.startAnimating()

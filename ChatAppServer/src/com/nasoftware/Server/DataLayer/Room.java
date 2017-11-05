@@ -13,7 +13,6 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Room {
     public final int roomID;
 
-    private ArrayList<Integer> roomMembers = new ArrayList<Integer>();
     private HashMap<Integer, Integer> roomMembersIDMap = new HashMap<>();
     private Lock lock = new ReentrantLock();
 
@@ -32,7 +31,6 @@ public class Room {
             lock.unlock();
             return false;
         }
-        roomMembers.add(newMember.userID);
         roomMembersIDMap.put(newMember.userID, 0);
         lock.unlock();
         return true;
@@ -44,20 +42,12 @@ public class Room {
      */
     public void deleteMember(ChatServer memberToDelete) {
         lock.lock();
-        roomMembers.remove(memberToDelete.userID);
-        roomMembersIDMap.remove(memberToDelete.userID);
+        if(roomMembersIDMap.containsKey(memberToDelete.userID)) {
+            roomMembersIDMap.remove(memberToDelete.userID);
+        } else {
+            System.err.println("cannot find the user to delete in the room");
+        }
         lock.unlock();
-    }
-
-    /**
-     * get the abstract data type to traverse
-     * @return  return an read only array list to traverse
-     */
-    public ArrayList<Integer> getReadOnlyMemberList() {
-        lock.lock();
-        final ArrayList<Integer> list = roomMembers;
-        lock.unlock();
-        return list;
     }
 
     /**

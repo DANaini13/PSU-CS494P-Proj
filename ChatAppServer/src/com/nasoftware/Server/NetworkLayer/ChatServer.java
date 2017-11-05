@@ -1,6 +1,7 @@
 package com.nasoftware.Server.NetworkLayer;
 
 import com.nasoftware.Common.ProtocolInfo;
+import com.nasoftware.Server.DataLayer.Database;
 import com.nasoftware.Server.LogicalLayer.Courier;
 
 import java.io.DataInputStream;
@@ -88,7 +89,6 @@ public class ChatServer extends Thread {
 
 
     public void run() {
-        roomKeyList.add(0);
         NewMessageChecker checker = new NewMessageChecker(server);
         checker.start();
         while(true) {

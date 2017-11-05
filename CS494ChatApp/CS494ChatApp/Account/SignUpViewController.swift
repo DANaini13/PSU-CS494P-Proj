@@ -31,6 +31,7 @@ class SignUpViewController: UIViewController {
         }
         if let account = usernameTextField.text, let password = passwordTextField.text {
             waitingIndicator.startAnimating()
+            print("account: \(account)   password: \(password)")
             loginAndSignUpModel.signUp(account: account, password: password) {
                 [weak self] (result) in
                 DispatchQueue.main.async {

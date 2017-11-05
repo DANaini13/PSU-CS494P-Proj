@@ -61,10 +61,9 @@ public class Courier{
                 + header + headerSplitter
                 + roomID + roomSplitter
                 + message.generateMessagePacket();
-        ArrayList<Integer> roomMembers = room.getReadOnlyMemberList();
         HashMap<Integer, ChatServer> map = Database.chatServerDistributor.getReadOnlyMap();
-        for (Integer memberID : roomMembers) {
-            ChatServer member = map.get(memberID);
+        for (HashMap.Entry<Integer, ChatServer> entry: map.entrySet()) {
+            ChatServer member = entry.getValue();
             member.addPacketToSend(packet);
         }
     }
@@ -109,8 +108,8 @@ public class Courier{
         ChatServer member = Database.chatServerDistributor.getReadOnlyMap().get(memberID);
         if(roomHashMap == null || member == null)
             return;
-        for(Integer x: roomList) {
-            Room room = roomHashMap.get(x);
+        while(roomList.size() > 0) {
+            Room room = roomHashMap.get(roomList.removeFirst());
             if(room == null)
                 continue;
             room.deleteMember(member);
