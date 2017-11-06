@@ -26,6 +26,7 @@
 		3F93B75E1FA19449003C2FE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F93B75C1FA19449003C2FE8 /* LaunchScreen.storyboard */; };
 		3F93B7671FA19468003C2FE8 /* SwiftSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F93B7661FA19468003C2FE8 /* SwiftSocket.swift */; };
 		3F93B76C1FA194A5003C2FE8 /* Socket.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F93B76B1FA194A5003C2FE8 /* Socket.c */; };
+		3F97151F1FB03BA400754E1C /* launch_pad_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F97151E1FB03BA400754E1C /* launch_pad_pic.png */; };
 		3FC776ED1FABDE13002D6F55 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC776EC1FABDE13002D6F55 /* LogInViewController.swift */; };
 		3FC776F11FAC1102002D6F55 /* grey_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC776F01FAC1102002D6F55 /* grey_line.png */; };
 		3FC776F31FAC111A002D6F55 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC776F21FAC111A002D6F55 /* button.png */; };
@@ -65,6 +66,7 @@
 		3F93B7681FA19471003C2FE8 /* HostInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HostInfo.h; sourceTree = "<group>"; };
 		3F93B7691FA19497003C2FE8 /* CS494ChatApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CS494ChatApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		3F93B76B1FA194A5003C2FE8 /* Socket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Socket.c; sourceTree = "<group>"; };
+		3F97151E1FB03BA400754E1C /* launch_pad_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_pad_pic.png; sourceTree = "<group>"; };
 		3FC776EC1FABDE13002D6F55 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		3FC776F01FAC1102002D6F55 /* grey_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grey_line.png; sourceTree = "<group>"; };
 		3FC776F21FAC111A002D6F55 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
@@ -164,6 +166,14 @@
 			path = SwiftSocket;
 			sourceTree = "<group>";
 		};
+		3F97151D1FB03B9700754E1C /* launchPad */ = {
+			isa = PBXGroup;
+			children = (
+				3F97151E1FB03BA400754E1C /* launch_pad_pic.png */,
+			);
+			path = launchPad;
+			sourceTree = "<group>";
+		};
 		3FC776EB1FABDDDA002D6F55 /* Account */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +235,7 @@
 		3FE58A4E1FABDC8A00397A5E /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				3F97151D1FB03B9700754E1C /* launchPad */,
 				3FCC60061FAD04AA00C5C564 /* roomPage */,
 				3FCC60051FAD049A00C5C564 /* messagePacge */,
 				3FCC60041FAD048800C5C564 /* mePage */,
@@ -308,6 +319,7 @@
 				3FF9F0AE1FAC32D00067F8D8 /* white_bg.png in Resources */,
 				3FE58A551FABDCE800397A5E /* bg.png in Resources */,
 				3FC776F31FAC111A002D6F55 /* button.png in Resources */,
+				3F97151F1FB03BA400754E1C /* launch_pad_pic.png in Resources */,
 				3F07C2871FAED6B40001D6A0 /* bunny_pic.png in Resources */,
 				3F07C2921FAEFEC80001D6A0 /* send_button_icon.png in Resources */,
 				3F5AC77D1FAD8A9D00053894 /* message_icon.png in Resources */,

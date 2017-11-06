@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,15 +16,54 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ICv-04-Z8i">
+                                <rect key="frame" x="0.0" y="198.66666666666663" width="375" height="225"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_pad_pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="a61-Fw-QBY">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ICv-04-Z8i" secondAttribute="height" multiplier="125:75" id="wYu-Qq-six"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dZC-DT-kkU">
+                                <rect key="frame" x="37.333333333333343" y="519" width="300" height="24"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The world's greatest Chat App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0VU-Bm-ypI">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="0.70196078431372544" green="0.72549019607843135" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="jj0-p3-7JG"/>
+                                    <constraint firstAttribute="height" constant="24" id="uNg-EQ-4ht"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ICv-04-Z8i" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1cN-5O-kTk"/>
+                            <constraint firstItem="dZC-DT-kkU" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NVJ-eD-NsS"/>
+                            <constraint firstItem="ICv-04-Z8i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aIM-7o-CFO"/>
+                            <constraint firstItem="ICv-04-Z8i" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="oM0-IW-KRC"/>
+                            <constraint firstItem="dZC-DT-kkU" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="120" id="wAP-Dn-24q"/>
+                            <constraint firstItem="ICv-04-Z8i" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-100" id="xib-2U-8qh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="launch_pad_pic.png" width="809" height="516"/>
+    </resources>
 </document>

@@ -22,12 +22,10 @@
       <file leaf-file-name="RoomDistributor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/nasoftware/Server/DataLayer/RoomDistributor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
+            <state relative-caret-position="399">
               <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#324#339#0" expanded="true" />
-                <element signature="e#403#412#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,7 +54,7 @@
       <file leaf-file-name="ChatServer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/nasoftware/Server/NetworkLayer/ChatServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4551">
+            <state relative-caret-position="4978">
               <caret line="278" column="66" lean-forward="false" selection-start-line="278" selection-start-column="66" selection-end-line="278" selection-end-column="66" />
               <folding />
             </state>
@@ -78,65 +76,26 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="11685">
               <caret line="652" column="0" lean-forward="false" selection-start-line="652" selection-start-column="0" selection-end-line="652" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#54151#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#6252#6253#0" expanded="false" />
-                <element signature="e#6320#6321#0" expanded="false" />
-                <element signature="e#10189#10190#0" expanded="false" />
-                <element signature="e#10216#10217#0" expanded="false" />
-                <element signature="e#10398#10399#0" expanded="false" />
-                <element signature="e#10430#10431#0" expanded="false" />
-                <element signature="e#10907#10908#0" expanded="false" />
-                <element signature="e#10945#10946#0" expanded="false" />
-                <element signature="e#13541#13542#0" expanded="false" />
-                <element signature="e#13596#13597#0" expanded="false" />
-                <element signature="e#15414#15415#0" expanded="false" />
-                <element signature="e#15459#15460#0" expanded="false" />
-                <element signature="e#24549#24550#0" expanded="false" />
-                <element signature="e#24603#24604#0" expanded="false" />
-                <element signature="e#30347#30348#0" expanded="false" />
-                <element signature="e#30384#30385#0" expanded="false" />
-                <element signature="e#30684#30685#0" expanded="false" />
-                <element signature="e#30716#30717#0" expanded="false" />
-                <element signature="e#31041#31042#0" expanded="false" />
-                <element signature="e#31086#31087#0" expanded="false" />
-                <element signature="e#33262#33263#0" expanded="false" />
-                <element signature="e#33304#33305#0" expanded="false" />
-                <element signature="e#33338#33339#0" expanded="false" />
-                <element signature="e#33375#33376#0" expanded="false" />
-                <element signature="e#33413#33414#0" expanded="false" />
-                <element signature="e#33454#33455#0" expanded="false" />
-                <element signature="e#38943#38944#0" expanded="false" />
-                <element signature="e#38994#38995#0" expanded="false" />
-                <element signature="e#39436#39437#0" expanded="false" />
-                <element signature="e#39481#39482#0" expanded="false" />
-                <element signature="e#39886#39887#0" expanded="false" />
-                <element signature="e#39960#39961#0" expanded="false" />
-                <element signature="e#40600#40601#0" expanded="false" />
-                <element signature="e#40658#40659#0" expanded="false" />
-                <element signature="e#42227#42228#0" expanded="false" />
-                <element signature="e#42280#42281#0" expanded="false" />
-                <element signature="e#42326#42327#0" expanded="false" />
-                <element signature="e#42383#42384#0" expanded="false" />
-                <element signature="e#44775#44776#0" expanded="false" />
-                <element signature="e#44842#44843#0" expanded="false" />
-                <element signature="e#46390#46391#0" expanded="false" />
-                <element signature="e#46455#46456#0" expanded="false" />
-                <element signature="e#51499#51500#0" expanded="false" />
-                <element signature="e#51557#51558#0" expanded="false" />
-                <element signature="e#51597#51598#0" expanded="false" />
-                <element signature="e#51690#51691#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChatServerSocket.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ChatServerSocket.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/nasoftware/Server/NetworkLayer/ChatServerSocket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="23" column="55" lean-forward="false" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
+            <state relative-caret-position="627">
+              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProtocolInfo.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/nasoftware/Common/ProtocolInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="576">
+              <caret line="57" column="2" lean-forward="false" selection-start-line="57" selection-start-column="2" selection-end-line="57" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -155,7 +114,7 @@
       <file leaf-file-name="Interactor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/nasoftware/Server/AdminInteraction/Interactor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
+            <state relative-caret-position="1254">
               <caret line="73" column="43" lean-forward="false" selection-start-line="73" selection-start-column="43" selection-end-line="73" selection-end-column="43" />
               <folding />
             </state>
@@ -206,7 +165,6 @@
         <option value="$PROJECT_DIR$/src/com/nasoftware/Server/DataLayer/RoomDistributor.java" />
         <option value="$PROJECT_DIR$/src/com/nasoftware/Server/Room.java" />
         <option value="$PROJECT_DIR$/src/com/nasoftware/Client/Main.java" />
-        <option value="$PROJECT_DIR$/src/com/nasoftware/Common/ProtocolInfo.java" />
         <option value="$PROJECT_DIR$/src/com/nasoftware/Common/HostInfo.java" />
         <option value="$PROJECT_DIR$/src/com/nasoftware/Server/DataLayer/AccountMap.java" />
         <option value="$PROJECT_DIR$/src/com/nasoftware/Server/DataLayer/Database.java" />
@@ -218,11 +176,12 @@
         <option value="$PROJECT_DIR$/src/com/nasoftware/Common/Message.java" />
         <option value="$PROJECT_DIR$/src/com/nasoftware/Server/AdminInteraction/Interactor.java" />
         <option value="$PROJECT_DIR$/src/com/nasoftware/Server/NetworkLayer/ChatServerSocket.java" />
+        <option value="$PROJECT_DIR$/src/com/nasoftware/Common/ProtocolInfo.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1907" />
+    <option name="x" value="25" />
     <option name="y" value="23" />
     <option name="width" value="1867" />
     <option name="height" value="1057" />
@@ -242,8 +201,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -425,6 +382,8 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -782,13 +741,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1907" y="23" width="1867" height="1057" extended-state="0" />
+    <frame x="25" y="23" width="1867" height="1057" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953367" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3253886" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="AllProjects" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -801,7 +759,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953367" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2010959" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20328768" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -812,6 +770,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3253886" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -912,8 +871,6 @@
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#324#339#0" expanded="true" />
-            <element signature="e#403#412#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1135,68 +1092,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/nasoftware/Common/ProtocolInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1900">
-          <caret line="100" column="55" lean-forward="false" selection-start-line="100" selection-start-column="55" selection-end-line="100" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11685">
           <caret line="652" column="0" lean-forward="false" selection-start-line="652" selection-start-column="0" selection-end-line="652" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#54151#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#6252#6253#0" expanded="false" />
-            <element signature="e#6320#6321#0" expanded="false" />
-            <element signature="e#10189#10190#0" expanded="false" />
-            <element signature="e#10216#10217#0" expanded="false" />
-            <element signature="e#10398#10399#0" expanded="false" />
-            <element signature="e#10430#10431#0" expanded="false" />
-            <element signature="e#10907#10908#0" expanded="false" />
-            <element signature="e#10945#10946#0" expanded="false" />
-            <element signature="e#13541#13542#0" expanded="false" />
-            <element signature="e#13596#13597#0" expanded="false" />
-            <element signature="e#15414#15415#0" expanded="false" />
-            <element signature="e#15459#15460#0" expanded="false" />
-            <element signature="e#24549#24550#0" expanded="false" />
-            <element signature="e#24603#24604#0" expanded="false" />
-            <element signature="e#30347#30348#0" expanded="false" />
-            <element signature="e#30384#30385#0" expanded="false" />
-            <element signature="e#30684#30685#0" expanded="false" />
-            <element signature="e#30716#30717#0" expanded="false" />
-            <element signature="e#31041#31042#0" expanded="false" />
-            <element signature="e#31086#31087#0" expanded="false" />
-            <element signature="e#33262#33263#0" expanded="false" />
-            <element signature="e#33304#33305#0" expanded="false" />
-            <element signature="e#33338#33339#0" expanded="false" />
-            <element signature="e#33375#33376#0" expanded="false" />
-            <element signature="e#33413#33414#0" expanded="false" />
-            <element signature="e#33454#33455#0" expanded="false" />
-            <element signature="e#38943#38944#0" expanded="false" />
-            <element signature="e#38994#38995#0" expanded="false" />
-            <element signature="e#39436#39437#0" expanded="false" />
-            <element signature="e#39481#39482#0" expanded="false" />
-            <element signature="e#39886#39887#0" expanded="false" />
-            <element signature="e#39960#39961#0" expanded="false" />
-            <element signature="e#40600#40601#0" expanded="false" />
-            <element signature="e#40658#40659#0" expanded="false" />
-            <element signature="e#42227#42228#0" expanded="false" />
-            <element signature="e#42280#42281#0" expanded="false" />
-            <element signature="e#42326#42327#0" expanded="false" />
-            <element signature="e#42383#42384#0" expanded="false" />
-            <element signature="e#44775#44776#0" expanded="false" />
-            <element signature="e#44842#44843#0" expanded="false" />
-            <element signature="e#46390#46391#0" expanded="false" />
-            <element signature="e#46455#46456#0" expanded="false" />
-            <element signature="e#51499#51500#0" expanded="false" />
-            <element signature="e#51557#51558#0" expanded="false" />
-            <element signature="e#51597#51598#0" expanded="false" />
-            <element signature="e#51690#51691#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1233,7 +1133,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nasoftware/Server/NetworkLayer/ChatServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4551">
+        <state relative-caret-position="4978">
           <caret line="278" column="66" lean-forward="false" selection-start-line="278" selection-start-column="66" selection-end-line="278" selection-end-column="66" />
           <folding />
         </state>
@@ -1249,7 +1149,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nasoftware/Server/AdminInteraction/Interactor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
+        <state relative-caret-position="1254">
           <caret line="73" column="43" lean-forward="false" selection-start-line="73" selection-start-column="43" selection-end-line="73" selection-end-column="43" />
           <folding />
         </state>
@@ -1257,20 +1157,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nasoftware/Server/DataLayer/RoomDistributor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
+        <state relative-caret-position="399">
           <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#324#339#0" expanded="true" />
-            <element signature="e#403#412#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/nasoftware/Server/NetworkLayer/ChatServerSocket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="23" column="55" lean-forward="false" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
+        <state relative-caret-position="627">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/nasoftware/Common/ProtocolInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="57" column="2" lean-forward="false" selection-start-line="57" selection-start-column="2" selection-end-line="57" selection-end-column="2" />
           <folding />
         </state>
       </provider>
