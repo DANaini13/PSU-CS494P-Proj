@@ -57,8 +57,10 @@ class LogInViewController: UIViewController {
                 [weak self] (result) in
                 DispatchQueue.main.async {
                     self?.waitingIndicator.stopAnimating()
-                    if result {
+                    if result >= 0 {
                         print("log in successfully!")
+                        let userDefault = UserDefaults.standard
+                        userDefault.set(result, forKey: "dynamic_id")
                         self?.hideKeyBoard()
                         self?.performSegue(withIdentifier: "mainSection", sender: self)
                     }else {

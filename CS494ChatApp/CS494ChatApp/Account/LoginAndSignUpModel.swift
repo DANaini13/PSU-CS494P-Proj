@@ -12,7 +12,7 @@ struct LoginAndSignUpModel {
     private var account: String?
     private var password: String?
 
-    func logIn(account: String, password: String, completionHandler: @escaping (Bool) -> Void) {
+    func logIn(account: String, password: String, completionHandler: @escaping (Int) -> Void) {
         let packet = PacketsGenerator.generateLogInPacket(account: account, password: password, handler: completionHandler)
         PacketsCheckerAndSender.sendPacket(packet: packet)
     }

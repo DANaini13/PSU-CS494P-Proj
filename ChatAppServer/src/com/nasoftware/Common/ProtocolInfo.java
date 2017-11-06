@@ -55,7 +55,7 @@ ADD-COMMANDSPL-SUCCESS|FAILED //To Client
 /*
 LOG IN:
 LOGIN-COMMANDSPL-accountName-password //To server
-LOGIN-COMMANDSPL-SUCCESS|FAILED //To Client
+LOGIN-COMMANDSPL-dynamic_user_id|FAILED //To Client
  */
 
 /**

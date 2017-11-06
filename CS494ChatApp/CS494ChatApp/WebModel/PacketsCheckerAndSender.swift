@@ -105,10 +105,10 @@ class PacketsCheckerAndSender {
                     }
                 case ProtocolInfo.logInHeader :
                     if let handler = HandlerBuffer.logInFirstHandler {
-                        if(components[1] == ProtocolInfo.successText) {
-                            handler(true)
+                        if(components[1] == ProtocolInfo.failedText) {
+                            handler(-1)
                         }else {
-                            handler(false)
+                            handler(Int(components[1])!)
                         }
                     }
                 case ProtocolInfo.addHeader:
@@ -178,7 +178,7 @@ class PacketsCheckerAndSender {
             HandlerBuffer.addHandlerToGoBuffer(handler: function)
         case .logInHandler(let function):
             if !serverConnected {
-                function(false)
+                function(-1)
                 break
             }
             HandlerBuffer.addHandlerToLogInBuffer(handler: function)

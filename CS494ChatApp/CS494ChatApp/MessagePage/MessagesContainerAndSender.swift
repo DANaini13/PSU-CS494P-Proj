@@ -29,7 +29,7 @@ struct MessagesContainer {
                 j += 1
             }
             messageContent += "\(i)"
-            messageList.append(Message(messageContent: messageContent, roomNo: 0, timeString: "currentTime", senderName: "Shan"))
+            messageList.append(Message(messageContent: messageContent, roomNo: 0, timeString: "currentTime", senderName: "Shan", senderId: 0))
             i += 1
         }
     }

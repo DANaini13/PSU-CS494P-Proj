@@ -277,7 +277,7 @@ public class ChatServer extends Thread {
             }
             Courier courier = new Courier();
             if (courier.checkAccountPassword(parts[0], parts[1])) {
-                addPacketToSend(logInHeader + requestSplitter + successText);
+                addPacketToSend(logInHeader + requestSplitter + userID);
                 logInStatus = true;
                 return;
             }

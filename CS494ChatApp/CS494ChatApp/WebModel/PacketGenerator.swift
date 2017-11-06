@@ -92,7 +92,7 @@ struct PacketsGenerator{
      - returns: a packet that can be passed into the packets sender.
      - Version: 1.0
      */
-    static func generateLogInPacket(account: String, password: String, handler: @escaping (Bool) -> Void) -> Packet {
+    static func generateLogInPacket(account: String, password: String, handler: @escaping (Int) -> Void) -> Packet {
         let content = ProtocolInfo.logInHeader + ProtocolInfo.requestSplitter
             + account + ProtocolInfo.contentSplitter + password
         let packet = Packet(content: content, handler: Packet.PacketReturnHandler.logInHandler(handler))

@@ -20,7 +20,7 @@ struct HandlerBuffer {
     static private var sendBuffer:  [(Bool) -> Void]     = []
     static private var goBuffer:    [(Bool) -> Void]     = []
     static private var createBuffer:[(Int)  -> Void]     = []
-    static private var logInBuffer: [(Bool) -> Void]     = []
+    static private var logInBuffer: [(Int) -> Void]      = []
     static private var signUpBuffer:[(Bool) -> Void]     = []
     static private let lock                              = NSLock()
     
@@ -84,7 +84,7 @@ struct HandlerBuffer {
      the var that will pop a LOGIN completion handler form the buffer queue.
      - Version: 1.0
      */
-    static var logInFirstHandler: ((Bool) -> Void)? {
+    static var logInFirstHandler: ((Int) -> Void)? {
         guard logInBuffer.count != 0 else {
             return nil
         }
@@ -157,7 +157,7 @@ struct HandlerBuffer {
      - parameter handler: the completion handler that will be called from the PacketsChecker.
      - Version: 1.0
      */
-    static func addHandlerToLogInBuffer(handler: @escaping (Bool) -> Void) {
+    static func addHandlerToLogInBuffer(handler: @escaping (Int) -> Void) {
         lock.lock()
         logInBuffer.append(handler)
         lock.unlock()

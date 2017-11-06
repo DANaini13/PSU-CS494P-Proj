@@ -18,7 +18,7 @@ struct Packet{
         case goHandler((Bool) -> Void)
         case createHandler((Int) -> Void)
         case sendHandler((Bool) -> Void)
-        case logInHandler((Bool) -> Void)
+        case logInHandler((Int) -> Void)
         case signUpHandler((Bool) -> Void)
     }
     

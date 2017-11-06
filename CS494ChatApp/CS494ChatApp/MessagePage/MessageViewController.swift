@@ -62,13 +62,15 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell
-        if indexPath.row % 2 == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: "leftCell", for: indexPath)
-        } else {
+        let message = messagesContainer.messages[indexPath.row]
+        let userDefault = UserDefaults.standard
+        let myID = userDefault.value(forKey: "dynamic_id") as! Int
+        if myID == message.dynamicId {
             cell = tableView.dequeueReusableCell(withIdentifier: "rightCell", for: indexPath)
+        } else {
+            cell = tableView.dequeueReusableCell(withIdentifier: "leftCell", for: indexPath)
         }
         
-        let message = messagesContainer.messages[indexPath.row]
         if let leftCell = cell as? MessageCellLeft {
             leftCell.message = message
         }

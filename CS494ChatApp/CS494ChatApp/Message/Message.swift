@@ -37,14 +37,20 @@ struct Message{
         return senderName
     }
     
+    private var senderId: Int
+    var dynamicId: Int {
+        return senderId
+    }
+    
     /**
      init the message by seperare components.
      */
-    init(messageContent: String, roomNo: Int, timeString: String, senderName: String) {
+    init(messageContent: String, roomNo: Int, timeString: String, senderName: String, senderId: Int) {
         self.messageContent = messageContent
         self.roomNo         = roomNo
         self.timeString     = timeString
         self.senderName     = senderName
+        self.senderId       = senderId
     }
     
     /**
@@ -64,5 +70,6 @@ struct Message{
         self.senderName     = messageContentParts[1]
         self.messageContent = messageContentParts[3]
         self.timeString     = messageContentParts[2]
+        self.senderId       = Int(messageContentParts[0])!
     }
 }
