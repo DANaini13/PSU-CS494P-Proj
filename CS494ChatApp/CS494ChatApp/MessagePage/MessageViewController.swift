@@ -71,7 +71,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell = tableView.dequeueReusableCell(withIdentifier: "leftCell", for: indexPath)
         }
         
-        if let leftCell = cell as? MessageCellLeft {
+        if let leftCell = cell as? MessageCell {
             leftCell.message = message
         }
         

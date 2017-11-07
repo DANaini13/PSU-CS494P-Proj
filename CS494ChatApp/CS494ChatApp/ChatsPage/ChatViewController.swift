@@ -23,9 +23,9 @@ class ChatViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
-        
-        cell.textLabel?.text = "Title\(indexPath.row)"
-        cell.detailTextLabel?.text = "Detail\(indexPath.row)"
+        if let chatCell = cell as? ChatCell {
+            chatCell.room = Room(name: "Room\(indexPath.row + 1)", lastMessage: "This is the last message!")
+        }
         return cell
     }
 

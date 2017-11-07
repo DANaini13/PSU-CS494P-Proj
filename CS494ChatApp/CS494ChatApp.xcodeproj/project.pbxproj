@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F07C2801FAEBD970001D6A0 /* MessageCellLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F07C27F1FAEBD970001D6A0 /* MessageCellLeft.swift */; };
+		3F07C2801FAEBD970001D6A0 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F07C27F1FAEBD970001D6A0 /* MessageCell.swift */; };
 		3F07C2831FAEBEF50001D6A0 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F07C2821FAEBEF50001D6A0 /* MessageViewController.swift */; };
 		3F07C2851FAED69B0001D6A0 /* bear_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F07C2841FAED69B0001D6A0 /* bear_pic.png */; };
 		3F07C2871FAED6B40001D6A0 /* bunny_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F07C2861FAED6B40001D6A0 /* bunny_pic.png */; };
@@ -27,6 +27,8 @@
 		3F93B7671FA19468003C2FE8 /* SwiftSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F93B7661FA19468003C2FE8 /* SwiftSocket.swift */; };
 		3F93B76C1FA194A5003C2FE8 /* Socket.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F93B76B1FA194A5003C2FE8 /* Socket.c */; };
 		3F97151F1FB03BA400754E1C /* launch_pad_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F97151E1FB03BA400754E1C /* launch_pad_pic.png */; };
+		3FA9C23E1FB12EF10008D1BC /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA9C23D1FB12EF10008D1BC /* Room.swift */; };
+		3FA9C2401FB12FF50008D1BC /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA9C23F1FB12FF50008D1BC /* ChatCell.swift */; };
 		3FC776ED1FABDE13002D6F55 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC776EC1FABDE13002D6F55 /* LogInViewController.swift */; };
 		3FC776F11FAC1102002D6F55 /* grey_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC776F01FAC1102002D6F55 /* grey_line.png */; };
 		3FC776F31FAC111A002D6F55 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC776F21FAC111A002D6F55 /* button.png */; };
@@ -43,7 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3F07C27F1FAEBD970001D6A0 /* MessageCellLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellLeft.swift; sourceTree = "<group>"; };
+		3F07C27F1FAEBD970001D6A0 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		3F07C2821FAEBEF50001D6A0 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		3F07C2841FAED69B0001D6A0 /* bear_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bear_pic.png; sourceTree = "<group>"; };
 		3F07C2861FAED6B40001D6A0 /* bunny_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bunny_pic.png; sourceTree = "<group>"; };
@@ -67,6 +69,8 @@
 		3F93B7691FA19497003C2FE8 /* CS494ChatApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CS494ChatApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		3F93B76B1FA194A5003C2FE8 /* Socket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Socket.c; sourceTree = "<group>"; };
 		3F97151E1FB03BA400754E1C /* launch_pad_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_pad_pic.png; sourceTree = "<group>"; };
+		3FA9C23D1FB12EF10008D1BC /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		3FA9C23F1FB12FF50008D1BC /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		3FC776EC1FABDE13002D6F55 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		3FC776F01FAC1102002D6F55 /* grey_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grey_line.png; sourceTree = "<group>"; };
 		3FC776F21FAC111A002D6F55 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
@@ -96,7 +100,7 @@
 		3F07C2811FAEBEAD0001D6A0 /* MessagePage */ = {
 			isa = PBXGroup;
 			children = (
-				3F07C27F1FAEBD970001D6A0 /* MessageCellLeft.swift */,
+				3F07C27F1FAEBD970001D6A0 /* MessageCell.swift */,
 				3F07C2821FAEBEF50001D6A0 /* MessageViewController.swift */,
 				3FC9A4261FAFC3A300AF7486 /* MessagesContainerAndSender.swift */,
 			);
@@ -107,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				3F07C28F1FAEEEFA0001D6A0 /* ChatViewController.swift */,
+				3FA9C23F1FB12FF50008D1BC /* ChatCell.swift */,
 			);
 			path = ChatsPage;
 			sourceTree = "<group>";
@@ -134,7 +139,7 @@
 				3F93B7651FA19459003C2FE8 /* HelpFiles */,
 				3F93B76D1FA194C5003C2FE8 /* SwiftSocket */,
 				3FD08A971FA6F90A00030A1D /* WebModel */,
-				3FE1F1081FAB04BB000BED42 /* Message */,
+				3FE1F1081FAB04BB000BED42 /* Abstract */,
 				3F07C2811FAEBEAD0001D6A0 /* MessagePage */,
 				3FC776EB1FABDDDA002D6F55 /* Account */,
 				3F07C28E1FAEEEBF0001D6A0 /* ChatsPage */,
@@ -224,12 +229,13 @@
 			path = WebModel;
 			sourceTree = "<group>";
 		};
-		3FE1F1081FAB04BB000BED42 /* Message */ = {
+		3FE1F1081FAB04BB000BED42 /* Abstract */ = {
 			isa = PBXGroup;
 			children = (
 				3FE1F1091FAB04CB000BED42 /* Message.swift */,
+				3FA9C23D1FB12EF10008D1BC /* Room.swift */,
 			);
-			path = Message;
+			path = Abstract;
 			sourceTree = "<group>";
 		};
 		3FE58A4E1FABDC8A00397A5E /* Resourses */ = {
@@ -347,12 +353,14 @@
 				3FE1F1031FAAD467000BED42 /* PacketsCheckerAndSender.swift in Sources */,
 				3F6694C11FABABCD007B14AA /* ProtocolInformation.swift in Sources */,
 				3FF9F0B21FAC45130067F8D8 /* LoginAndSignUpModel.swift in Sources */,
-				3F07C2801FAEBD970001D6A0 /* MessageCellLeft.swift in Sources */,
+				3F07C2801FAEBD970001D6A0 /* MessageCell.swift in Sources */,
 				3FE1F1071FAB0193000BED42 /* HandlerBuffer.swift in Sources */,
+				3FA9C23E1FB12EF10008D1BC /* Room.swift in Sources */,
 				3F07C2831FAEBEF50001D6A0 /* MessageViewController.swift in Sources */,
 				3F30E01F1FABAEDE001C633F /* PacketGenerator.swift in Sources */,
 				3F93B7541FA19449003C2FE8 /* AppDelegate.swift in Sources */,
 				3FE1F1051FAAE105000BED42 /* Packet.swift in Sources */,
+				3FA9C2401FB12FF50008D1BC /* ChatCell.swift in Sources */,
 				3FE1F10A1FAB04CB000BED42 /* Message.swift in Sources */,
 				3F93B76C1FA194A5003C2FE8 /* Socket.c in Sources */,
 				3FC776ED1FABDE13002D6F55 /* LogInViewController.swift in Sources */,
