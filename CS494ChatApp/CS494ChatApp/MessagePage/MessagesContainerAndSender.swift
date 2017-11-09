@@ -20,18 +20,6 @@ struct MessagesContainer {
     }
     
     init() {
-        var i = 0
-        while i<30 {
-            var messageContent = ""
-            var j = 0
-            while j < i {
-                messageContent += "Hello World "
-                j += 1
-            }
-            messageContent += "\(i)"
-            messageList.append(Message(messageContent: messageContent, roomNo: 0, timeString: "currentTime", senderName: "Shan", senderId: 0))
-            i += 1
-        }
     }
     
     mutating func addMessage(message: Message) {

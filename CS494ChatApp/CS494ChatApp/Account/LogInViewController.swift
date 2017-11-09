@@ -11,9 +11,10 @@ import UIKit
 class LogInViewController: UIViewController {
 
     
+    @IBOutlet weak var waitingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var waitingIndicator: UIActivityIndicatorView!
+    
     
     let loginAndSignUpModel = LoginAndSignUpModel()
     let keyboardOffset:CGFloat = 200
@@ -21,6 +22,7 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         PacketsCheckerAndSender.checking = true
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: .UIKeyboardWillHide, object: nil)
         let tapHandler = #selector(hideKeyBoard(byReactingTo:))

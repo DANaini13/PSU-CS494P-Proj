@@ -94,8 +94,10 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
                 return
             }
             self?.tableView.reloadData()
-            let indexPath = IndexPath(row: (self?.messagesContainer.count)!-2, section: 0)
-            self?.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+            if (self?.messagesContainer.count)! > 1 {
+                let indexPath = IndexPath(row: (self?.messagesContainer.count)!-2, section: 0)
+                self?.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+            }
             let indexPath1 = IndexPath(row: (self?.messagesContainer.count)!-1, section: 0)
             self?.tableView.scrollToRow(at: indexPath1, at: .bottom, animated: true)
         }

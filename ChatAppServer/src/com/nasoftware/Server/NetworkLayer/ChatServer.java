@@ -182,6 +182,9 @@ public class ChatServer extends Thread {
                             case logInHeader:
                                 LOGINParser(packet);
                                 break;
+                            case getListHeader:
+                                GETLISTParser(packet);
+                                break;
                             default:
                                 break;
                         }
@@ -282,6 +285,21 @@ public class ChatServer extends Thread {
                 return;
             }
             addPacketToSend(logInHeader + requestSplitter + failedText);
+        }
+
+        private void GETLISTParser(String packet) {
+            if (!requestChecker(packet, getListHeader, requestSplitter)) {
+                addPacketToSend(getListHeader + requestSplitter + failedText);
+                return;
+            }
+            String rest = packet.split(requestSplitter)[1];
+            Courier courier = new Courier();
+            if(rest.equals("ROOMS")) {
+                String result = courier.getRoomList();
+                addPacketToSend(getListHeader + requestSplitter + result);
+            }else {
+                System.err.println("not implement yet!");
+            }
         }
 
         private boolean requestChecker(String packet, String header, String splitter) {

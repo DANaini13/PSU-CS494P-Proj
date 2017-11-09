@@ -11,6 +11,7 @@ import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 import static com.nasoftware.Common.ProtocolInfo.contentSplitter;
 import static com.nasoftware.Common.ProtocolInfo.roomHeader;
@@ -128,5 +129,15 @@ public class Courier{
             return correctPassword.equals(password);
         }
         return false;
+    }
+
+    public String getRoomList() {
+        StringBuilder stringBuilder = new StringBuilder();
+        HashMap<Integer, Room> roomHashMap = Database.roomDistributor.getReadOnlyRoomHashMap();
+        for (HashMap.Entry<Integer, Room> entry: roomHashMap.entrySet()) {
+            stringBuilder.append(entry.getKey().toString());
+            stringBuilder.append("-");
+        }
+        return stringBuilder.toString().substring(0, stringBuilder.length()-1);
     }
 }

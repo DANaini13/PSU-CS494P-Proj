@@ -58,6 +58,12 @@ LOGIN-COMMANDSPL-accountName-password //To server
 LOGIN-COMMANDSPL-dynamic_user_id|FAILED //To Client
  */
 
+/*
+GET ROOM LIST:
+GETLIST-COMMANDSPL-ROOMS
+GETLIST-COMMANDSPL-roomheader-roomheader....
+ */
+
 /**
  * Explanation:
  * All the Information in headers are split by "-":
@@ -93,6 +99,7 @@ public class ProtocolInfo {
     public static final String setHeader = "SET";
     public static final String goHeader = "GO";
     public static final String createHeader = "CREATE";
+    public static final String getListHeader = "GETLIST";
     public static final String roomHeader = "ROOM";
     public static final String messageHeader = "MESS";
     public static final String addHeader = "ADD";

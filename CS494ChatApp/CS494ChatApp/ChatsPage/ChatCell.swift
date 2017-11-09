@@ -21,10 +21,10 @@ class ChatCell: UITableViewCell {
     @IBOutlet weak var roomPictureView: UIImageView!
     
     private let profilePics: [Int : String] = [
-        0: "bear_pic.png",
-        1: "bunny_pic.png",
-        2: "monkey_pic.png",
-        3: "doggie_pic.png"
+        0: "room_icon_001.png",
+        1: "room_icon_002.png",
+        2: "room_icon_003.png",
+        3: "room_icon_004.png"
     ]
     
     var room: Room? {

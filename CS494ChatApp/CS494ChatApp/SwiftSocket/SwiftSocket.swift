@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 /**
  This class is just interfaces that translate form the CSocket.
  include: connect, disconnect, read and write.
@@ -29,6 +30,7 @@ class SwiftSocket {
      1.0
      */
     init() {
+        //let url = URL(string: "https://github.com/DANaini13/stanford-IOS-Assignments-Calculator-CS193P/blob/master/Assn3/screen-shot1.png")
         let result = socketInit()
         if result >= 0 {
             connecting = true
