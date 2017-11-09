@@ -138,6 +138,9 @@ public class Courier{
             stringBuilder.append(entry.getKey().toString());
             stringBuilder.append("-");
         }
+        if(stringBuilder.toString().length() == 0) {
+            return stringBuilder.toString();
+        }
         return stringBuilder.toString().substring(0, stringBuilder.length()-1);
     }
 }

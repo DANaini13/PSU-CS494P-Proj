@@ -114,4 +114,11 @@ struct PacketsGenerator{
         let packet = Packet(content: content, handler: Packet.PacketReturnHandler.signUpHandler(handler))
         return packet
     }
+    
+    static func generateGetListPacket(key: String, handler: @escaping ([String]) -> Void) -> Packet {
+        let content = ProtocolInfo.getListHeader + ProtocolInfo.requestSplitter
+                + key
+        let packet = Packet(content: content, handler: Packet.PacketReturnHandler.getListHandler(handler))
+        return packet
+    }
 }

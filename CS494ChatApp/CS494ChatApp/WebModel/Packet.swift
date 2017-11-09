@@ -20,6 +20,7 @@ struct Packet{
         case sendHandler((Bool) -> Void)
         case logInHandler((Int) -> Void)
         case signUpHandler((Bool) -> Void)
+        case getListHandler(([String]) -> Void)
     }
     
     let handler:PacketReturnHandler

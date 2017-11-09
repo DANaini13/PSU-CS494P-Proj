@@ -9,48 +9,52 @@
 import UIKit
 
 class RoomsViewController: UITableViewController {
-
+    
+    private var roomsModel = RoomsModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        roomsModel.updateHandler = {[weak self] in self?.tableView.reloadData()}
+        roomsModel.startChecking()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 15
+        return roomsModel.length
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "roomCell", for: indexPath)
         if let roomCell = cell as? RoomCell {
-            roomCell.roomName = "Room\(indexPath.row)"
+            roomCell.roomName = "room " + roomsModel.list[indexPath.row]
         }
-        // Configure the cell...
-
         return cell
     }
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    @IBAction func touchCreateButton(_ sender: UIButton) {
+        roomsModel.createRoom(password: "000000") {
+            result in
+            print("create room \(result) successfully!")
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let identifier = segue.identifier,
+            let joinInPage = segue.destination as? JoinRoomViewController,
+            let roomCell = sender as? RoomCell {
+            if identifier == "joinRoom" {
+                joinInPage.picture = roomCell.picture
+                joinInPage.title = "Join in " + (roomCell.roomName ?? "unknow")
+            }
+        }
     }
 
     

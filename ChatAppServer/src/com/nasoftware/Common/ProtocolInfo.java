@@ -61,6 +61,7 @@ LOGIN-COMMANDSPL-dynamic_user_id|FAILED //To Client
 /*
 GET ROOM LIST:
 GETLIST-COMMANDSPL-ROOMS
+GETLIST-COMMANDSPL-CHATS
 GETLIST-COMMANDSPL-roomheader-roomheader....
  */
 
@@ -104,6 +105,8 @@ public class ProtocolInfo {
     public static final String messageHeader = "MESS";
     public static final String addHeader = "ADD";
     public static final String logInHeader = "LOGIN";
+    public static final String roomskeyWord = "ROOMS";
+    public static final String chatskeyWord = "CHATS";
     public static final String failedText = "FAILED";
     public static final String successText = "SUCCESS";
 }

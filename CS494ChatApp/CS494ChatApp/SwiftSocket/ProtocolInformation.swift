@@ -92,8 +92,11 @@ struct ProtocolInfo {
     static let createHeader     = "CREATE"
     static let addHeader        = "ADD"
     static let logInHeader      = "LOGIN"
+    static let getListHeader    = "GETLIST"
     static let roomHeader       = "ROOM"
     static let messageHeader    = "MESS"
     static let successText      = "SUCCESS"
     static let failedText       = "FAILED"
+    static let roomsKeyWord     = "ROOMS"
+    static let chatsKeyWord     = "CHATS"
 }

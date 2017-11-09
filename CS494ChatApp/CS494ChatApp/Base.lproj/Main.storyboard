@@ -46,7 +46,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" background="grey_line.png" translatesAutoresizingMaskIntoConstraints="NO" id="Y3r-wb-Ynf">
                                         <rect key="frame" x="0.0" y="80" width="275" height="50"/>
@@ -168,7 +168,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" background="grey_line.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZxR-Lt-9vq">
                                         <rect key="frame" x="0.0" y="60" width="275" height="50"/>
@@ -306,7 +306,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BSs-kJ-j6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1828" y="2458"/>
+            <point key="canvasLocation" x="1828" y="3197"/>
         </scene>
         <!--Chats-->
         <scene sceneID="BTO-L3-PBk">
@@ -379,7 +379,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7z-60-buJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="157.59999999999999" y="2458.3743842364534"/>
+            <point key="canvasLocation" x="159" y="3197"/>
         </scene>
         <!--Rooms-->
         <scene sceneID="0i1-xU-A52">
@@ -395,6 +395,9 @@
                             <state key="normal" title="Create Room" backgroundImage="button_rec.png">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="touchCreateButton:" destination="HAk-2w-NLa" eventType="touchUpInside" id="wXG-p9-t5B"/>
+                            </connections>
                         </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="roomCell" rowHeight="81" id="ZeG-X2-hrc" customClass="RoomCell" customModule="CS494ChatApp" customModuleProvider="target">
@@ -438,6 +441,7 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="ZVK-zw-or9" id="gpN-jM-1TR"/>
                                     <outlet property="profilePictureView" destination="2mv-83-ZDD" id="fYJ-ID-kaI"/>
+                                    <segue destination="IJZ-jj-wVt" kind="show" identifier="joinRoom" id="Upk-83-3GL"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -450,7 +454,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YHC-SD-06f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="988" y="2457.6354679802957"/>
+            <point key="canvasLocation" x="988" y="3197"/>
         </scene>
         <!--Message View Controller-->
         <scene sceneID="bVY-dd-74q">
@@ -649,7 +653,59 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O3r-CU-0mk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="157.59999999999999" y="3293.7031484257873"/>
+            <point key="canvasLocation" x="159" y="4321"/>
+        </scene>
+        <!--Join Room View Controller-->
+        <scene sceneID="zyt-GQ-ihD">
+            <objects>
+                <viewController id="IJZ-jj-wVt" customClass="JoinRoomViewController" customModule="CS494ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yf4-gd-bX9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blue_to_purple_BG" translatesAutoresizingMaskIntoConstraints="NO" id="NLJ-pz-Qf5">
+                                <rect key="frame" x="0.0" y="108" width="375" height="261"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="NLJ-pz-Qf5" secondAttribute="height" multiplier="125:87" id="T35-0i-MbZ"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="42U-51-clS">
+                                <rect key="frame" x="123" y="174" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="xqJ-J5-HH0"/>
+                                    <constraint firstAttribute="height" constant="128" id="zpa-lS-Eh8"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAu-kK-FYd">
+                                <rect key="frame" x="118" y="526" width="138" height="38"/>
+                                <state key="normal" title="Join in " backgroundImage="button.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchJoinInButton:" destination="IJZ-jj-wVt" eventType="touchUpInside" id="vup-pD-l3F"/>
+                                    <action selector="touchSaveButton:" destination="WOU-gN-f8v" eventType="touchUpInside" id="UJx-cu-hXu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oAu-kK-FYd" firstAttribute="centerX" secondItem="Ock-Ru-fMM" secondAttribute="centerX" id="HM9-C4-Mul"/>
+                            <constraint firstItem="42U-51-clS" firstAttribute="centerX" secondItem="NLJ-pz-Qf5" secondAttribute="centerX" id="f8O-gt-rXN"/>
+                            <constraint firstItem="NLJ-pz-Qf5" firstAttribute="top" secondItem="Ock-Ru-fMM" secondAttribute="top" constant="20" id="i2X-zq-E3u"/>
+                            <constraint firstItem="NLJ-pz-Qf5" firstAttribute="leading" secondItem="Ock-Ru-fMM" secondAttribute="leading" id="jwu-dM-ghp"/>
+                            <constraint firstItem="42U-51-clS" firstAttribute="centerY" secondItem="NLJ-pz-Qf5" secondAttribute="centerY" id="lWg-hi-RPE"/>
+                            <constraint firstItem="Ock-Ru-fMM" firstAttribute="bottom" secondItem="oAu-kK-FYd" secondAttribute="bottom" constant="165" id="p52-PT-qrI"/>
+                            <constraint firstItem="Ock-Ru-fMM" firstAttribute="trailing" secondItem="NLJ-pz-Qf5" secondAttribute="trailing" id="ppJ-vt-fzD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ock-Ru-fMM"/>
+                    </view>
+                    <connections>
+                        <outlet property="image" destination="42U-51-clS" id="fJv-lA-vMr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wmP-Ue-I5M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="988" y="4321"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yLc-8u-7d8">
@@ -672,7 +728,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tbC-aF-h6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="988" y="833"/>
+            <point key="canvasLocation" x="988" y="1059"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="P8X-qB-8CH">
@@ -722,7 +778,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tBd-B1-KrX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="158" y="1668"/>
+            <point key="canvasLocation" x="158" y="2098"/>
         </scene>
         <!--Rooms-->
         <scene sceneID="S2n-aa-JYE">
@@ -743,7 +799,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aiq-IW-cto" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="988" y="1668"/>
+            <point key="canvasLocation" x="988" y="2098"/>
         </scene>
         <!--Me-->
         <scene sceneID="6kA-Nk-b3y">
@@ -764,7 +820,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5i-qX-XQT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1828" y="1668"/>
+            <point key="canvasLocation" x="1828" y="2098"/>
         </scene>
     </scenes>
     <resources>

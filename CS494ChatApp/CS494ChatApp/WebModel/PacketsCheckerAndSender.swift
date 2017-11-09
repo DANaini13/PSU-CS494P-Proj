@@ -50,6 +50,7 @@ class PacketsCheckerAndSender {
     static private func start() {
         DispatchQueue.global(qos: .utility).async {
             while(checking && swiftSocket.connectionStatus) {
+                usleep(200000)
                 guard let result = swiftSocket.readFromServer() else {
                     continue
                 }
@@ -117,6 +118,13 @@ class PacketsCheckerAndSender {
                             handler(true)
                         }else {
                             handler(false)
+                        }
+                    }
+                case ProtocolInfo.getListHeader:
+                    if let handler = HandlerBuffer.getListFirstHandler {
+                        if(components[1] != ProtocolInfo.failedText) {
+                            let secondLevel = components[1].components(separatedBy: ProtocolInfo.contentSplitter)
+                            handler(secondLevel)
                         }
                     }
                 default:
@@ -188,6 +196,12 @@ class PacketsCheckerAndSender {
                 break
             }
             HandlerBuffer.addHandlerToSignUpBuffer(handler: function)
+        case .getListHandler(let function):
+            if !serverConnected {
+                function([])
+                break
+            }
+            HandlerBuffer.addHandlerToGetListBuffer(handler: function)
         }
     }
 }

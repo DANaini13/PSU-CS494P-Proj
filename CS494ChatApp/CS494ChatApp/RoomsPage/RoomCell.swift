@@ -20,6 +20,10 @@ class RoomCell: UITableViewCell {
         3: "room_icon_004.png"
     ]
     
+    var picture: UIImage {
+        return profilePictureView.image!
+    }
+    
     var roomName: String? {
         didSet {
             nameLabel.text = roomName

@@ -10,21 +10,24 @@ import UIKit
 
 class ChatViewController: UITableViewController {
     
+    var chatsModel = ChatsModel()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
-
+        chatsModel.updateHandler = {[weak self] in self?.tableView.reloadData()}
+        chatsModel.startChecking()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return chatsModel.length
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath)
         if let chatCell = cell as? ChatCell {
-            chatCell.room = Room(name: "Room\(indexPath.row + 1)", lastMessage: "This is the last message!")
+            chatCell.room = Room(name: "Room\(chatsModel.list[indexPath.row])", lastMessage: "This is the last message!")
         }
         return cell
     }

@@ -19,6 +19,7 @@
 		3F0DD5571FB3CB86003E77E0 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0DD5561FB3CB86003E77E0 /* RoomsViewController.swift */; };
 		3F0DD5591FB3CC9F003E77E0 /* RoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0DD5581FB3CC9F003E77E0 /* RoomCell.swift */; };
 		3F21D70D1FB412C6004B1563 /* button_rec.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F21D70C1FB412C6004B1563 /* button_rec.png */; };
+		3F21D70F1FB4266C004B1563 /* RoomsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F21D70E1FB4266C004B1563 /* RoomsModel.swift */; };
 		3F30E01F1FABAEDE001C633F /* PacketGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F30E01E1FABAEDE001C633F /* PacketGenerator.swift */; };
 		3F5AC7791FAD8A8E00053894 /* home_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5AC7781FAD8A8E00053894 /* home_icon.png */; };
 		3F5AC77B1FAD8A9700053894 /* human_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5AC77A1FAD8A9700053894 /* human_icon.png */; };
@@ -34,6 +35,8 @@
 		3F73E5061FB2E8CB00806968 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F73E5051FB2E8CA00806968 /* bg.png */; };
 		3F73E5081FB2E90B00806968 /* eye.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F73E5071FB2E90B00806968 /* eye.png */; };
 		3F76E3461FB2E99200D32B5A /* grey_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F76E3451FB2E99100D32B5A /* grey_line.png */; };
+		3F788EDB1FB44F60002E2089 /* JoinRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F788EDA1FB44F60002E2089 /* JoinRoomViewController.swift */; };
+		3F788EDE1FB455C0002E2089 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F788EDD1FB455C0002E2089 /* ChatModel.swift */; };
 		3F93B7541FA19449003C2FE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F93B7531FA19449003C2FE8 /* AppDelegate.swift */; };
 		3F93B7591FA19449003C2FE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F93B7571FA19449003C2FE8 /* Main.storyboard */; };
 		3F93B75B1FA19449003C2FE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F93B75A1FA19449003C2FE8 /* Assets.xcassets */; };
@@ -73,6 +76,7 @@
 		3F0DD5561FB3CB86003E77E0 /* RoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		3F0DD5581FB3CC9F003E77E0 /* RoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCell.swift; sourceTree = "<group>"; };
 		3F21D70C1FB412C6004B1563 /* button_rec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_rec.png; sourceTree = "<group>"; };
+		3F21D70E1FB4266C004B1563 /* RoomsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsModel.swift; sourceTree = "<group>"; };
 		3F30E01E1FABAEDE001C633F /* PacketGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketGenerator.swift; sourceTree = "<group>"; };
 		3F5AC7781FAD8A8E00053894 /* home_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_icon.png; sourceTree = "<group>"; };
 		3F5AC77A1FAD8A9700053894 /* human_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = human_icon.png; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 		3F73E5051FB2E8CA00806968 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		3F73E5071FB2E90B00806968 /* eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye.png; sourceTree = "<group>"; };
 		3F76E3451FB2E99100D32B5A /* grey_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grey_line.png; sourceTree = "<group>"; };
+		3F788EDA1FB44F60002E2089 /* JoinRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomViewController.swift; sourceTree = "<group>"; };
+		3F788EDD1FB455C0002E2089 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		3F93B7501FA19449003C2FE8 /* CS494ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CS494ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F93B7531FA19449003C2FE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F93B7581FA19449003C2FE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -142,6 +148,7 @@
 		3F07C28E1FAEEEBF0001D6A0 /* ChatsPage */ = {
 			isa = PBXGroup;
 			children = (
+				3F788EDD1FB455C0002E2089 /* ChatModel.swift */,
 				3F07C28F1FAEEEFA0001D6A0 /* ChatViewController.swift */,
 				3FA9C23F1FB12FF50008D1BC /* ChatCell.swift */,
 			);
@@ -152,9 +159,18 @@
 			isa = PBXGroup;
 			children = (
 				3F0DD5561FB3CB86003E77E0 /* RoomsViewController.swift */,
+				3F21D70E1FB4266C004B1563 /* RoomsModel.swift */,
 				3F0DD5581FB3CC9F003E77E0 /* RoomCell.swift */,
 			);
 			path = RoomsPage;
+			sourceTree = "<group>";
+		};
+		3F788ED91FB44F2D002E2089 /* JoinRoomPage */ = {
+			isa = PBXGroup;
+			children = (
+				3F788EDA1FB44F60002E2089 /* JoinRoomViewController.swift */,
+			);
+			path = JoinRoomPage;
 			sourceTree = "<group>";
 		};
 		3F93B7471FA19449003C2FE8 = {
@@ -186,8 +202,9 @@
 				3F07C28E1FAEEEBF0001D6A0 /* ChatsPage */,
 				3FC324421FB3BE5800808C05 /* MePage */,
 				3F0DD5551FB3CB3E003E77E0 /* RoomsPage */,
-				3F93B7571FA19449003C2FE8 /* Main.storyboard */,
+				3F788ED91FB44F2D002E2089 /* JoinRoomPage */,
 				3F93B75F1FA19449003C2FE8 /* Info.plist */,
+				3F93B7571FA19449003C2FE8 /* Main.storyboard */,
 				3F93B7691FA19497003C2FE8 /* CS494ChatApp-Bridging-Header.h */,
 			);
 			path = CS494ChatApp;
@@ -436,8 +453,11 @@
 				3FE1F1071FAB0193000BED42 /* HandlerBuffer.swift in Sources */,
 				3FA9C23E1FB12EF10008D1BC /* Room.swift in Sources */,
 				3F07C2831FAEBEF50001D6A0 /* MessageViewController.swift in Sources */,
+				3F788EDB1FB44F60002E2089 /* JoinRoomViewController.swift in Sources */,
 				3F0DD5571FB3CB86003E77E0 /* RoomsViewController.swift in Sources */,
+				3F21D70F1FB4266C004B1563 /* RoomsModel.swift in Sources */,
 				3F30E01F1FABAEDE001C633F /* PacketGenerator.swift in Sources */,
+				3F788EDE1FB455C0002E2089 /* ChatModel.swift in Sources */,
 				3F93B7541FA19449003C2FE8 /* AppDelegate.swift in Sources */,
 				3FE1F1051FAAE105000BED42 /* Packet.swift in Sources */,
 				3FA9C2401FB12FF50008D1BC /* ChatCell.swift in Sources */,

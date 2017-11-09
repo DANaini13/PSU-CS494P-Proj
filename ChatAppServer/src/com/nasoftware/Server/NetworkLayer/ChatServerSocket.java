@@ -21,7 +21,6 @@ public class ChatServerSocket extends Thread {
         try {
             serverSocket = new ServerSocket(port);
             serverSocket.setSoTimeout(1000);
-            Database.roomDistributor.assignANewRoomID();
         } catch (SocketException e) {
             System.out.print(e.getMessage());
         } catch (IOException e) {

@@ -294,11 +294,17 @@ public class ChatServer extends Thread {
             }
             String rest = packet.split(requestSplitter)[1];
             Courier courier = new Courier();
-            if(rest.equals("ROOMS")) {
+            if(rest.equals(roomskeyWord)) {
                 String result = courier.getRoomList();
-                addPacketToSend(getListHeader + requestSplitter + result);
+                addPacketToSend(getListHeader + requestSplitter + roomskeyWord + roomSplitter + result);
+            }else if(rest.equals(chatskeyWord)){
+                StringBuilder resultBuilder = new StringBuilder();
+                for(Integer x: roomKeyList) {
+                    resultBuilder.append(x.toString());
+                }
+                addPacketToSend(getListHeader + requestSplitter + chatskeyWord + roomSplitter + resultBuilder.toString());
             }else {
-                System.err.println("not implement yet!");
+                addPacketToSend(getListHeader + requestSplitter + failedText);
             }
         }
 

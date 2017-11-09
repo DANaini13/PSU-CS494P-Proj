@@ -16,13 +16,14 @@ import Foundation
  */
 struct HandlerBuffer {
     
-    static private var setBuffer:   [(Bool) -> Void]     = []
-    static private var sendBuffer:  [(Bool) -> Void]     = []
-    static private var goBuffer:    [(Bool) -> Void]     = []
-    static private var createBuffer:[(Int)  -> Void]     = []
-    static private var logInBuffer: [(Int) -> Void]      = []
-    static private var signUpBuffer:[(Bool) -> Void]     = []
-    static private let lock                              = NSLock()
+    static private var setBuffer:     [(Bool) -> Void]     = []
+    static private var sendBuffer:    [(Bool) -> Void]     = []
+    static private var goBuffer:      [(Bool) -> Void]     = []
+    static private var createBuffer:  [(Int)  -> Void]     = []
+    static private var logInBuffer:   [(Int) -> Void]      = []
+    static private var signUpBuffer:  [(Bool) -> Void]     = []
+    static private var getListBuffer: [([String]) -> Void]   = []
+    static private let lock                                = NSLock()
     
     /**
      the var that will pop a SET completion handler form the buffer queue.
@@ -108,6 +109,16 @@ struct HandlerBuffer {
         return result
     }
     
+    static var getListFirstHandler: (([String]) -> Void)? {
+        guard getListBuffer.count != 0 else {
+            return nil
+        }
+        lock.lock()
+        let result = getListBuffer.removeFirst()
+        lock.unlock()
+        return result
+    }
+    
     /**
      the function that will add a handler to the set handler queue
      - parameter handler: the completion handler that will be called from the PacketsChecker.
@@ -171,6 +182,12 @@ struct HandlerBuffer {
     static func addHandlerToSignUpBuffer(handler: @escaping (Bool) -> Void) {
         lock.lock()
         signUpBuffer.append(handler)
+        lock.unlock()
+    }
+    
+    static func addHandlerToGetListBuffer(handler: @escaping ([String]) -> Void) {
+        lock.lock()
+        getListBuffer.append(handler)
         lock.unlock()
     }
 }
