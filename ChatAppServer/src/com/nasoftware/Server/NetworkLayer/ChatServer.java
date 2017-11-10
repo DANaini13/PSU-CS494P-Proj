@@ -86,7 +86,31 @@ public class ChatServer extends Thread {
 
     }
 
+    public void addRoomIntoRoomKeyList(int id) {
+        lock.lock();
+        roomKeyList.add(id);
+        addPacketToSend(getListHeader + requestSplitter + personalKey + roomSplitter + generateRoomString());
+        lock.unlock();
+    }
 
+    public LinkedList<Integer> getReadOnlyRoomKeyList() {
+        lock.lock();
+        final LinkedList<Integer> list = roomKeyList;
+        lock.unlock();
+        return list;
+    }
+
+    private String generateRoomString() {
+        StringBuilder resultBuilder = new StringBuilder();
+        for(Integer x: roomKeyList) {
+            resultBuilder.append(x.toString());
+            resultBuilder.append("-");
+        }
+        if(resultBuilder.toString().length() != 0) {
+            resultBuilder = new StringBuilder(resultBuilder.substring(0, resultBuilder.length()-1));
+        }
+        return resultBuilder.toString();
+    }
 
     public void run() {
         NewMessageChecker checker = new NewMessageChecker(server);
@@ -294,15 +318,11 @@ public class ChatServer extends Thread {
             }
             String rest = packet.split(requestSplitter)[1];
             Courier courier = new Courier();
-            if(rest.equals(roomskeyWord)) {
+            if(rest.equals(globalKey)) {
                 String result = courier.getRoomList();
-                addPacketToSend(getListHeader + requestSplitter + roomskeyWord + roomSplitter + result);
-            }else if(rest.equals(chatskeyWord)){
-                StringBuilder resultBuilder = new StringBuilder();
-                for(Integer x: roomKeyList) {
-                    resultBuilder.append(x.toString());
-                }
-                addPacketToSend(getListHeader + requestSplitter + chatskeyWord + roomSplitter + resultBuilder.toString());
+                addPacketToSend(getListHeader + requestSplitter + globalKey + roomSplitter + result);
+            }else if(rest.equals(personalKey)){
+                addPacketToSend(getListHeader + requestSplitter + personalKey + roomSplitter + generateRoomString());
             }else {
                 addPacketToSend(getListHeader + requestSplitter + failedText);
             }

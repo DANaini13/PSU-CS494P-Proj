@@ -16,14 +16,15 @@ import Foundation
  */
 struct HandlerBuffer {
     
-    static private var setBuffer:     [(Bool) -> Void]     = []
-    static private var sendBuffer:    [(Bool) -> Void]     = []
-    static private var goBuffer:      [(Bool) -> Void]     = []
-    static private var createBuffer:  [(Int)  -> Void]     = []
-    static private var logInBuffer:   [(Int) -> Void]      = []
-    static private var signUpBuffer:  [(Bool) -> Void]     = []
-    static private var getListBuffer: [([String]) -> Void]   = []
-    static private let lock                                = NSLock()
+    static private var setBuffer:              [(Bool) -> Void]     = []
+    static private var sendBuffer:             [(Bool) -> Void]     = []
+    static private var goBuffer:               [(Bool) -> Void]     = []
+    static private var createBuffer:           [(Int)  -> Void]     = []
+    static private var logInBuffer:            [(Int) -> Void]      = []
+    static private var signUpBuffer:           [(Bool) -> Void]     = []
+    static private var globolRoomListBuffer:   [([String]) -> Void] = []
+    static private var personalRoomListBuffer: [([String]) -> Void] = []
+    static private let lock = NSLock()
     
     /**
      the var that will pop a SET completion handler form the buffer queue.
@@ -109,15 +110,26 @@ struct HandlerBuffer {
         return result
     }
     
-    static var getListFirstHandler: (([String]) -> Void)? {
-        guard getListBuffer.count != 0 else {
+    static var globolRoomFirstHandler: (([String])->Void)? {
+        guard globolRoomListBuffer.count != 0 else {
             return nil
         }
         lock.lock()
-        let result = getListBuffer.removeFirst()
+        let result = globolRoomListBuffer.removeFirst()
         lock.unlock()
         return result
     }
+    
+    static var personalRoomFirstHandler: (([String]) -> Void)? {
+        guard personalRoomListBuffer.count != 0 else {
+            return nil
+        }
+        lock.lock()
+        let result = personalRoomListBuffer.removeFirst()
+        lock.unlock()
+        return result
+    }
+    
     
     /**
      the function that will add a handler to the set handler queue
@@ -185,9 +197,15 @@ struct HandlerBuffer {
         lock.unlock()
     }
     
-    static func addHandlerToGetListBuffer(handler: @escaping ([String]) -> Void) {
+    static func addHandlerToGlobalRoomListBuffer(handler: @escaping ([String]) -> Void) {
         lock.lock()
-        getListBuffer.append(handler)
+        globolRoomListBuffer.append(handler)
+        lock.unlock()
+    }
+    
+    static func addHandlerToPersonalRoomListBuffer(handler: @escaping ([String]) -> Void) {
+        lock.lock()
+        personalRoomListBuffer.append(handler)
         lock.unlock()
     }
 }

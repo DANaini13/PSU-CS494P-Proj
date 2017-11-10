@@ -32,12 +32,6 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         sendMessageButton.layer.zPosition = 100
         messageTextField.layer.zPosition = 100
         addKeyboardListeners()
-        // temp
-        
-        let packet = PacketsGenerator.generateGoPacket(to: 0) {
-            result in
-        }
-        PacketsCheckerAndSender.sendPacket(packet: packet)
         addNewMessageListener()
     }
     

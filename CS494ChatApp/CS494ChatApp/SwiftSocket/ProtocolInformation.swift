@@ -97,6 +97,6 @@ struct ProtocolInfo {
     static let messageHeader    = "MESS"
     static let successText      = "SUCCESS"
     static let failedText       = "FAILED"
-    static let roomsKeyWord     = "ROOMS"
-    static let chatsKeyWord     = "CHATS"
+    static let globalKeyWord    = "GLOBAL"
+    static let personalKeyWord  = "PERSONAL"
 }

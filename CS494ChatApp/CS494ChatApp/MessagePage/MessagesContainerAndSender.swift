@@ -19,9 +19,6 @@ struct MessagesContainer {
         return messageList.count
     }
     
-    init() {
-    }
-    
     mutating func addMessage(message: Message) {
         messageList.append(message)
     }

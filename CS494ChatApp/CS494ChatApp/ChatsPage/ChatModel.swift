@@ -9,8 +9,12 @@
 import Foundation
 
 
-class ChatsModel{
-    private var roomList: [String] = []
+class ChatsContainer{
+    private var roomList: [String] = [] {
+        didSet {
+            updateHandler?()
+        }
+    }
     
     var length: Int {
         return roomList.count
@@ -20,48 +24,29 @@ class ChatsModel{
         return roomList
     }
     
-    private let lock: NSLock = NSLock()
+    var updateHandler: (() -> Void)?
     
-    private func compareWithList(list: [String]) -> Bool {
-        var index = 0
-        if list.count != roomList.count {
-            return false
-        }
-        while index < list.count {
-            if roomList[index] != list[index] {
-                return false
+    init() {
+        PacketsCheckerAndSender.setNewPersonallistHandler(){
+            [unowned self] result in
+            if result[0] == ""{
+                self.roomList = []
+                return
             }
-            index += 1
-        }
-        return true
-    }
-    var updateHandler:(() -> Void)?
-    
-    func startChecking() {
-        DispatchQueue.global(qos: .utility).async {
-            while(true) {
-                if !PacketsCheckerAndSender.checking {
-                    print("the packet checking is not opening!")
-                    break;
-                }
-                let packet = PacketsGenerator.generateGetListPacket(key: "CHATS") {
-                    [weak self] result in
-                    if self!.compareWithList(list: result) {
-                        return
-                    }
-                    if result[0] == "" {
-                        return
-                    }
-                    self!.roomList = result
-                    DispatchQueue.main.async {
-                        self!.updateHandler?()
-                    }
-                }
-                PacketsCheckerAndSender.sendPacket(packet: packet)
-                sleep(1)
-            }
+            self.roomList = result
         }
     }
     
+    func check() {
+        let packet = PacketsGenerator.generateGetListPersonal() {
+            [unowned self] result in
+            if result[0] == ""{
+                self.roomList = []
+                return
+            }
+            self.roomList = result
+        }
+        PacketsCheckerAndSender.sendPacket(packet: packet)
+    }
     
 }

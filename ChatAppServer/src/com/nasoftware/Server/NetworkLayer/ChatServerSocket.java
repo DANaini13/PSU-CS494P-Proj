@@ -2,6 +2,7 @@ package com.nasoftware.Server.NetworkLayer;
 
 import com.nasoftware.Server.DataLayer.Database;
 import com.nasoftware.Server.DataLayer.Room;
+import com.nasoftware.Server.DataLayer.RoomDistributor;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -21,6 +22,7 @@ public class ChatServerSocket extends Thread {
         try {
             serverSocket = new ServerSocket(port);
             serverSocket.setSoTimeout(1000);
+            Database.roomDistributor.assignANewRoomID();
         } catch (SocketException e) {
             System.out.print(e.getMessage());
         } catch (IOException e) {

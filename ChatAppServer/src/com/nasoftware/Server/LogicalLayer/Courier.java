@@ -6,12 +6,11 @@ import com.nasoftware.Server.DataLayer.Database;
 import com.nasoftware.Server.DataLayer.RoomDistributor;
 import com.nasoftware.Server.NetworkLayer.ChatServer;
 import com.nasoftware.Server.DataLayer.Room;
+import sun.awt.image.ImageWatched;
 
 import javax.xml.crypto.Data;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
 
 import static com.nasoftware.Common.ProtocolInfo.contentSplitter;
 import static com.nasoftware.Common.ProtocolInfo.roomHeader;
@@ -84,7 +83,10 @@ public class Courier{
             ChatServer member = Database.chatServerDistributor.getReadOnlyMap().get(memberID);
             if (member == null)
                 return false;
-            return room.addMember(member);
+            boolean result =  room.addMember(member);
+            if(result)
+                member.addRoomIntoRoomKeyList(room.roomID);
+            return result;
         } catch (NumberFormatException e) {
             return false;
         }
@@ -101,6 +103,11 @@ public class Courier{
             return null;
         Room room = roomDistributor.assignANewRoomID();
         room.addMember(member);
+        String roomList = getRoomList();
+        for(HashMap.Entry<Integer, ChatServer> entry: Database.chatServerDistributor.getReadOnlyMap().entrySet()) {
+            entry.getValue().addPacketToSend(ProtocolInfo.getListHeader + ProtocolInfo.requestSplitter +
+            ProtocolInfo.globalKey + ProtocolInfo.roomSplitter + roomList);
+        }
         return room.roomID;
     }
 

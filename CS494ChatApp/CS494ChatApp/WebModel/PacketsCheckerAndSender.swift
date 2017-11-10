@@ -39,6 +39,8 @@ class PacketsCheckerAndSender {
         }
     }
     static private var newMessageHandler: ((Message) -> Void)?
+    static private var newGlobalRoomListHandler:(([String]) -> Void)?
+    static private var newPersonalRoomListHandler:(([String]) -> Void)?
     static private var swiftSocket:SwiftSocket = SwiftSocket();
     
     /**
@@ -121,11 +123,21 @@ class PacketsCheckerAndSender {
                         }
                     }
                 case ProtocolInfo.getListHeader:
-                    if let handler = HandlerBuffer.getListFirstHandler {
-                        if(components[1] != ProtocolInfo.failedText) {
-                            let secondLevel = components[1].components(separatedBy: ProtocolInfo.contentSplitter)
-                            handler(secondLevel)
+                    let secondLevel = components[1].components(separatedBy: ProtocolInfo.roomSplitter);
+                    if secondLevel[0] == ProtocolInfo.globalKeyWord {
+                        if let handler = HandlerBuffer.globolRoomFirstHandler {
+                            handler(secondLevel[1].components(separatedBy: ProtocolInfo.contentSplitter))
+                        }else{
+                            self.newGlobalRoomListHandler?(secondLevel[1].components(separatedBy: ProtocolInfo.contentSplitter))
                         }
+                    }else if secondLevel[0] == ProtocolInfo.personalKeyWord {
+                        if let handler = HandlerBuffer.personalRoomFirstHandler {
+                            handler(secondLevel[1].components(separatedBy: ProtocolInfo.contentSplitter))
+                        }else{
+                            self.newPersonalRoomListHandler?(secondLevel[1].components(separatedBy: ProtocolInfo.contentSplitter))
+                        }
+                    }else {
+                        print("not supposed to be here!")
                     }
                 default:
                     print(head)
@@ -144,6 +156,14 @@ class PacketsCheckerAndSender {
      */
     static func setNewMessageHandler(handler: @escaping (Message) -> Void) {
         self.newMessageHandler = handler
+    }
+    
+    static func setNewGloballistHandler(handler: @escaping (([String]) -> Void)) {
+        self.newGlobalRoomListHandler = handler
+    }
+    
+    static func setNewPersonallistHandler(handler: @escaping (([String]) -> Void)) {
+        self.newPersonalRoomListHandler = handler
     }
     
     /**
@@ -196,12 +216,20 @@ class PacketsCheckerAndSender {
                 break
             }
             HandlerBuffer.addHandlerToSignUpBuffer(handler: function)
-        case .getListHandler(let function):
+        case .globalListHandler(let function):
             if !serverConnected {
                 function([])
                 break
             }
-            HandlerBuffer.addHandlerToGetListBuffer(handler: function)
+            HandlerBuffer.addHandlerToGlobalRoomListBuffer(handler: function)
+        case .personalListHandler(let function):
+            if !serverConnected {
+                function([])
+                break
+            }
+            HandlerBuffer.addHandlerToPersonalRoomListBuffer(handler: function)
         }
+    
     }
+
 }
