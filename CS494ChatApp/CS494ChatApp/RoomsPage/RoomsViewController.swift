@@ -56,6 +56,7 @@ class RoomsViewController: UITableViewController {
             if identifier == "joinRoom" {
                 joinInPage.picture = roomCell.picture
                 joinInPage.title = "Join in " + (roomCell.roomName ?? "unknow")
+                joinInPage.roomText = roomCell.roomName ?? "unknow"
                 joinInPage.roomNo = Int((roomCell.roomName?.components(separatedBy: " ")[1])!)
             }
         }

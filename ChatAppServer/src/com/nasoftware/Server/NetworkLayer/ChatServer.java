@@ -47,6 +47,10 @@ public class ChatServer extends Thread {
         return result;
     }
 
+    public final String getUserName() {
+        return userName;
+    }
+
     public boolean isLogIn() {
         return logInStatus;
     }
@@ -209,6 +213,9 @@ public class ChatServer extends Thread {
                             case getListHeader:
                                 GETLISTParser(packet);
                                 break;
+                            case getUserHeader:
+                                GETUSERParser(packet);
+                                break;
                             default:
                                 break;
                         }
@@ -326,6 +333,17 @@ public class ChatServer extends Thread {
             }else {
                 addPacketToSend(getListHeader + requestSplitter + failedText);
             }
+        }
+
+        private void GETUSERParser(String packet) {
+            if (!requestChecker(packet, getUserHeader, requestSplitter)) {
+                addPacketToSend(getUserHeader + requestSplitter + failedText);
+                return;
+            }
+            String rest = packet.split(requestSplitter)[1];
+            Courier courier = new Courier();
+            String list = courier.getUserList(rest);
+            addPacketToSend(getUserHeader + requestSplitter + list);
         }
 
         private boolean requestChecker(String packet, String header, String splitter) {

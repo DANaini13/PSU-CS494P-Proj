@@ -139,6 +139,12 @@ class PacketsCheckerAndSender {
                     }else {
                         print("not supposed to be here!")
                     }
+                case ProtocolInfo.getUsersHeader:
+                    if let handler = HandlerBuffer.userListFirstHandler {
+                        let list = components[1].components(separatedBy: ProtocolInfo.contentSplitter)
+                        print(list)
+                        handler(list)
+                    }
                 default:
                     print(head)
                 }
@@ -228,6 +234,12 @@ class PacketsCheckerAndSender {
                 break
             }
             HandlerBuffer.addHandlerToPersonalRoomListBuffer(handler: function)
+        case .userListHandler(let function):
+            if !serverConnected {
+                function([])
+                break
+            }
+            HandlerBuffer.addHandlerToUserListBuffer(handler: function)
         }
     
     }

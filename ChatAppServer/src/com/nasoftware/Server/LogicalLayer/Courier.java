@@ -2,6 +2,7 @@ package com.nasoftware.Server.LogicalLayer;
 
 import com.nasoftware.Common.Message;
 import com.nasoftware.Common.ProtocolInfo;
+import com.nasoftware.Server.DataLayer.ChatServerDistributor;
 import com.nasoftware.Server.DataLayer.Database;
 import com.nasoftware.Server.DataLayer.RoomDistributor;
 import com.nasoftware.Server.NetworkLayer.ChatServer;
@@ -149,5 +150,34 @@ public class Courier{
             return stringBuilder.toString();
         }
         return stringBuilder.toString().substring(0, stringBuilder.length()-1);
+    }
+
+    public String getUserList(String roomHeader) {
+        String parts[] = roomHeader.split(contentSplitter);
+        if(parts.length != 2) {
+            return null;
+        }
+        try{
+            int roomNo = Integer.parseInt(parts[1]);
+            HashMap<Integer, Room> map = Database.roomDistributor.getReadOnlyRoomHashMap();
+            if(!map.containsKey(roomNo)) {
+                return null;
+            }
+            Room room = map.get(roomNo);
+            StringBuilder stringBuilder = new StringBuilder();
+            HashMap<Integer, Integer> userMap = room.getReadOnlyRoomMembersIDMap();
+            for (HashMap.Entry<Integer, Integer> entry : userMap.entrySet()) {
+                ChatServer user = Database.chatServerDistributor.getReadOnlyMap().get(entry.getKey());
+                String name = user.getUserName();
+                stringBuilder.append(name);
+                stringBuilder.append(ProtocolInfo.contentSplitter);
+            }
+            if(stringBuilder.toString().length() != 0) {
+                stringBuilder = new StringBuilder(stringBuilder.toString().substring(0, stringBuilder.length() -1));
+            }
+            return stringBuilder.toString();
+        }catch (NumberFormatException e) {
+            return null;
+        }
     }
 }

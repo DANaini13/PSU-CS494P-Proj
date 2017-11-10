@@ -24,6 +24,7 @@ struct HandlerBuffer {
     static private var signUpBuffer:           [(Bool) -> Void]     = []
     static private var globolRoomListBuffer:   [([String]) -> Void] = []
     static private var personalRoomListBuffer: [([String]) -> Void] = []
+    static private var userListBuffer:         [([String]) -> Void] = []
     static private let lock = NSLock()
     
     /**
@@ -130,6 +131,16 @@ struct HandlerBuffer {
         return result
     }
     
+    static var userListFirstHandler: (([String]) -> Void)? {
+        guard userListBuffer.count != 0 else {
+            return nil
+        }
+        lock.lock()
+        let result = userListBuffer.removeFirst()
+        lock.unlock()
+        return result
+    }
+    
     
     /**
      the function that will add a handler to the set handler queue
@@ -206,6 +217,12 @@ struct HandlerBuffer {
     static func addHandlerToPersonalRoomListBuffer(handler: @escaping ([String]) -> Void) {
         lock.lock()
         personalRoomListBuffer.append(handler)
+        lock.unlock()
+    }
+    
+    static func addHandlerToUserListBuffer(handler: @escaping ([String]) -> Void) {
+        lock.lock()
+        userListBuffer.append(handler)
         lock.unlock()
     }
 }

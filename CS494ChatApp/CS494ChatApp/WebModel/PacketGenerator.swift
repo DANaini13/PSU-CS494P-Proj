@@ -126,4 +126,12 @@ struct PacketsGenerator{
         let packet = Packet(content: content, handler: Packet.PacketReturnHandler.personalListHandler(handler))
         return packet
     }
+    
+    static func generateGetUserPacket(roomID: Int, handler: @escaping ([String]) -> Void) -> Packet {
+        let content = ProtocolInfo.getUsersHeader + ProtocolInfo.requestSplitter +
+            ProtocolInfo.roomHeader + ProtocolInfo.contentSplitter + String(roomID)
+        let packet = Packet(content: content, handler: Packet.PacketReturnHandler.userListHandler(handler))
+        return packet
+    }
+    
 }

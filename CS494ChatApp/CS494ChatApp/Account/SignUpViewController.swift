@@ -68,10 +68,7 @@ class SignUpViewController: UIViewController {
             return
         }
         keyBoardShowed = false
-        if self.view.frame.origin.y == 0 {
-            return
-        }
-        self.view.frame.origin.y += keyboardOffset
+        self.view.frame.origin.y = 0
     }
     
     @objc private func hideKeyBoard(byReactingTo tapGestureRecongnizer: UITapGestureRecognizer) {

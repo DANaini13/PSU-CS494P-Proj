@@ -62,6 +62,10 @@ LOGIN-COMMANDSPL-dynamic_user_id|FAILED //To Client
 GETLIST-COMMANDSPL-GLOBAL|PERSONAL-roomheader-roomheader....
  */
 
+/*
+GETUSER-COMMANDSPL-ROOM-0
+ */
+
 /**
  * Explanation:
  * All the Information in headers are split by "-":
@@ -101,6 +105,7 @@ public class ProtocolInfo {
     public static final String messageHeader = "MESS";
     public static final String addHeader = "ADD";
     public static final String logInHeader = "LOGIN";
+    public static final String getUserHeader = "GETUSER";
     public static final String failedText = "FAILED";
     public static final String globalKey = "GLOBAL";
     public static final String personalKey = "PERSONAL";

@@ -103,11 +103,8 @@ class LogInViewController: UIViewController {
         if !keyBoardShowed {
             return
         }
-        if self.view.frame.origin.y == 0 {
-            return
-        }
-            self.view.frame.origin.y += keyboardOffset
-            keyBoardShowed = false
+        self.view.frame.origin.y = 0
+        keyBoardShowed = false
     }
     
     @objc private func hideKeyBoard(byReactingTo tapGestureRecongnizer: UITapGestureRecognizer) {
