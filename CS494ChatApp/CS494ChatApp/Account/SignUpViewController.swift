@@ -38,12 +38,23 @@ class SignUpViewController: UIViewController {
                 [weak self] (result) in
                 DispatchQueue.main.async {
                     self?.waitingIndicator.stopAnimating()
+                    if result {
+                        let alertController = UIAlertController(title: "Hint", message: "Sign up successfully!", preferredStyle: .alert)
+                        let okAcount = UIAlertAction(title: "Ok", style: .cancel, handler: {
+                            action in
+                        })
+                        alertController.addAction(okAcount)
+                        self?.present(alertController, animated: true, completion: nil)
+                    }else {
+                        let alertController = UIAlertController(title: "Hint", message: "Account already exist!", preferredStyle: .alert)
+                        let okAcount = UIAlertAction(title: "Ok", style: .cancel, handler: {
+                            action in
+                        })
+                        alertController.addAction(okAcount)
+                        self?.present(alertController, animated: true, completion: nil)
+                    }
                 }
-                if result {
-                    print("sign up successfully!")
-                }else {
-                    print("sign up failed!")
-                }
+                
             }
         }
     }

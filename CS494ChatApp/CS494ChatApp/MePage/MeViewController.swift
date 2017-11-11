@@ -11,6 +11,9 @@ import UIKit
 class MeViewController: UIViewController {
 
     @IBOutlet weak var nickNameTextField: UITextField!
+    @IBOutlet weak var waitingIndecitor: UIActivityIndicatorView!
+    
+    
     let meModel = MeModel()
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,10 +57,29 @@ class MeViewController: UIViewController {
     }
     
     @IBAction func touchSaveButton(_ sender: UIButton) {
+        waitingIndecitor.startAnimating()
         if let name = nickNameTextField.text {
             meModel.setNickedName(name: name) {
                 result in
-                print(result)
+                DispatchQueue.main.async {
+                    [weak self] in
+                    self?.waitingIndecitor.stopAnimating()
+                    if result {
+                        let alertController = UIAlertController(title: "Hint", message: "set name successfully!", preferredStyle: .alert)
+                        let okAcount = UIAlertAction(title: "Ok", style: .cancel, handler: {
+                            action in
+                        })
+                        alertController.addAction(okAcount)
+                        self?.present(alertController, animated: true, completion: nil)
+                    }else {
+                        let alertController = UIAlertController(title: "Hint", message: "log in status unexpectly!", preferredStyle: .alert)
+                        let okAcount = UIAlertAction(title: "Ok", style: .cancel, handler: {
+                            action in
+                        })
+                        alertController.addAction(okAcount)
+                        self?.present(alertController, animated: true, completion: nil)
+                    }
+                }
             }
         }
     }

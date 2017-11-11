@@ -284,13 +284,18 @@
                                     <constraint firstAttribute="height" constant="128" id="r8F-qy-eVj"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="eaz-0v-wFz">
+                                <rect key="frame" x="177" y="398.66666666666669" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="eaz-0v-wFz" firstAttribute="centerX" secondItem="HKe-VG-qxB" secondAttribute="centerX" id="0OE-dH-DLd"/>
                             <constraint firstItem="7Hd-cn-25F" firstAttribute="centerX" secondItem="inT-Cr-lKb" secondAttribute="centerX" id="5Jb-Gx-AO2"/>
                             <constraint firstItem="QAc-k7-MoJ" firstAttribute="centerY" secondItem="HKe-VG-qxB" secondAttribute="centerY" constant="40" id="8Ln-ys-M0e"/>
                             <constraint firstItem="inT-Cr-lKb" firstAttribute="leading" secondItem="HKe-VG-qxB" secondAttribute="leading" id="Dsm-hl-ccL"/>
                             <constraint firstItem="inT-Cr-lKb" firstAttribute="top" secondItem="HKe-VG-qxB" secondAttribute="top" constant="20" id="OJV-IZ-9KR"/>
+                            <constraint firstItem="eaz-0v-wFz" firstAttribute="centerY" secondItem="HKe-VG-qxB" secondAttribute="centerY" id="UHV-MH-pBM"/>
                             <constraint firstItem="h4D-Zu-xG3" firstAttribute="centerY" secondItem="HKe-VG-qxB" secondAttribute="centerY" constant="200" id="iRx-5t-Od4"/>
                             <constraint firstItem="HKe-VG-qxB" firstAttribute="trailing" secondItem="inT-Cr-lKb" secondAttribute="trailing" id="mrT-gw-0g5"/>
                             <constraint firstItem="QAc-k7-MoJ" firstAttribute="centerX" secondItem="HKe-VG-qxB" secondAttribute="centerX" id="ovz-LX-559"/>
@@ -302,6 +307,7 @@
                     <navigationItem key="navigationItem" title="Me" id="1Jh-qb-088"/>
                     <connections>
                         <outlet property="nickNameTextField" destination="QAc-k7-MoJ" id="A0A-0o-JFB"/>
+                        <outlet property="waitingIndecitor" destination="eaz-0v-wFz" id="FGf-NU-YZ9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BSs-kJ-j6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -727,6 +733,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="VF7-My-569">
+                                <rect key="frame" x="177" y="398.66666666666669" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -738,7 +747,9 @@
                             <constraint firstItem="Ock-Ru-fMM" firstAttribute="bottom" secondItem="oAu-kK-FYd" secondAttribute="bottom" constant="54" id="KBz-97-keR"/>
                             <constraint firstItem="Ock-Ru-fMM" firstAttribute="bottom" secondItem="mcZ-us-L0X" secondAttribute="bottom" constant="100" id="MVD-2s-eyL"/>
                             <constraint firstItem="amv-MO-Koh" firstAttribute="centerX" secondItem="mcZ-us-L0X" secondAttribute="centerX" id="R7e-My-5UT"/>
+                            <constraint firstItem="VF7-My-569" firstAttribute="centerY" secondItem="Ock-Ru-fMM" secondAttribute="centerY" id="TSG-zv-gWe"/>
                             <constraint firstItem="6ZE-q7-zCN" firstAttribute="leading" secondItem="Ock-Ru-fMM" secondAttribute="leading" id="X9e-SQ-F4s"/>
+                            <constraint firstItem="VF7-My-569" firstAttribute="centerX" secondItem="Ock-Ru-fMM" secondAttribute="centerX" id="aBC-Rw-coa"/>
                             <constraint firstItem="mcZ-us-L0X" firstAttribute="top" secondItem="Ock-Ru-fMM" secondAttribute="top" constant="271" id="f9C-I4-etz"/>
                             <constraint firstItem="mcZ-us-L0X" firstAttribute="leading" secondItem="Ock-Ru-fMM" secondAttribute="leading" constant="45" id="gii-Ik-bfS"/>
                             <constraint firstItem="42U-51-clS" firstAttribute="centerX" secondItem="6ZE-q7-zCN" secondAttribute="centerX" id="hPF-Ji-gZL"/>
@@ -753,6 +764,7 @@
                         <outlet property="image" destination="42U-51-clS" id="dwc-ZU-RWc"/>
                         <outlet property="roomLabel" destination="bNn-rE-EZj" id="Odf-kN-vKU"/>
                         <outlet property="tableView" destination="mcZ-us-L0X" id="zhV-Q0-MTg"/>
+                        <outlet property="waitingIndicator" destination="VF7-My-569" id="8po-Ng-Q93"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wmP-Ue-I5M" userLabel="First Responder" sceneMemberID="firstResponder"/>

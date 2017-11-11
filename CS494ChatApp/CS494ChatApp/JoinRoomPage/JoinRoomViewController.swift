@@ -12,6 +12,9 @@ class JoinRoomViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var image: UIImageView!
     
+    @IBOutlet weak var waitingIndicator: UIActivityIndicatorView!
+    
+    
     var roomNo:Int?
     
     var users:[String]? {
@@ -42,8 +45,27 @@ class JoinRoomViewController: UIViewController, UITableViewDelegate, UITableView
         }
         let packet = PacketsGenerator.generateGoPacket(to: roomNo!) {
             result in
-            print(result)
+            DispatchQueue.main.async {
+                [weak self] in
+                self?.waitingIndicator.stopAnimating()
+                if result {
+                    let alertController = UIAlertController(title: "Hint", message: "Join in room successfully!", preferredStyle: .alert)
+                    let okAcount = UIAlertAction(title: "Ok", style: .cancel, handler: {
+                        action in
+                    })
+                    alertController.addAction(okAcount)
+                    self?.present(alertController, animated: true, completion: nil)
+                }else {
+                    let alertController = UIAlertController(title: "Hint", message: "log in status unexpectly!", preferredStyle: .alert)
+                    let okAcount = UIAlertAction(title: "Ok", style: .cancel, handler: {
+                        action in
+                    })
+                    alertController.addAction(okAcount)
+                    self?.present(alertController, animated: true, completion: nil)
+                }
+            }
         }
+        waitingIndicator.startAnimating()
         PacketsCheckerAndSender.sendPacket(packet: packet)
     }
     
