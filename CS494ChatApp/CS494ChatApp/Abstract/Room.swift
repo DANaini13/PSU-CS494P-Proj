@@ -13,3 +13,4 @@ struct Room {
     let name: String
     var lastMessage: String?
 }
+

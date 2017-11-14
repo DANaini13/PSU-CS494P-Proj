@@ -9,5 +9,5 @@ package com.nasoftware.Common;
  */
 public class HostInfo {
     static public final int port = 2113;
-    static public final String address = "10.0.0.44";
+    static public final String address = "198.74.50.192";
 }

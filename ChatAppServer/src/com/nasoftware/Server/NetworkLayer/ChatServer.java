@@ -184,6 +184,7 @@ public class ChatServer extends Thread {
                 byte[] bytes = new byte[1];
                 String ret = "";
                 while (dis.read(bytes) != -1) {
+                    this.sleep(50);
                     ret += BytesHexString(bytes);
                     if (dis.available() == 0) {
                         packet = hexStr2Str(ret);
@@ -223,6 +224,8 @@ public class ChatServer extends Thread {
                     }
                 }
             } catch (IOException e) {
+                return;
+            } catch (InterruptedException e) {
                 return;
             }
         }

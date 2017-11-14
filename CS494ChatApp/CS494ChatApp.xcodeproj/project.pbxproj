@@ -53,7 +53,7 @@
 		3FC324461FB3C0D700808C05 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC324451FB3C0D700808C05 /* MeViewController.swift */; };
 		3FC776ED1FABDE13002D6F55 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC776EC1FABDE13002D6F55 /* LogInViewController.swift */; };
 		3FC776F31FAC111A002D6F55 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC776F21FAC111A002D6F55 /* button.png */; };
-		3FC9A4271FAFC3A300AF7486 /* MessagesContainerAndSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC9A4261FAFC3A300AF7486 /* MessagesContainerAndSender.swift */; };
+		3FC9A4271FAFC3A300AF7486 /* MessagesSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC9A4261FAFC3A300AF7486 /* MessagesSender.swift */; };
 		3FE1F1031FAAD467000BED42 /* PacketsCheckerAndSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE1F1021FAAD467000BED42 /* PacketsCheckerAndSender.swift */; };
 		3FE1F1051FAAE105000BED42 /* Packet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE1F1041FAAE105000BED42 /* Packet.swift */; };
 		3FE1F1071FAB0193000BED42 /* HandlerBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE1F1061FAB0193000BED42 /* HandlerBuffer.swift */; };
@@ -114,7 +114,7 @@
 		3FC324451FB3C0D700808C05 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		3FC776EC1FABDE13002D6F55 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		3FC776F21FAC111A002D6F55 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
-		3FC9A4261FAFC3A300AF7486 /* MessagesContainerAndSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesContainerAndSender.swift; sourceTree = "<group>"; };
+		3FC9A4261FAFC3A300AF7486 /* MessagesSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesSender.swift; sourceTree = "<group>"; };
 		3FE1F1021FAAD467000BED42 /* PacketsCheckerAndSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketsCheckerAndSender.swift; sourceTree = "<group>"; };
 		3FE1F1041FAAE105000BED42 /* Packet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Packet.swift; sourceTree = "<group>"; };
 		3FE1F1061FAB0193000BED42 /* HandlerBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandlerBuffer.swift; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 			children = (
 				3F07C27F1FAEBD970001D6A0 /* MessageCell.swift */,
 				3F07C2821FAEBEF50001D6A0 /* MessageViewController.swift */,
-				3FC9A4261FAFC3A300AF7486 /* MessagesContainerAndSender.swift */,
+				3FC9A4261FAFC3A300AF7486 /* MessagesSender.swift */,
 			);
 			path = MessagePage;
 			sourceTree = "<group>";
@@ -464,7 +464,7 @@
 				3FE1F10A1FAB04CB000BED42 /* Message.swift in Sources */,
 				3F93B76C1FA194A5003C2FE8 /* Socket.c in Sources */,
 				3FC776ED1FABDE13002D6F55 /* LogInViewController.swift in Sources */,
-				3FC9A4271FAFC3A300AF7486 /* MessagesContainerAndSender.swift in Sources */,
+				3FC9A4271FAFC3A300AF7486 /* MessagesSender.swift in Sources */,
 				3F07C2901FAEEEFA0001D6A0 /* ChatViewController.swift in Sources */,
 				3F93B7671FA19468003C2FE8 /* SwiftSocket.swift in Sources */,
 			);

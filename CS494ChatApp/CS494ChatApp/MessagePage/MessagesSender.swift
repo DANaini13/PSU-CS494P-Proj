@@ -8,23 +8,6 @@
 
 import Foundation
 
-struct MessagesContainer {
-    private var messageList:[Message] = []
-    
-    var messages: [Message] {
-        return messageList
-    }
-    
-    var count: Int {
-        return messageList.count
-    }
-    
-    mutating func addMessage(message: Message) {
-        messageList.append(message)
-    }
-    
-}
-
 struct MessageSender {
     func sendMessage(content: String, roomNo: Int, completionHandler: @escaping (Bool) -> Void) {
         let packet = PacketsGenerator.generateSendPacket(message: content, to: roomNo, handler: completionHandler)

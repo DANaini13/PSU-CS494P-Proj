@@ -15,9 +15,10 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var sendMessageButton: UIButton!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var backgroundLabel: UILabel!
-    let keyboardOffset:CGFloat = 250
-    private var messagesContainer = MessagesContainer()
+    private let keyboardOffset:CGFloat = 250
     private let messageSender = MessageSender()
+    
+    var messageRoom:MessageRoom?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -32,14 +33,17 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         sendMessageButton.layer.zPosition = 100
         messageTextField.layer.zPosition = 100
         addKeyboardListeners()
-        addNewMessageListener()
     }
     
     @IBAction func touchSendMessageButton(_ sender: UIButton) {
+        guard let messageRoom = self.messageRoom else {
+            return
+        }
+        print(messageRoom.messageList.count)
+        let roomNumber = messageRoom.roomNumber
         let content = messageTextField.text!
-        let roomNo = 0
         messageTextField.text = ""
-        messageSender.sendMessage(content: content, roomNo: roomNo) {
+        messageSender.sendMessage(content: content, roomNo: roomNumber) {
             result in
             if result {
                 print("send message successful")
@@ -50,13 +54,14 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messagesContainer.count
+        return messageRoom!.messageList.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell
-        let message = messagesContainer.messages[indexPath.row]
+        let messageList = messageRoom?.messageList
+        let message = messageList![indexPath.row]
         let userDefault = UserDefaults.standard
         let myID = userDefault.value(forKey: "dynamic_id") as! Int
         if myID == message.dynamicId {
@@ -72,28 +77,19 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
-    func addNewMessageListener() {
-        PacketsCheckerAndSender.setNewMessageHandler() {
-            [weak self] (message) in
-            print(message.message)
-            self?.messagesContainer.addMessage(message: message)
-            self?.updateUI()
-        }
-    }
-    
-    
     func updateUI() {
         DispatchQueue.main.async { [weak self] in
-            guard (self?.messagesContainer.count)! > 0 else {
+            guard let messageList = self?.messageRoom?.messageList else {
+                return
+            }
+            guard messageList.count > 0 else {
                 return
             }
             self?.tableView.reloadData()
-            if (self?.messagesContainer.count)! > 1 {
-                let indexPath = IndexPath(row: (self?.messagesContainer.count)!-2, section: 0)
-                self?.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+            if messageList.count > 5{
+                let indexPath1 = IndexPath(row: messageList.count - 1, section: 0)
+                self?.tableView.scrollToRow(at: indexPath1, at: .bottom, animated: true)
             }
-            let indexPath1 = IndexPath(row: (self?.messagesContainer.count)!-1, section: 0)
-            self?.tableView.scrollToRow(at: indexPath1, at: .bottom, animated: true)
         }
     }
     
