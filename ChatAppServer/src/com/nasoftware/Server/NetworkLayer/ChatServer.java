@@ -278,7 +278,7 @@ public class ChatServer extends Thread {
                 addPacketToSend(createHeader + requestSplitter + failedText);
                 return;
             }
-            roomKeyList.add(result);
+            addRoomIntoRoomKeyList(result);
             addPacketToSend(createHeader + requestSplitter + roomHeader + contentSplitter + result);
         }
 
