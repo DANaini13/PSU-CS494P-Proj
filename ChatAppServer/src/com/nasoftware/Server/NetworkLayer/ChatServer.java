@@ -4,9 +4,7 @@ import com.nasoftware.Common.ProtocolInfo;
 import com.nasoftware.Server.DataLayer.Database;
 import com.nasoftware.Server.LogicalLayer.Courier;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 import java.util.LinkedList;
 import java.util.concurrent.locks.Lock;
@@ -79,7 +77,9 @@ public class ChatServer extends Thread {
             return;
         }
         try {
-            byte[] str = messageSendingList.removeFirst().getBytes();
+            String packet = messageSendingList.removeFirst();
+            packet = endPointKey + packet + endPointKey;
+            byte[] str = packet.getBytes();
             out.write(str, 0, str.length);
             out.flush();
         } catch (IOException e) {
@@ -122,7 +122,7 @@ public class ChatServer extends Thread {
         while(true) {
             try {
                 server.sendUrgentData(0xFF);
-                sleep(50);
+                sleep(100);
                 sendUnsentPackets();
             } catch (IOException e) {
                 break;
@@ -141,54 +141,23 @@ public class ChatServer extends Thread {
             this.server = server;
         }
 
-        private String hexStr2Str(String hexStr)
-        {
-            String str = "0123456789ABCDEF";
-            char[] hexs = hexStr.toCharArray();
-            byte[] bytes = new byte[hexStr.length() / 2];
-            int n;
-            int count = 0;
-            for (int i = 0; i < bytes.length; i++)
-            {
-                n = str.indexOf(hexs[2 * i]) * 16;
-                n += str.indexOf(hexs[2 * i + 1]);
-                bytes[i] = (byte) (n & 0xff);
-                if(bytes[i] == 0)
-                    break;
-                ++count;
+        private String charArrToString(char arr[]) {
+            StringBuilder stringBuilder = new StringBuilder();
+            for(int i=0; i<arr.length && arr[i] != '\0'; ++i) {
+                stringBuilder.append(arr[i]);
             }
-            byte[] tempBytes = new byte[count];
-            for (int i =0; i < tempBytes.length; ++i) {
-                tempBytes[i] = bytes[i];
-            }
-            return new String(tempBytes);
+            return stringBuilder.toString();
         }
 
-        private String BytesHexString(byte[] b) {
-            String ret = "";
-            for (int i = 0; i < b.length; i++) {
-                String hex = Integer.toHexString(b[i] & 0xFF);
-                if (hex.length() == 1) {
-                    hex = '0' + hex;
-                }
-                ret += hex.toUpperCase();
-            }
-            return ret;
-        }
 
         public void run() {
             // Packet parser:
             try {
-                DataInputStream dis = new DataInputStream(server.getInputStream());
-                String packet = "";
-                byte[] bytes = new byte[1];
-                String ret = "";
-                while (dis.read(bytes) != -1) {
-                    this.sleep(50);
-                    ret += BytesHexString(bytes);
-                    if (dis.available() == 0) {
-                        packet = hexStr2Str(ret);
-                        String header = packet.split(ProtocolInfo.requestSplitter)[0];
+                BufferedReader in = new BufferedReader(new InputStreamReader(server.getInputStream()));
+                char arr[] = new char[350];
+                while (in.read(arr) != -1) {
+                    String packet = charArrToString(arr);
+                    String header = packet.split(ProtocolInfo.requestSplitter)[0];
                         if(!header.equals(addHeader)&&!header.equals(logInHeader) && !logInStatus) {
                             break;
                         }
@@ -220,13 +189,9 @@ public class ChatServer extends Thread {
                             default:
                                 break;
                         }
-                        ret = "";
-                    }
                 }
             } catch (IOException e) {
-                return;
-            } catch (InterruptedException e) {
-                return;
+                e.printStackTrace();
             }
         }
 
@@ -278,7 +243,7 @@ public class ChatServer extends Thread {
                 addPacketToSend(createHeader + requestSplitter + failedText);
                 return;
             }
-            addRoomIntoRoomKeyList(result);
+            addRoomIntoRoomKeyList(result); // check me
             addPacketToSend(createHeader + requestSplitter + roomHeader + contentSplitter + result);
         }
 

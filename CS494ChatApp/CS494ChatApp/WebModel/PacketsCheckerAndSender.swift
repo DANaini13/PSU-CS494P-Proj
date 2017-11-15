@@ -51,17 +51,33 @@ class PacketsCheckerAndSender {
      */
     static private func start() {
         DispatchQueue.global(qos: .utility).async {
+            var buffer:String = ""
             while(checking && swiftSocket.connectionStatus) {
                 usleep(200000)
-                guard let result = swiftSocket.readFromServer() else {
+                let result:String?
+                if buffer != "" {
+                    result = buffer
+                    buffer = ""
+                } else {
+                    result = swiftSocket.readFromServer()
+                }
+                if result == nil || result!.count <= 10 {
                     continue
                 }
-                if result.count <= 5 {
-                    print("server is unusual")
-                    print(result)
-                    continue
+                let packet = result!
+                print("result is \(packet)")
+                let parts = packet.components(separatedBy: ProtocolInfo.endPointKey)
+                let content = parts[1]
+                if parts.count >= 5 {
+                    var index = 3
+                    while index < parts.count {
+                        buffer += parts[index]
+                        index += 1
+                    }
+                    buffer = ProtocolInfo.endPointKey + buffer + ProtocolInfo.endPointKey
+                    
                 }
-                let components = result.components(separatedBy: ProtocolInfo.requestSplitter)
+                var components = content.components(separatedBy: ProtocolInfo.requestSplitter)
                 let head = components[0]
                 guard components.count == 2 else {
                     continue;

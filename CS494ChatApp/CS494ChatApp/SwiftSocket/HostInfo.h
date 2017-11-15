@@ -9,7 +9,7 @@
 #ifndef Header_h
 #define Header_h
 
-#define HOST_ADDRESS "198.74.50.192"
+#define HOST_ADDRESS "198.74.50.192"//"10.200.185.101"//
 #define HOST_PORT 2113
 #define MAX_POCKET_LEN 350
 

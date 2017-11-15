@@ -100,4 +100,5 @@ struct ProtocolInfo {
     static let failedText       = "FAILED"
     static let globalKeyWord    = "GLOBAL"
     static let personalKeyWord  = "PERSONAL"
+    static let endPointKey      = "-ENDPOINT-"
 }

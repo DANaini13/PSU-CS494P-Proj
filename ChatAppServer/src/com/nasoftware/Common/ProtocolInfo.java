@@ -111,5 +111,6 @@ public class ProtocolInfo {
     public static final String personalKey = "PERSONAL";
     public static final String getListHeader = "GETLIST";
     public static final String successText = "SUCCESS";
+    public static final String endPointKey = "-ENDPOINT-";
 }
 
