@@ -115,18 +115,39 @@ struct PacketsGenerator{
         return packet
     }
 
+    /**
+     The function that generate the get global list packet for user.
+     - parameters:
+        - handler: the completion handler that will be run when the system receive the return packet.
+        - returns: a packet that can be passed into the packets sender.
+     - Version: 1.0
+     */
     static func generateGetListGlobal(handler: @escaping ([String]) -> Void) -> Packet {
         let content = ProtocolInfo.getListHeader + ProtocolInfo.requestSplitter + ProtocolInfo.globalKeyWord
         let packet = Packet(content: content, handler: Packet.PacketReturnHandler.globalListHandler(handler))
         return packet
     }
     
+    /**
+     The function that generate the get personal list packet for user.
+     - parameters:
+     - handler: the completion handler that will be run when the system receive the return packet.
+     - returns: a packet that can be passed into the packets sender.
+     - Version: 1.0
+     */
     static func generateGetListPersonal(handler: @escaping ([String]) -> Void) -> Packet {
         let content = ProtocolInfo.getListHeader + ProtocolInfo.requestSplitter + ProtocolInfo.personalKeyWord
         let packet = Packet(content: content, handler: Packet.PacketReturnHandler.personalListHandler(handler))
         return packet
     }
     
+    /**
+     The function that generate the get user list packet for user.
+     - parameters:
+     - handler: the completion handler that will be run when the system receive the return packet.
+     - returns: a packet that can be passed into the packets sender.
+     - Version: 1.0
+     */
     static func generateGetUserPacket(roomID: Int, handler: @escaping ([String]) -> Void) -> Packet {
         let content = ProtocolInfo.getUsersHeader + ProtocolInfo.requestSplitter +
             ProtocolInfo.roomHeader + ProtocolInfo.contentSplitter + String(roomID)

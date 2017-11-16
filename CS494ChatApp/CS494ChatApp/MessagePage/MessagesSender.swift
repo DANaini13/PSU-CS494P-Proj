@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ The struct that connect to the Web model then send message.
+*/
 struct MessageSender {
     func sendMessage(content: String, roomNo: Int, completionHandler: @escaping (Bool) -> Void) {
         let packet = PacketsGenerator.generateSendPacket(message: content, to: roomNo, handler: completionHandler)

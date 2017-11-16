@@ -208,18 +208,33 @@ struct HandlerBuffer {
         lock.unlock()
     }
     
+    /**
+     the function that will add a handler to the global room list handler queue
+     - parameter handler: the completion handler that will be called from the PacketsChecker.
+     - Version: 1.0
+     */
     static func addHandlerToGlobalRoomListBuffer(handler: @escaping ([String]) -> Void) {
         lock.lock()
         globolRoomListBuffer.append(handler)
         lock.unlock()
     }
     
+    /**
+     the function that will add a handler to the personal room list handler queue
+     - parameter handler: the completion handler that will be called from the PacketsChecker.
+     - Version: 1.0
+     */
     static func addHandlerToPersonalRoomListBuffer(handler: @escaping ([String]) -> Void) {
         lock.lock()
         personalRoomListBuffer.append(handler)
         lock.unlock()
     }
     
+    /**
+     the function that will add a handler to the user list handler queue
+     - parameter handler: the completion handler that will be called from the PacketsChecker.
+     - Version: 1.0
+     */
     static func addHandlerToUserListBuffer(handler: @escaping ([String]) -> Void) {
         lock.lock()
         userListBuffer.append(handler)

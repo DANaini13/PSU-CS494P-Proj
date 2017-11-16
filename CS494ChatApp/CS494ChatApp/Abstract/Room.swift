@@ -8,7 +8,9 @@
 
 import Foundation
 
-
+/**
+ The abstract room data type only for Rooms page
+ */
 struct Room {
     let name: String
     var lastMessage: String?

@@ -13,6 +13,10 @@ import Foundation
  a string to store the packet content.
  */
 struct Packet{
+    /**
+     The abstract data type of packet return handlers.
+     include various completion handlers.
+    */
     enum PacketReturnHandler{
         case setHandler((Bool) -> Void)
         case goHandler((Bool) -> Void)
@@ -27,8 +31,14 @@ struct Packet{
     
     let handler:PacketReturnHandler
     
+    /**
+     The packet content as string
+    **/
     let packetContent:String
     
+    /**
+     init the packet with a content as string and a closure.
+    */
     init(content: String, handler: PacketReturnHandler) {
         self.handler = handler
         packetContent = content

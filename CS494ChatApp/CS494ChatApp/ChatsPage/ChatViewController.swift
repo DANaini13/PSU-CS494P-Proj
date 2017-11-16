@@ -61,8 +61,12 @@ class ChatViewController: UITableViewController {
             [weak self] newMessage in
             if let messageViewController =
                 self?.navigationController?.visibleViewController as? MessageViewController {
-                self?.container.addMessageToRoomsWithoutIncrementUnread(message: newMessage)
-                messageViewController.updateUI()
+                if messageViewController.messageRoom?.roomNumber == newMessage.roomNumber {
+                    self?.container.addMessageToRoomsWithoutIncrementUnread(message: newMessage)
+                    messageViewController.updateUI()
+                }else {
+                    self?.container.addMessageToRooms(message: newMessage)
+                }
             }else {
                 self?.container.addMessageToRooms(message: newMessage)
             }

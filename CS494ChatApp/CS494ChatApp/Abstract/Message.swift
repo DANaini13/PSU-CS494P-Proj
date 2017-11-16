@@ -18,21 +18,37 @@ import Foundation
  */
 struct Message{
     private var messageContent: String
+    
+    /**
+     The readonly message content as string.
+    */
     var message: String {
         return messageContent
     }
     
     private var roomNo: Int
+    
+    /**
+     The readonly room number that this message belong to
+    */
     var roomNumber: Int {
         return roomNo
     }
     
     private var timeString: String
+
+    /**
+        the readonly time that this message was generated
+    */
     var time: String {
         return timeString
     }
     
     private var senderName: String
+    
+    /**
+     The 
+    */
     var sender: String {
         return senderName
     }

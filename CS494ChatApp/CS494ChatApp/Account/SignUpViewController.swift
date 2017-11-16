@@ -9,12 +9,30 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
+    /**
+     The object of LoginAndSignUpModel
+     Check the LoginAndSignUpModel.swift for details
+     - Version: 1.0
+     */
     private let loginAndSignUpModel = LoginAndSignUpModel()
     
+    /**
+     the user name text field that let user input the user name
+     - Version: 1.0
+     */
     @IBOutlet weak var usernameTextField: UITextField!
     
+    /**
+     the password text field that let user input the password
+     - Version: 1.0
+     */
     @IBOutlet weak var passwordTextField: UITextField!
     
+    /**
+     the password text field that used to confirm the password that user
+     input is correct
+     - Version: 1.0
+     */
     @IBOutlet weak var confirmTextField: UITextField!
     
     let keyboardOffset:CGFloat = 200
