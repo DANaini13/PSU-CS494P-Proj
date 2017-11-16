@@ -17,5 +17,6 @@
 
 ### appearance
 
-
+> 1. Login page:
+![Image of Screen Shot](https://github.com/DANaini13/PSU-CS494P-Proj/blob/master/PreviewPictures/picture1Big.png)
 
