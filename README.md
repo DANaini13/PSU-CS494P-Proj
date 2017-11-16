@@ -20,3 +20,21 @@
 > 1. Login page:
 ![Image of Screen Shot](https://github.com/DANaini13/PSU-CS494P-Proj/blob/master/PreviewPictures/picture1Big.png)
 
+> 2. Signup page:
+![Image of Screen Shot](https://github.com/DANaini13/PSU-CS494P-Proj/blob/master/PreviewPictures/picture2Big.png)
+
+> 3. Room list:
+![Image of Screen Shot](https://github.com/DANaini13/PSU-CS494P-Proj/blob/master/PreviewPictures/picture3Big.png)
+
+> 4. Chat list:
+![Image of Screen Shot](https://github.com/DANaini13/PSU-CS494P-Proj/blob/master/PreviewPictures/picture4Big.png)
+
+> 5. Me Page:
+![Image of Screen Shot](https://github.com/DANaini13/PSU-CS494P-Proj/blob/master/PreviewPictures/picture5Big.png)
+
+> 6. Message Page:
+![Image of Screen Shot](https://github.com/DANaini13/PSU-CS494P-Proj/blob/master/PreviewPictures/picture6Big.png)
+
+> 7. User list:
+![Image of Screen Shot](https://github.com/DANaini13/PSU-CS494P-Proj/blob/master/PreviewPictures/picture7Big.png)
+
