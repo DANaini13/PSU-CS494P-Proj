@@ -2,6 +2,7 @@
 ## Internet Relay Chat Application (Server and IOS Clent)
 
 ### functionality
+
 > 1. Client has the ability to create a room
 > 2. Client can list all rooms
 > 3. Client can join a room
@@ -15,4 +16,6 @@
 > 11. Server can disconnect from clients
 
 ### appearance
+
+
 
